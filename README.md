@@ -11,4 +11,6 @@ Abstract: Bayesian networks are powerful frameworks for studying the dependency 
 
 Description: The OSEM algorithm is contained in the R file "ordinalScore.R". Other source code is directly taken from the BiDAG package (https://github.com/cran/BiDAG), with a few modifications made in order to utilize the new algorithm. 
 
-References: J. Kuipers, P. Suter and G. Moffa (2018) <arXiv:1803.07859v2>, M. Kalisch et al.(2012) <doi:10.18637/jss.v047.i11>
+References: J. Kuipers, P. Suter and G. Moffa (2018) <arXiv:1803.07859v2>; 
+
+            M. Kalisch et al.(2012) <doi:10.18637/jss.v047.i11>
