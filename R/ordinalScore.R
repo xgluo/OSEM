@@ -52,7 +52,7 @@ learnRhoij <- function(param,i,j) {
 }
 
 ##' refine_parameters(param): 
-##' a helper function that refines the mean vector and the covariance matrix based on observed data
+##' a helper function that refines the covariance matrix based on observed data
 ##' @param param: an ordinal scoreparameters object
 ##' @return an updated ordinal scoreparameters object
 refineParameters <- function(param) {
@@ -229,7 +229,6 @@ getExpectedStats <- function(param) {
 
 }
 
-
 ##' ordinalUpdateParam(param,AM): 
 ##' a function that estimates the Gaussian mean and correlation matrix given a sample of DAGs
 ##' @param param: a scoreparameter object for ordinal data
@@ -259,7 +258,7 @@ ordinalUpdateParam <- function(param,AM) {
   NL <- N * param$L
   sorted_ind <- ggm::topOrder(AM)
   var_temp <- rep(1,n)
-  b <- matrix(0,nrow = n, ncol = n)
+  B <- matrix(0,nrow = n, ncol = n)
   
   # Estimate the conditional parameters following the topological order
   for (i in (1:n)) {
@@ -272,16 +271,9 @@ ordinalUpdateParam <- function(param,AM) {
     switch(as.character(lp),
            
            "0" = { # no parents
+             
              var_temp[j] <- mean(Y_j^2)
              
-             # update precision matrix (Geiger & Heckerman, 1995)
-             if (i == 1) {
-               W <- 1 / var_temp[j]
-             } else {
-               W <- W + matrix(0,ncol = i-1,nrow = i-1)
-               W <- cbind(W, rep(0,i-1))
-               W <- rbind(W, c(rep(0,i-1), 1 / var_temp[j]))
-             }
            },
            
            "1" = { # one parent
@@ -293,62 +285,39 @@ ordinalUpdateParam <- function(param,AM) {
              
              if (NL*log(add1MSE) + param$lambda * log(NL) < NL*log(var_temp[j])) {
                beta <- add1$coef
-               b[parentnodes,j] <- beta
+               B[j,parentnodes] <- beta
                var_temp[j] <- add1MSE
              }
-             
-             b_j <- b[sorted_ind[c(1:i-1)],j]
-             W <- W + b_j %*% t(b_j) / var_temp[j]
-             W <- cbind(W, - b_j / var_temp[j])
-             W <- rbind(W, t(c(-b_j, 1)) / var_temp[j])
              
            },
            
            { # more parents
-             if (lp <= 20) {
-               
-               # Exhaustive search (for at most 20 parents)
-               X <- Y[,parentnodes]
-               regfit.full <- regsubsets(x = X, y = Y_j,nvmax = lp,nbest = 1,
-                                         method = "exhaustive",intercept = FALSE)
-               reg.summary <- summary(regfit.full)
-               reg.bic <- reg.summary$bic
-               
-               if (param$penType == "other") {
-                 reg.bic <- reg.bic - (1 - param$lambda) * log(NL) * apply(reg.summary$which,1,sum)
-               }
-               
-               best.n <- which.min(reg.bic)
-               
-               beta <- coef(regfit.full, id = best.n)
-               b[parentnodes[reg.summary$which[best.n,]],j] <- beta
-               var_temp[j] <- reg.summary$rss[best.n] / NL
-               
-             } else {
-               
-               # Lasso (for more than 20 parents)
-               X <- Y[,parentnodes]
-               lasso.fit <- cv.glmnet(X,Y_j,alpha = 1,intercept = FALSE)
-               best.lambda <- lasso.fit$lambda.min
-               beta <- predict(lasso.fit,s = best.lambda,type="coefficients")
-               
-               b[parentnodes,j] <- beta
-               var_temp[j] <- sum((Y_j - X %*% beta)^2) / NL
-               
+
+             X <- Y[,parentnodes]
+             regfit.full <- regsubsets(x = X, y = Y_j,nvmax = lp,nbest = 1,
+                                       method = "exhaustive",intercept = FALSE)
+             reg.summary <- summary(regfit.full)
+             reg.bic <- reg.summary$bic
+             
+             if (param$penType == "other") {
+               reg.bic <- reg.bic - (1 - param$lambda) * log(NL) * apply(reg.summary$which,1,sum)
              }
-            
-             b_j <- b[sorted_ind[c(1:i-1)],j]
-             W <- W + b_j %*% t(b_j) / var_temp[j]
-             W <- cbind(W, - b_j / var_temp[j])
-             W <- rbind(W, t(c(-b_j, 1)) / var_temp[j])
+             
+             best.n <- which.min(reg.bic)
+             
+             beta <- coef(regfit.full, id = best.n)
+             B[j,parentnodes[reg.summary$which[best.n,]]] <- beta
+             var_temp[j] <- reg.summary$rss[best.n] / NL
+               
            })
     
   }
   
-  Sigma_temp <- chol2inv(chol(W))
-  correct_ind <- order(sorted_ind)
-  param$Sigma_hat <- cov2cor(Sigma_temp[correct_ind,correct_ind])
-
+  I_B <- diag(n) - B
+  I_B.inv <- solve(I_B)
+  V <- diag(var_temp)
+  param$Sigma_hat <- cov2cor(I_B.inv %*% V %*% t(I_B.inv))
+  
   end_time = Sys.time()
   print(end_time - start_time)
   

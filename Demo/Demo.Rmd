@@ -173,7 +173,8 @@ plot(tempgraph, main= "NPC")
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(NPCfit,trueDAG)
+comparePatterns(NPCfit,trueDAG) # hard version
+comparePatterns(NPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
 ```{r, cache=TRUE}
@@ -193,7 +194,8 @@ plot(tempgraph, main= "OPC")
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(OPCfit,trueDAG)
+comparePatterns(OPCfit,trueDAG) # hard version
+comparePatterns(OPCfit,trueDAG,hardP2P = FALSE) #soft version
 ```
 
 ```{r, cache = TRUE}
@@ -213,7 +215,8 @@ plot(tempgraph, main= "GPC")
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(GPCfit,trueDAG)
+comparePatterns(GPCfit,trueDAG) # hard version
+comparePatterns(GPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
 ```{r, cache = TRUE, results='hide'}
@@ -231,7 +234,8 @@ plot(tempgraph, main= "BDe")
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(BDEfit$max$DAG,trueDAG)
+comparePatterns(BDEfit$max$DAG,trueDAG) # hard version
+comparePatterns(BDEfit$max$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
 ```{r, cache = TRUE, results='hide'}
@@ -249,7 +253,8 @@ plot(tempgraph, main= "BGe")
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(BGEfit$max$DAG,trueDAG)
+comparePatterns(BGEfit$max$DAG,trueDAG) # hard version
+comparePatterns(BGEfit$max$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
 ```{r, cache = TRUE, results='hide'}
@@ -269,5 +274,6 @@ plot(tempgraph, main= "OSEM")
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(OSEMfit$max$DAG,trueDAG)
+comparePatterns(OSEMfit$max$DAG,trueDAG) # hard version
+comparePatterns(OSEMfit$max$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
