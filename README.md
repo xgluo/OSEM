@@ -1,13 +1,11 @@
 # OSEM
 Title: Learning Bayesian networks from ordinal data
 
-Date: 2020.09.12
+Date: 2020.10.27
 
-Author: Xiang Ge Luo
+Authors: Xiang Ge Luo, Giusi Moffa, Jack Kuipers
 
-Supervisor: Dr. Jack Kuipers
-
-Abstract: Bayesian networks are powerful frameworks for studying the dependency structure of variables in a complex system. The problem of learning Bayesian networks is tightly associated with the given data type. Ordinal data, such as stages of cancer, rating scale survey questions, and letter grades for exams, is ubiquitous in applied research. However, existing solutions are mainly for continuous and categorical data. In this thesis, we propose an iterative score-and-search method - called the Ordinal Structural EM (OSEM) algorithm - for learning Bayesian networks from ordinal data. Unlike traditional approaches with the multinomial distribution, we explicitly respect the ordering amongst the categories. More precisely, we assume that the ordinal variables originate from marginally discretizing a set of Gaussian variables, which follow in the latent space a directed acyclic graph. Then, we adopt the Structural EM algorithm and derive closed-form scoring functions for efficient graph searching. Through simulation studies, we demonstrate the superior performance of our method compared to the alternatives and analyze various factors that may influence the learning accuracy.
+Abstract: Bayesian networks are a powerful framework for studying the dependency structure of variables in a complex system. The problem of learning Bayesian networks is tightly associated with the given data type. Ordinal data, such as stages of cancer, rating scale survey questions, and letter grades for exams, is ubiquitous in applied research. However, existing solutions are mainly for continuous and categorical data. In this work, we propose an iterative score-and-search method - called the Ordinal Structural EM (OSEM) algorithm - for learning Bayesian networks from ordinal data. Unlike traditional approaches with the multinomial distribution, we explicitly respect the ordering amongst the categories. More precisely, we assume that the ordinal variables originate from marginally discretizing a set of Gaussian variables, whose structural dependence in the latent space follows a directed acyclic graph. Then, we adopt the Structural EM algorithm and derive closed-form scoring functions for efficient graph searching. Through simulation studies, we illustrate the superior performance of the OSEM algorithm compared to the alternatives and analyze various factors that may influence the learning accuracy. In the end, we demonstrate the practicality of our method by a real-world application using psychological survey data from 408 patients with co-morbid symptoms of obsessive-compulsive disorder and depression.
 
 Description: The OSEM algorithm is contained in the R file `ordinalScore.R`. Other source code is directly taken from the BiDAG package (https://github.com/cran/BiDAG), with a few modifications made in order to utilize the new algorithm. 
 
