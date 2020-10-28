@@ -1,11 +1,9 @@
 ########### Psychological Application ###########
 # Required packages
 library(BiDAG)
-library(Rgraphviz)
 library(pcalg)
 library(bnlearn)
 library(corrplot)
-library(ggplot2)
 
 # Data processing
 # NOT RUN
