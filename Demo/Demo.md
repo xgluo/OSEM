@@ -1,6 +1,3 @@
-This file demonstrates the simulations part of my Master thesis -
-“Learning Bayesian Networks from Ordinal Data”.
-
 ### 1. Load necessary packages and source code
 
 ``` r
