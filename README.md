@@ -11,8 +11,6 @@ Description: The OSEM algorithm is contained in the R file `ordinalScore.R`. Oth
 
 References: 
 
-            J. Kuipers, P. Suter and G. Moffa (2018) <arXiv:1803.07859v2>
-
             M. Kalisch et al. (2012) <doi:10.18637/jss.v047.i11>
             
             R. J. McNally et al. (2017) <doi:10.1017/s0033291716003287>
