@@ -1,7 +1,7 @@
 ---
 title: "Learning Bayesian Networks from Ordinal Data - Demo"
 author: "Xiang Ge Luo"
-date: "2020/09/05"
+date: "2021/04/11"
 output: 
   md_document:
     variant: markdown_github
@@ -13,6 +13,7 @@ output:
 library(BiDAG)
 library(Rgraphviz)
 library(pcalg)
+library(graph)
 ```
 
 ```{r, message=FALSE}
@@ -103,7 +104,7 @@ convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
 ##' @param suffStat: sufficient statistics for the test
 ##' @return p-value of the categorical tests
 catCItest <- function(x, y, S, suffStat) {
-  return(gRim::ciTest_ordinal(data.frame(apply(suffStat$data,2,factor)),
+  return(gRim::ciTest_ordinal(as.data.frame(apply(suffStat$data,2,as.factor), stringsAsFactors = TRUE),
                               set = as.numeric(c(x,y,S)),
                               statistic = suffStat$stat_type)$P)
 }
@@ -219,40 +220,40 @@ comparePatterns(GPCfit,trueDAG,hardP2P = FALSE) # soft version
 
 ```{r, cache = TRUE, results='hide'}
 # hybrid method with the BDe score and the nominal PC output as the initial search space
-BDE <- scoreparameters(n,"bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 0.5))
+BDE <- scoreparameters("bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 0.5))
 BDEfit <- iterativeMCMC(BDE)
 ```
 
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
 plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(BDEfit$max$DAG, edgemode = "directed")
+tempgraph <- graphAM(BDEfit$DAG, edgemode = "directed")
 plot(tempgraph, main= "BDe")
 ```
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(BDEfit$max$DAG,trueDAG) # hard version
-comparePatterns(BDEfit$max$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(BDEfit$DAG,trueDAG) # hard version
+comparePatterns(BDEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
 ```{r, cache = TRUE, results='hide'}
 # hybrid method with the BGe score and the Gaussian PC output as the initial search space
-BGE <- scoreparameters(n, "bge", ordinal_data,bgepar = list(am = 0.5))
+BGE <- scoreparameters("bge", ordinal_data, bgepar = list(am = 0.5))
 BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
 ```
 
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
 plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(BGEfit$max$DAG, edgemode = "directed")
+tempgraph <- graphAM(BGEfit$DAG, edgemode = "directed")
 plot(tempgraph, main= "BGe")
 ```
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(BGEfit$max$DAG,trueDAG) # hard version
-comparePatterns(BGEfit$max$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(BGEfit$DAG,trueDAG) # hard version
+comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
 ```{r, cache = TRUE, results='hide'}
@@ -260,18 +261,18 @@ comparePatterns(BGEfit$max$DAG,trueDAG,hardP2P = FALSE) # soft version
 OSEMfit <- ordinalStructEM(n, ordinal_data,
                            usrpar = list(penType = "other",
                                          L = 5,
-                                         lambda = 3))
+                                         lambda = 2))
 ```
 
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
 plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(OSEMfit$max$DAG, edgemode = "directed")
+tempgraph <- graphAM(OSEMfit$DAG, edgemode = "directed")
 plot(tempgraph, main= "OSEM")
 ```
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(OSEMfit$max$DAG,trueDAG) # hard version
-comparePatterns(OSEMfit$max$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(OSEMfit$DAG,trueDAG) # hard version
+comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```

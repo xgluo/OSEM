@@ -445,7 +445,7 @@ comparePatterns <- function(estDAG,trueDAG, hardP2P = TRUE) {
   
   compPattern <- c(SHD,TP,FP,TN,FN,Precision,TPR,FPR_N,FPR_P)
   names(compPattern) <- c("SHD","TP","FP","TN","FN","Precision","TPR","FPR_N","FPR_P")
-  return(compPattern)
+  return(round(compPattern,2))
 }
 
 ##' getSHD(estDAG, trueDAG): 
@@ -502,7 +502,7 @@ ordinalStructEM <- function(n, data,
   
   start_time = Sys.time()
   print("Initializing parameters and DAG...")
-  param <- scoreparameters(n,"usr",data,usrpar = usrpar)
+  param <- scoreparameters("usr",data,usrpar = usrpar)
   
   print("SEM iteration starts...")
   SHD <- 1
@@ -516,7 +516,7 @@ ordinalStructEM <- function(n, data,
     
     # Structure update
     currentDAGobj <- iterativeMCMC(param, plus1it = 10, hardlimit = n)
-    candidateBestDAG <- currentDAGobj$max$DAG
+    candidateBestDAG <- currentDAGobj$DAG
     
     # Parameter update
     param <- ordinalUpdateParam(param,candidateBestDAG)

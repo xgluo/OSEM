@@ -4,6 +4,7 @@
 library(BiDAG)
 library(Rgraphviz)
 library(pcalg)
+library(graph)
 ```
 
 ``` r
@@ -94,7 +95,7 @@ convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
 ##' @param suffStat: sufficient statistics for the test
 ##' @return p-value of the categorical tests
 catCItest <- function(x, y, S, suffStat) {
-  return(gRim::ciTest_ordinal(data.frame(apply(suffStat$data,2,factor)),
+  return(gRim::ciTest_ordinal(as.data.frame(apply(suffStat$data,2,as.factor), stringsAsFactors = TRUE),
                               set = as.numeric(c(x,y,S)),
                               statistic = suffStat$stat_type)$P)
 }
@@ -161,19 +162,19 @@ NPCfit <- pc(suffStat = list(data = ordinal_data, stat_type = "dev"),
 comparePatterns(NPCfit,trueDAG) # hard version
 ```
 
-    ##          SHD           TP           FP           TN           FN    Precision 
-    ##  22.00000000   7.00000000   7.00000000 161.00000000  15.00000000   0.50000000 
-    ##          TPR        FPR_N        FPR_P 
-    ##   0.28000000   0.04242424   0.28000000
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     22.00      7.00      7.00    161.00     15.00      0.50      0.28      0.04 
+    ##     FPR_P 
+    ##      0.28
 
 ``` r
 comparePatterns(NPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
-    ##          SHD           TP           FP           TN           FN    Precision 
-    ##  20.50000000   8.50000000   5.50000000 161.00000000  15.00000000   0.60714286 
-    ##          TPR        FPR_N        FPR_P 
-    ##   0.34000000   0.03333333   0.22000000
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     20.50      8.50      5.50    161.00     15.00      0.61      0.34      0.03 
+    ##     FPR_P 
+    ##      0.22
 
 ``` r
 # OPC algorithm with the ordinal Jonckheere–Terpstra test (significance level: 0.05)
@@ -190,19 +191,19 @@ OPCfit <- pc(suffStat = list(data = ordinal_data, stat_type = "jt"),
 comparePatterns(OPCfit,trueDAG) # hard version
 ```
 
-    ##          SHD           TP           FP           TN           FN    Precision 
-    ## 2.500000e+01 1.000000e+00 1.000000e+00 1.640000e+02 2.400000e+01 5.000000e-01 
-    ##          TPR        FPR_N        FPR_P 
-    ## 4.000000e-02 6.060606e-03 4.000000e-02
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     25.00      1.00      1.00    164.00     24.00      0.50      0.04      0.01 
+    ##     FPR_P 
+    ##      0.04
 
 ``` r
 comparePatterns(OPCfit,trueDAG,hardP2P = FALSE) #soft version
 ```
 
-    ##          SHD           TP           FP           TN           FN    Precision 
-    ## 2.500000e+01 1.000000e+00 1.000000e+00 1.640000e+02 2.400000e+01 5.000000e-01 
-    ##          TPR        FPR_N        FPR_P 
-    ## 4.000000e-02 6.060606e-03 4.000000e-02
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     25.00      1.00      1.00    164.00     24.00      0.50      0.04      0.01 
+    ##     FPR_P 
+    ##      0.04
 
 ``` r
 # GPC algorithm with the Gaussian test (significance level: 0.05)
@@ -219,23 +220,23 @@ GPCfit <- pc(suffStat = list(C = cor(ordinal_data), n = N),
 comparePatterns(GPCfit,trueDAG) # hard version
 ```
 
-    ##         SHD          TP          FP          TN          FN   Precision 
-    ##  29.0000000   9.0000000  21.0000000 152.0000000   8.0000000   0.3000000 
-    ##         TPR       FPR_N       FPR_P 
-    ##   0.3600000   0.1272727   0.8400000
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     29.00      9.00     21.00    152.00      8.00      0.30      0.36      0.13 
+    ##     FPR_P 
+    ##      0.84
 
 ``` r
 comparePatterns(GPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
-    ##         SHD          TP          FP          TN          FN   Precision 
-    ##  25.5000000  12.5000000  17.5000000 152.0000000   8.0000000   0.4166667 
-    ##         TPR       FPR_N       FPR_P 
-    ##   0.5000000   0.1060606   0.7000000
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     25.50     12.50     17.50    152.00      8.00      0.42      0.50      0.11 
+    ##     FPR_P 
+    ##      0.70
 
 ``` r
 # hybrid method with the BDe score and the nominal PC output as the initial search space
-BDE <- scoreparameters(n,"bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 0.5))
+BDE <- scoreparameters("bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 0.5))
 BDEfit <- iterativeMCMC(BDE)
 ```
 
@@ -243,26 +244,26 @@ BDEfit <- iterativeMCMC(BDE)
 
 ``` r
 # Compare the patterns between them
-comparePatterns(BDEfit$max$DAG,trueDAG) # hard version
+comparePatterns(BDEfit$DAG,trueDAG) # hard version
 ```
 
-    ##          SHD           TP           FP           TN           FN    Precision 
-    ##  13.00000000  12.00000000   6.00000000 165.00000000   7.00000000   0.66666667 
-    ##          TPR        FPR_N        FPR_P 
-    ##   0.48000000   0.03636364   0.24000000
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     13.00     12.00      6.00    165.00      7.00      0.67      0.48      0.04 
+    ##     FPR_P 
+    ##      0.24
 
 ``` r
-comparePatterns(BDEfit$max$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(BDEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
-    ##          SHD           TP           FP           TN           FN    Precision 
-    ##  10.00000000  15.00000000   3.00000000 165.00000000   7.00000000   0.83333333 
-    ##          TPR        FPR_N        FPR_P 
-    ##   0.60000000   0.01818182   0.12000000
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     10.00     15.00      3.00    165.00      7.00      0.83      0.60      0.02 
+    ##     FPR_P 
+    ##      0.12
 
 ``` r
 # hybrid method with the BGe score and the Gaussian PC output as the initial search space
-BGE <- scoreparameters(n, "bge", ordinal_data,bgepar = list(am = 0.5))
+BGE <- scoreparameters("bge", ordinal_data, bgepar = list(am = 0.5))
 BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
 ```
 
@@ -270,48 +271,48 @@ BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
 
 ``` r
 # Compare the patterns between them
-comparePatterns(BGEfit$max$DAG,trueDAG) # hard version
+comparePatterns(BGEfit$DAG,trueDAG) # hard version
 ```
 
-    ##          SHD           TP           FP           TN           FN    Precision 
-    ##  16.00000000  20.00000000  13.00000000 154.00000000   3.00000000   0.60606061 
-    ##          TPR        FPR_N        FPR_P 
-    ##   0.80000000   0.07878788   0.52000000
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     16.00     20.00     13.00    154.00      3.00      0.61      0.80      0.08 
+    ##     FPR_P 
+    ##      0.52
 
 ``` r
-comparePatterns(BGEfit$max$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
-    ##          SHD           TP           FP           TN           FN    Precision 
-    ##  15.50000000  20.50000000  12.50000000 154.00000000   3.00000000   0.62121212 
-    ##          TPR        FPR_N        FPR_P 
-    ##   0.82000000   0.07575758   0.50000000
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     15.50     20.50     12.50    154.00      3.00      0.62      0.82      0.08 
+    ##     FPR_P 
+    ##      0.50
 
 ``` r
 # the OSEM algorithm
 OSEMfit <- ordinalStructEM(n, ordinal_data,
                            usrpar = list(penType = "other",
                                          L = 5,
-                                         lambda = 3))
+                                         lambda = 2))
 ```
 
 ![](Demo_files/figure-markdown_github/unnamed-chunk-25-1.png)
 
 ``` r
 # Compare the patterns between them
-comparePatterns(OSEMfit$max$DAG,trueDAG) # hard version
+comparePatterns(OSEMfit$DAG,trueDAG) # hard version
 ```
 
-    ##          SHD           TP           FP           TN           FN    Precision 
-    ##   6.00000000  23.00000000   5.00000000 161.00000000   1.00000000   0.82142857 
-    ##          TPR        FPR_N        FPR_P 
-    ##   0.92000000   0.03030303   0.20000000
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##      7.00     24.00      7.00    159.00      0.00      0.77      0.96      0.04 
+    ##     FPR_P 
+    ##      0.28
 
 ``` r
-comparePatterns(OSEMfit$max$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
-    ##          SHD           TP           FP           TN           FN    Precision 
-    ##   5.50000000  23.50000000   4.50000000 161.00000000   1.00000000   0.83928571 
-    ##          TPR        FPR_N        FPR_P 
-    ##   0.94000000   0.02727273   0.18000000
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##      6.50     24.50      6.50    159.00      0.00      0.79      0.98      0.04 
+    ##     FPR_P 
+    ##      0.26
