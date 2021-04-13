@@ -322,6 +322,12 @@ comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 
 (Tsagris et al., 2018)
 
+``` r
+d <- as.data.frame(ordinal_data)
+d[] <- lapply(d[], as.ordered)
+skel <- pc.skel(d, method = "comb.mm", alpha = 0.05)
+```
+
     ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
     ## ignored
 
@@ -14025,6 +14031,12 @@ comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 
     ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
     ## ignored
+
+``` r
+MMDAG <- pc.or(skel)$G
+MMDAG[MMDAG == 2] <- 1
+MMDAG[MMDAG == 3] <- 0
+```
 
 ![](Demo_files/figure-markdown_github/unnamed-chunk-28-1.png)
 

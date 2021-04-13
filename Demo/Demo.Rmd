@@ -283,7 +283,7 @@ comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 
 (Tsagris et al., 2018)
 
-```{r, echo=FALSE}
+```{r, message=FALSE}
 d <- as.data.frame(ordinal_data)
 d[] <- lapply(d[], as.ordered)
 skel <- pc.skel(d, method = "comb.mm", alpha = 0.05)
