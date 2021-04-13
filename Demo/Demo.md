@@ -5,6 +5,7 @@ library(BiDAG)
 library(Rgraphviz)
 library(pcalg)
 library(graph)
+library(MXM)
 ```
 
 ``` r
@@ -95,7 +96,9 @@ convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
 ##' @param suffStat: sufficient statistics for the test
 ##' @return p-value of the categorical tests
 catCItest <- function(x, y, S, suffStat) {
-  return(gRim::ciTest_ordinal(as.data.frame(apply(suffStat$data,2,as.factor), stringsAsFactors = TRUE),
+  d <- as.data.frame(suffStat$data)
+  d[] <- lapply(d[], as.ordered)
+  return(gRim::ciTest_ordinal(d,
                               set = as.numeric(c(x,y,S)),
                               statistic = suffStat$stat_type)$P)
 }
@@ -316,3 +319,13730 @@ comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
     ##      6.50     24.50      6.50    159.00      0.00      0.79      0.98      0.04 
     ##     FPR_P 
     ##      0.26
+
+(Tsagris et al., 2018)
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+    ## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
+    ## ignored
+
+![](Demo_files/figure-markdown_github/unnamed-chunk-28-1.png)
+
+``` r
+# Compare the patterns between them
+comparePatterns(MMDAG,trueDAG) # hard version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     25.00      8.00     17.00    157.00      8.00      0.32      0.32      0.10 
+    ##     FPR_P 
+    ##      0.68
+
+``` r
+comparePatterns(MMDAG,trueDAG,hardP2P = FALSE) # soft version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     22.00     11.00     14.00    157.00      8.00      0.44      0.44      0.08 
+    ##     FPR_P 
+    ##      0.56

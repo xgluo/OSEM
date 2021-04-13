@@ -14,6 +14,7 @@ library(BiDAG)
 library(Rgraphviz)
 library(pcalg)
 library(graph)
+library(MXM)
 ```
 
 ```{r, message=FALSE}
@@ -104,7 +105,9 @@ convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
 ##' @param suffStat: sufficient statistics for the test
 ##' @return p-value of the categorical tests
 catCItest <- function(x, y, S, suffStat) {
-  return(gRim::ciTest_ordinal(as.data.frame(apply(suffStat$data,2,as.factor), stringsAsFactors = TRUE),
+  d <- as.data.frame(suffStat$data)
+  d[] <- lapply(d[], as.ordered)
+  return(gRim::ciTest_ordinal(d,
                               set = as.numeric(c(x,y,S)),
                               statistic = suffStat$stat_type)$P)
 }
@@ -276,3 +279,30 @@ plot(tempgraph, main= "OSEM")
 comparePatterns(OSEMfit$DAG,trueDAG) # hard version
 comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
+
+
+(Tsagris et al., 2018)
+
+```{r, echo=FALSE}
+d <- as.data.frame(ordinal_data)
+d[] <- lapply(d[], as.ordered)
+skel <- pc.skel(d, method = "comb.mm", alpha = 0.05)
+MMDAG <- pc.or(skel)$G
+MMDAG[MMDAG == 2] <- 1
+MMDAG[MMDAG == 3] <- 0
+```
+
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(trueDAG, main = "True DAG")
+tempgraph <- graphAM(MMDAG, edgemode = "directed")
+plot(tempgraph, main= "MMPC")
+```
+
+```{r}
+# Compare the patterns between them
+comparePatterns(MMDAG,trueDAG) # hard version
+comparePatterns(MMDAG,trueDAG,hardP2P = FALSE) # soft version
+```
+
