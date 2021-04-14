@@ -15,6 +15,11 @@ library(Rgraphviz)
 library(pcalg)
 library(graph)
 library(MXM)
+library(sbgcop)
+library(infotheo)
+source('~/Documents/Projects/OSEM/CausalMissingValues/R/gaussCItestLocal.R')
+source('~/Documents/Projects/OSEM/CausalMissingValues/R/inferCopulaModel.R')
+source('~/Documents/Projects/OSEM/CausalMissingValues/R/addMAR.R')
 ```
 
 ```{r, message=FALSE}
@@ -305,4 +310,64 @@ plot(tempgraph, main= "MMPC")
 comparePatterns(MMDAG,trueDAG) # hard version
 comparePatterns(MMDAG,trueDAG,hardP2P = FALSE) # soft version
 ```
+
+(Cui et al., 2016)
+
+Rank PC:
+```{r}
+corr.rank <- sin(pi/2 * cor(ordinal_data, use = 'pairwise.complete.obs', method = 'kendall'))
+RPCfit <- pc(suffStat = list(C = corr.rank, n = N), 
+             indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
+```
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(trueDAG, main = "True DAG")
+tempgraph <- graphAM(as(RPCfit,"matrix"), edgemode = "directed")
+plot(tempgraph, main= "RPC")
+```
+
+```{r}
+# Compare the patterns between them
+comparePatterns(RPCfit,trueDAG) # hard version
+comparePatterns(RPCfit,trueDAG,hardP2P = FALSE) # soft version
+```
+
+Copula PC:
+
+```{r}
+# copula object
+cop.obj <- inferCopulaModel(ordinal_data, nsamp = 1000, S0 = diag(n)/N, verb = F)
+# correlation matrix samples
+C_samples <- cop.obj$C.psamp[,, 501:1000]
+# average correlation matrix
+corr.cop <- apply(C_samples, c(1,2), mean)
+# call the PC algorithm for causal discovery
+CPCfit <- pc(suffStat = list(C = corr.cop, n = N), 
+             indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
+```
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(trueDAG, main = "True DAG")
+tempgraph <- graphAM(as(CPCfit,"matrix"), edgemode = "directed")
+plot(tempgraph, main= "CPC")
+```
+
+```{r}
+# Compare the patterns between them
+comparePatterns(CPCfit,trueDAG) # hard version
+comparePatterns(CPCfit,trueDAG,hardP2P = FALSE) # soft version
+```
+
+
+
+
+
+
+
+
+
+
+
 

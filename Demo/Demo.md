@@ -6,6 +6,11 @@ library(Rgraphviz)
 library(pcalg)
 library(graph)
 library(MXM)
+library(sbgcop)
+library(infotheo)
+source('~/Documents/Projects/OSEM/CausalMissingValues/R/gaussCItestLocal.R')
+source('~/Documents/Projects/OSEM/CausalMissingValues/R/inferCopulaModel.R')
+source('~/Documents/Projects/OSEM/CausalMissingValues/R/addMAR.R')
 ```
 
 ``` r
@@ -351,3 +356,69 @@ comparePatterns(MMDAG,trueDAG,hardP2P = FALSE) # soft version
     ##     22.00     11.00     14.00    157.00      8.00      0.44      0.44      0.08 
     ##     FPR_P 
     ##      0.56
+
+(Cui et al., 2016)
+
+Rank PC:
+
+``` r
+corr.rank <- sin(pi/2 * cor(ordinal_data, use = 'pairwise.complete.obs', method = 'kendall'))
+RPCfit <- pc(suffStat = list(C = corr.rank, n = N), 
+             indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
+```
+
+![](Demo_files/figure-markdown_github/unnamed-chunk-31-1.png)
+
+``` r
+# Compare the patterns between them
+comparePatterns(RPCfit,trueDAG) # hard version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     23.00     15.00     17.00    152.00      6.00      0.47      0.60      0.10 
+    ##     FPR_P 
+    ##      0.68
+
+``` r
+comparePatterns(RPCfit,trueDAG,hardP2P = FALSE) # soft version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     21.50     16.50     15.50    152.00      6.00      0.52      0.66      0.09 
+    ##     FPR_P 
+    ##      0.62
+
+Copula PC:
+
+``` r
+# copula object
+cop.obj <- inferCopulaModel(ordinal_data, nsamp = 1000, S0 = diag(n)/N, verb = F)
+# correlation matrix samples
+C_samples <- cop.obj$C.psamp[,, 501:1000]
+# average correlation matrix
+corr.cop <- apply(C_samples, c(1,2), mean)
+# call the PC algorithm for causal discovery
+CPCfit <- pc(suffStat = list(C = corr.cop, n = N), 
+             indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
+```
+
+![](Demo_files/figure-markdown_github/unnamed-chunk-34-1.png)
+
+``` r
+# Compare the patterns between them
+comparePatterns(CPCfit,trueDAG) # hard version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     19.00     16.00     12.00    155.00      7.00      0.57      0.64      0.07 
+    ##     FPR_P 
+    ##      0.48
+
+``` r
+comparePatterns(CPCfit,trueDAG,hardP2P = FALSE) # soft version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     18.00     17.00     11.00    155.00      7.00      0.61      0.68      0.07 
+    ##     FPR_P 
+    ##      0.44
