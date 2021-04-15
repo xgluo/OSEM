@@ -392,19 +392,19 @@ setwd("../R")
 insertSource("usrscorefns_pcart.R",package = "BiDAG")
 ```
 
-```{r pcart, eval=FALSE, cache = TRUE}
+```{r pcart, cache = TRUE}
 pcartparam <- scoreparameters("usr", ordinal_data_df)
 pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE)
 ```
 
-```{r, echo = FALSE, eval=FALSE}
+```{r, echo = FALSE}
 par(mfrow = c(1,2))
 plot(trueDAG, main = "True DAG")
 tempgraph <- graphAM(pcartfit$DAG, edgemode = "directed")
 plot(tempgraph, main= "pcart")
 ```
 
-```{r, eval=FALSE}
+```{r}
 # Compare the patterns between them
 comparePatterns(pcartfit$DAG,trueDAG) # hard version
 comparePatterns(pcartfit$DAG,trueDAG,hardP2P = FALSE) # soft version
