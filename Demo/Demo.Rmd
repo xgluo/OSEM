@@ -146,7 +146,7 @@ mywFUNhelper <- function() {
 set.seed(888)
 # Generate a regular DAG with 20 nodes with 4 number of neighbors
 n <- 20
-trueDAG <- randDAG(n = n, d = 4, method = "power", wFUN = list(mywFUN))
+trueDAG <- randDAG(n = n, d = 4, method = "er", wFUN = list(mywFUN))
 
 # Generate a Gaussian dataset based on the DAG and standardize each dimension
 # Sample size = 500
@@ -170,7 +170,7 @@ The following simulations can be repeated many times for different configuration
 
 - NPC
 
-```{r NPC, cache=TRUE, message=FALSE, warning = FALSE}
+```{r NPC, message=FALSE, warning = FALSE, cache = TRUE}
 # NPC algorithm with the nominal deviance test (significance level: 0.05)
 NPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "dev"),
              alpha = 0.05,
@@ -204,7 +204,7 @@ comparePatterns(NPCfit,trueDAG,hardP2P = FALSE) # soft version
 
 - OPC (Musella, 2013)
 
-```{r OPC, cache=TRUE, message = FALSE, warning = FALSE}
+```{r OPC, message = FALSE, warning = FALSE, cache = TRUE}
 # OPC algorithm with the ordinal Jonckheere–Terpstra test (significance level: 0.05) (gRim implementation)
 OPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "jt"),
              alpha = 0.05,
@@ -229,7 +229,7 @@ comparePatterns(OPCfit,trueDAG,hardP2P = FALSE) #soft version
 
 - GPC
 
-```{r GPC, cache=TRUE}
+```{r GPC, cache = TRUE}
 # GPC algorithm with the Gaussian test (significance level: 0.05)
 GPCfit <- pc(suffStat = list(C = cor(ordinal_data), n = N),
              alpha = 0.05,
@@ -252,7 +252,7 @@ comparePatterns(GPCfit,trueDAG,hardP2P = FALSE) # soft version
 
 - RPC (Harris and Drton, 2013; Cui et al., 2018)
 
-```{r RPC, cache=TRUE}
+```{r RPC, cache = TRUE}
 corr.rank <- sin(pi/2 * cor(ordinal_data, use = 'pairwise.complete.obs', method = 'kendall'))
 RPCfit <- pc(suffStat = list(C = corr.rank, n = N), 
              indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
@@ -273,7 +273,7 @@ comparePatterns(RPCfit,trueDAG,hardP2P = FALSE) # soft version
 
 - Copula PC (Cui et al., 2016, 2017, 2018)
 
-```{r CPC,cache=TRUE}
+```{r CPC, cache = TRUE}
 # copula object
 cop.obj <- inferCopulaModel(ordinal_data, nsamp = 1000, S0 = diag(n)/N, verb = F)
 # correlation matrix samples
@@ -300,7 +300,7 @@ comparePatterns(CPCfit,trueDAG,hardP2P = FALSE) # soft version
 
 - MMPC (Tsagris et al., 2018)
 
-```{r MMPC, cache=TRUE, message=FALSE, warning = FALSE}
+```{r MMPC, message=FALSE, warning = FALSE, cache = TRUE}
 skel <- pc.skel(ordinal_data_df, method = "comb.mm", alpha = 0.05)
 MMDAG <- pc.or(skel)$G
 MMDAG[MMDAG == 2] <- 1
@@ -322,7 +322,7 @@ comparePatterns(MMDAG,trueDAG,hardP2P = FALSE) # soft version
 
 - BDe (Heckerman and Geiger, 1995)
 
-```{r BDe, cache=TRUE, results='hide'}
+```{r BDe, results='hide', cache = TRUE}
 # hybrid method with the BDe score and the nominal PC output as the initial search space
 BDE <- scoreparameters("bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 0.5))
 BDEfit <- iterativeMCMC(BDE)
@@ -343,7 +343,7 @@ comparePatterns(BDEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 
 - BGe (Heckerman and Geiger, 1995)
 
-```{r BGe, cache=TRUE, results='hide'}
+```{r BGe, results='hide', cache = TRUE}
 # hybrid method with the BGe score and the Gaussian PC output as the initial search space
 BGE <- scoreparameters("bge", ordinal_data, bgepar = list(am = 0.5))
 BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
@@ -364,12 +364,12 @@ comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 
 - OSEM
 
-```{r OSEM, cache=TRUE, results='hide'}
+```{r OSEM, results='hide', cache = TRUE}
 # the OSEM algorithm
 OSEMfit <- ordinalStructEM(n, ordinal_data,
                            usrpar = list(penType = "other",
                                          L = 5,
-                                         lambda = 2))
+                                         lambda = 3))
 ```
 
 ```{r, echo = FALSE}
@@ -392,7 +392,7 @@ setwd("../R")
 insertSource("usrscorefns_pcart.R",package = "BiDAG")
 ```
 
-```{r pcart, cache=TRUE, eval=FALSE}
+```{r pcart, eval=FALSE, cache = TRUE}
 pcartparam <- scoreparameters("usr", ordinal_data_df)
 pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE)
 ```
