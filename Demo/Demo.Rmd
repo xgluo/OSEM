@@ -14,12 +14,15 @@ library(BiDAG)
 library(Rgraphviz)
 library(pcalg)
 library(graph)
+library(bnlearn)
 library(MXM)
 library(sbgcop)
 library(infotheo)
-source('~/Documents/Projects/OSEM/CausalMissingValues/R/gaussCItestLocal.R')
-source('~/Documents/Projects/OSEM/CausalMissingValues/R/inferCopulaModel.R')
-source('~/Documents/Projects/OSEM/CausalMissingValues/R/addMAR.R')
+library(rpcart)
+library(devtools)
+#source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/gaussCItestLocal.R")
+source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/inferCopulaModel.R")
+#source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/addMAR.R")
 ```
 
 ```{r, message=FALSE}
@@ -110,9 +113,9 @@ convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
 ##' @param suffStat: sufficient statistics for the test
 ##' @return p-value of the categorical tests
 catCItest <- function(x, y, S, suffStat) {
-  d <- as.data.frame(suffStat$data)
-  d[] <- lapply(d[], as.ordered)
-  return(gRim::ciTest_ordinal(d,
+  # d <- as.data.frame(suffStat$data)
+  # d[] <- lapply(d[], as.ordered)
+  return(gRim::ciTest_ordinal(suffStat$data,
                               set = as.numeric(c(x,y,S)),
                               statistic = suffStat$stat_type)$P)
 }
@@ -157,18 +160,33 @@ scaled_data <- t(D.inv %*% t(hidden_data))
 
 # Convert the Gaussian dataset into an ordinal dataset
 ordinal_data <- convertToOrdinal(scaled_data, exp_levels = 4,concent_param = 2)
+ordinal_data_df <- as.data.frame(ordinal_data)
+ordinal_data_df[] <- lapply(ordinal_data_df[], as.ordered)
 ```
 
 ### 4. Learn the structures using different methods
 
 The following simulations can be repeated many times for different configurations of parameters in order to obtain the ROC curves.
 
-```{r, cache=TRUE}
+- NPC
+
+```{r, cache=TRUE, message=FALSE}
 # NPC algorithm with the nominal deviance test (significance level: 0.05)
-NPCfit <- pc(suffStat = list(data = ordinal_data, stat_type = "dev"),
+NPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "dev"),
              alpha = 0.05,
              indepTest = catCItest,
              labels = colnames(ordinal_data))
+# NPC algorithm with the G^2 test (significance level: 0.05)
+NPCfit <- pc(suffStat = list(dm = ordinal_data, 
+                             nlev = apply(ordinal_data, 2, function (x) length(unique(x))),
+                             adaptDF = FALSE),
+             alpha = 0.05,
+             indepTest = disCItest,
+             labels = colnames(ordinal_data))
+# NPC algorithm with the Pearson X^2 test (significance level: 0.05)
+NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "x2"))
+# NPC algorithm with the mutual information (significance level: 0.05)
+NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "mi"))
 ```
 
 ```{r, echo = FALSE}
@@ -184,12 +202,16 @@ comparePatterns(NPCfit,trueDAG) # hard version
 comparePatterns(NPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
-```{r, cache=TRUE}
-# OPC algorithm with the ordinal Jonckheere–Terpstra test (significance level: 0.05)
-OPCfit <- pc(suffStat = list(data = ordinal_data, stat_type = "jt"),
+- OPC (Musella, 2013)
+
+```{r, cache=TRUE, message = FALSE}
+# OPC algorithm with the ordinal Jonckheere–Terpstra test (significance level: 0.05) (gRim implementation)
+OPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "jt"),
              alpha = 0.05,
              indepTest = catCItest,
              labels = colnames(ordinal_data))
+# OPC algorithm with the ordinal Jonckheere–Terpstra test (significance level: 0.05) (bnlearn implementation)
+OPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "jt"))
 ```
 
 ```{r, echo = FALSE}
@@ -204,6 +226,8 @@ plot(tempgraph, main= "OPC")
 comparePatterns(OPCfit,trueDAG) # hard version
 comparePatterns(OPCfit,trueDAG,hardP2P = FALSE) #soft version
 ```
+
+- GPC
 
 ```{r, cache = TRUE}
 # GPC algorithm with the Gaussian test (significance level: 0.05)
@@ -226,95 +250,9 @@ comparePatterns(GPCfit,trueDAG) # hard version
 comparePatterns(GPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
-```{r, cache = TRUE, results='hide'}
-# hybrid method with the BDe score and the nominal PC output as the initial search space
-BDE <- scoreparameters("bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 0.5))
-BDEfit <- iterativeMCMC(BDE)
-```
+- RPC (Harris and Drton, 2013; Cui et al., 2018)
 
-```{r, echo = FALSE}
-par(mfrow = c(1,2))
-plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(BDEfit$DAG, edgemode = "directed")
-plot(tempgraph, main= "BDe")
-```
-
-```{r}
-# Compare the patterns between them
-comparePatterns(BDEfit$DAG,trueDAG) # hard version
-comparePatterns(BDEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
-```
-
-```{r, cache = TRUE, results='hide'}
-# hybrid method with the BGe score and the Gaussian PC output as the initial search space
-BGE <- scoreparameters("bge", ordinal_data, bgepar = list(am = 0.5))
-BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
-```
-
-```{r, echo = FALSE}
-par(mfrow = c(1,2))
-plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(BGEfit$DAG, edgemode = "directed")
-plot(tempgraph, main= "BGe")
-```
-
-```{r}
-# Compare the patterns between them
-comparePatterns(BGEfit$DAG,trueDAG) # hard version
-comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
-```
-
-```{r, cache = TRUE, results='hide'}
-# the OSEM algorithm
-OSEMfit <- ordinalStructEM(n, ordinal_data,
-                           usrpar = list(penType = "other",
-                                         L = 5,
-                                         lambda = 2))
-```
-
-```{r, echo = FALSE}
-par(mfrow = c(1,2))
-plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(OSEMfit$DAG, edgemode = "directed")
-plot(tempgraph, main= "OSEM")
-```
-
-```{r}
-# Compare the patterns between them
-comparePatterns(OSEMfit$DAG,trueDAG) # hard version
-comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
-```
-
-
-(Tsagris et al., 2018)
-
-```{r, message=FALSE, warning = FALSE, cache = TRUE}
-d <- as.data.frame(ordinal_data)
-d[] <- lapply(d[], as.ordered)
-skel <- pc.skel(d, method = "comb.mm", alpha = 0.05)
-MMDAG <- pc.or(skel)$G
-MMDAG[MMDAG == 2] <- 1
-MMDAG[MMDAG == 3] <- 0
-```
-
-
-```{r, echo = FALSE}
-par(mfrow = c(1,2))
-plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(MMDAG, edgemode = "directed")
-plot(tempgraph, main= "MMPC")
-```
-
-```{r}
-# Compare the patterns between them
-comparePatterns(MMDAG,trueDAG) # hard version
-comparePatterns(MMDAG,trueDAG,hardP2P = FALSE) # soft version
-```
-
-(Cui et al., 2016)
-
-Rank PC:
-```{r}
+```{r, cache=TRUE}
 corr.rank <- sin(pi/2 * cor(ordinal_data, use = 'pairwise.complete.obs', method = 'kendall'))
 RPCfit <- pc(suffStat = list(C = corr.rank, n = N), 
              indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
@@ -333,9 +271,9 @@ comparePatterns(RPCfit,trueDAG) # hard version
 comparePatterns(RPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
-Copula PC:
+- Copula PC (Cui et al., 2016, 2017, 2018)
 
-```{r}
+```{r,cache=TRUE}
 # copula object
 cop.obj <- inferCopulaModel(ordinal_data, nsamp = 1000, S0 = diag(n)/N, verb = F)
 # correlation matrix samples
@@ -360,10 +298,117 @@ comparePatterns(CPCfit,trueDAG) # hard version
 comparePatterns(CPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
+- MMPC (Tsagris et al., 2018)
 
+```{r, message=FALSE, warning = FALSE, cache = TRUE}
+skel <- pc.skel(ordinal_data_df, method = "comb.mm", alpha = 0.05)
+MMDAG <- pc.or(skel)$G
+MMDAG[MMDAG == 2] <- 1
+MMDAG[MMDAG == 3] <- 0
+```
 
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(trueDAG, main = "True DAG")
+tempgraph <- graphAM(MMDAG, edgemode = "directed")
+plot(tempgraph, main= "MMPC")
+```
 
+```{r}
+# Compare the patterns between them
+comparePatterns(MMDAG,trueDAG) # hard version
+comparePatterns(MMDAG,trueDAG,hardP2P = FALSE) # soft version
+```
 
+- BDe (Heckerman and Geiger, 1995)
+
+```{r, cache = TRUE, results='hide'}
+# hybrid method with the BDe score and the nominal PC output as the initial search space
+BDE <- scoreparameters("bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 0.5))
+BDEfit <- iterativeMCMC(BDE)
+```
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(trueDAG, main = "True DAG")
+tempgraph <- graphAM(BDEfit$DAG, edgemode = "directed")
+plot(tempgraph, main= "BDe")
+```
+
+```{r}
+# Compare the patterns between them
+comparePatterns(BDEfit$DAG,trueDAG) # hard version
+comparePatterns(BDEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+```
+
+- BGe (Heckerman and Geiger, 1995)
+
+```{r, cache = TRUE, results='hide'}
+# hybrid method with the BGe score and the Gaussian PC output as the initial search space
+BGE <- scoreparameters("bge", ordinal_data, bgepar = list(am = 0.5))
+BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
+```
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(trueDAG, main = "True DAG")
+tempgraph <- graphAM(BGEfit$DAG, edgemode = "directed")
+plot(tempgraph, main= "BGe")
+```
+
+```{r}
+# Compare the patterns between them
+comparePatterns(BGEfit$DAG,trueDAG) # hard version
+comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+```
+
+- OSEM
+
+```{r, cache = TRUE, results='hide'}
+# the OSEM algorithm
+OSEMfit <- ordinalStructEM(n, ordinal_data,
+                           usrpar = list(penType = "other",
+                                         L = 5,
+                                         lambda = 2))
+```
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(trueDAG, main = "True DAG")
+tempgraph <- graphAM(OSEMfit$DAG, edgemode = "directed")
+plot(tempgraph, main= "OSEM")
+```
+
+```{r}
+# Compare the patterns between them
+comparePatterns(OSEMfit$DAG,trueDAG) # hard version
+comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+```
+
+- pcart (Talvitie et al., 2019)
+
+```{r, message=FALSE}
+setwd("../R")
+insertSource("usrscorefns_pcart.R",package = "BiDAG")
+```
+
+```{r, cache = TRUE, eval=FALSE}
+pcartparam <- scoreparameters("usr", ordinal_data_df)
+pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE)
+```
+
+```{r, echo = FALSE, eval=FALSE}
+par(mfrow = c(1,2))
+plot(trueDAG, main = "True DAG")
+tempgraph <- graphAM(pcartfit$DAG, edgemode = "directed")
+plot(tempgraph, main= "pcart")
+```
+
+```{r, eval=FALSE}
+# Compare the patterns between them
+comparePatterns(pcartfit$DAG,trueDAG) # hard version
+comparePatterns(pcartfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+```
 
 
 

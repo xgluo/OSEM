@@ -5,12 +5,15 @@ library(BiDAG)
 library(Rgraphviz)
 library(pcalg)
 library(graph)
+library(bnlearn)
 library(MXM)
 library(sbgcop)
 library(infotheo)
-source('~/Documents/Projects/OSEM/CausalMissingValues/R/gaussCItestLocal.R')
-source('~/Documents/Projects/OSEM/CausalMissingValues/R/inferCopulaModel.R')
-source('~/Documents/Projects/OSEM/CausalMissingValues/R/addMAR.R')
+library(rpcart)
+library(devtools)
+#source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/gaussCItestLocal.R")
+source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/inferCopulaModel.R")
+#source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/addMAR.R")
 ```
 
 ``` r
@@ -101,9 +104,9 @@ convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
 ##' @param suffStat: sufficient statistics for the test
 ##' @return p-value of the categorical tests
 catCItest <- function(x, y, S, suffStat) {
-  d <- as.data.frame(suffStat$data)
-  d[] <- lapply(d[], as.ordered)
-  return(gRim::ciTest_ordinal(d,
+  # d <- as.data.frame(suffStat$data)
+  # d[] <- lapply(d[], as.ordered)
+  return(gRim::ciTest_ordinal(suffStat$data,
                               set = as.numeric(c(x,y,S)),
                               statistic = suffStat$stat_type)$P)
 }
@@ -148,6 +151,8 @@ scaled_data <- t(D.inv %*% t(hidden_data))
 
 # Convert the Gaussian dataset into an ordinal dataset
 ordinal_data <- convertToOrdinal(scaled_data, exp_levels = 4,concent_param = 2)
+ordinal_data_df <- as.data.frame(ordinal_data)
+ordinal_data_df[] <- lapply(ordinal_data_df[], as.ordered)
 ```
 
 ### 4. Learn the structures using different methods
@@ -155,12 +160,128 @@ ordinal_data <- convertToOrdinal(scaled_data, exp_levels = 4,concent_param = 2)
 The following simulations can be repeated many times for different
 configurations of parameters in order to obtain the ROC curves.
 
+-   NPC
+
 ``` r
 # NPC algorithm with the nominal deviance test (significance level: 0.05)
-NPCfit <- pc(suffStat = list(data = ordinal_data, stat_type = "dev"),
+NPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "dev"),
              alpha = 0.05,
              indepTest = catCItest,
              labels = colnames(ordinal_data))
+# NPC algorithm with the G^2 test (significance level: 0.05)
+NPCfit <- pc(suffStat = list(dm = ordinal_data, 
+                             nlev = apply(ordinal_data, 2, function (x) length(unique(x))),
+                             adaptDF = FALSE),
+             alpha = 0.05,
+             indepTest = disCItest,
+             labels = colnames(ordinal_data))
+```
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 1200 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 1200 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 540 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 720 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 540 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 540 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 540 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 720 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 800 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 1000 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 800 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 640 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 800 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 1250 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 1000 ) for G^2 test (=> treated as
+    ## independence)
+
+    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
+    ## adaptDF, : n=500 is too small (n < n.min = 1250 ) for G^2 test (=> treated as
+    ## independence)
+
+``` r
+# NPC algorithm with the Pearson X^2 test (significance level: 0.05)
+NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "x2"))
+# NPC algorithm with the mutual information (significance level: 0.05)
+NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "mi"))
 ```
 
 ![](Demo_files/figure-markdown_github/unnamed-chunk-10-1.png)
@@ -171,26 +292,74 @@ comparePatterns(NPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     22.00      7.00      7.00    161.00     15.00      0.50      0.28      0.04 
+    ##     21.00      5.00      2.00    164.00     19.00      0.71      0.20      0.01 
     ##     FPR_P 
-    ##      0.28
+    ##      0.08
 
 ``` r
 comparePatterns(NPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     20.50      8.50      5.50    161.00     15.00      0.61      0.34      0.03 
+    ##     20.50      5.50      1.50    164.00     19.00      0.79      0.22      0.01 
     ##     FPR_P 
-    ##      0.22
+    ##      0.06
+
+-   OPC (Musella, 2013)
 
 ``` r
-# OPC algorithm with the ordinal Jonckheere–Terpstra test (significance level: 0.05)
-OPCfit <- pc(suffStat = list(data = ordinal_data, stat_type = "jt"),
+# OPC algorithm with the ordinal Jonckheere–Terpstra test (significance level: 0.05) (gRim implementation)
+OPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "jt"),
              alpha = 0.05,
              indepTest = catCItest,
              labels = colnames(ordinal_data))
+# OPC algorithm with the ordinal Jonckheere–Terpstra test (significance level: 0.05) (bnlearn implementation)
+OPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "jt"))
 ```
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 2 -> 4 <- 17 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 2 -> 4 <- 20 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 2 -> 13 <- 20 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 2 -> 4 <- 5 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 5 -> 4 <- 20 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 9 -> 4 <- 20 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 9 -> 4 <- 17 is not applicable, because one or both arcs introduce
+    ## cycles in the graph.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 2 -> 4 <- 16 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 16 -> 4 <- 20 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 9 -> 4 <- 16 is not applicable, because one or both arcs introduce
+    ## cycles in the graph.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 17 -> 4 <- 20 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
 
 ![](Demo_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
@@ -200,18 +369,20 @@ comparePatterns(OPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     25.00      1.00      1.00    164.00     24.00      0.50      0.04      0.01 
+    ##     13.00     13.00      4.00    164.00      9.00      0.76      0.52      0.02 
     ##     FPR_P 
-    ##      0.04
+    ##      0.16
 
 ``` r
 comparePatterns(OPCfit,trueDAG,hardP2P = FALSE) #soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     25.00      1.00      1.00    164.00     24.00      0.50      0.04      0.01 
+    ##     12.50     13.50      3.50    164.00      9.00      0.79      0.54      0.02 
     ##     FPR_P 
-    ##      0.04
+    ##      0.14
+
+-   GPC
 
 ``` r
 # GPC algorithm with the Gaussian test (significance level: 0.05)
@@ -229,137 +400,20 @@ comparePatterns(GPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     29.00      9.00     21.00    152.00      8.00      0.30      0.36      0.13 
+    ##     53.00      0.00     30.00    137.00     23.00      0.00      0.00      0.18 
     ##     FPR_P 
-    ##      0.84
+    ##      1.20
 
 ``` r
 comparePatterns(GPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     25.50     12.50     17.50    152.00      8.00      0.42      0.50      0.11 
+    ##     52.00      1.00     29.00    137.00     23.00      0.03      0.04      0.18 
     ##     FPR_P 
-    ##      0.70
+    ##      1.16
 
-``` r
-# hybrid method with the BDe score and the nominal PC output as the initial search space
-BDE <- scoreparameters("bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 0.5))
-BDEfit <- iterativeMCMC(BDE)
-```
-
-![](Demo_files/figure-markdown_github/unnamed-chunk-19-1.png)
-
-``` r
-# Compare the patterns between them
-comparePatterns(BDEfit$DAG,trueDAG) # hard version
-```
-
-    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     13.00     12.00      6.00    165.00      7.00      0.67      0.48      0.04 
-    ##     FPR_P 
-    ##      0.24
-
-``` r
-comparePatterns(BDEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
-```
-
-    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     10.00     15.00      3.00    165.00      7.00      0.83      0.60      0.02 
-    ##     FPR_P 
-    ##      0.12
-
-``` r
-# hybrid method with the BGe score and the Gaussian PC output as the initial search space
-BGE <- scoreparameters("bge", ordinal_data, bgepar = list(am = 0.5))
-BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
-```
-
-![](Demo_files/figure-markdown_github/unnamed-chunk-22-1.png)
-
-``` r
-# Compare the patterns between them
-comparePatterns(BGEfit$DAG,trueDAG) # hard version
-```
-
-    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     16.00     20.00     13.00    154.00      3.00      0.61      0.80      0.08 
-    ##     FPR_P 
-    ##      0.52
-
-``` r
-comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
-```
-
-    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     15.50     20.50     12.50    154.00      3.00      0.62      0.82      0.08 
-    ##     FPR_P 
-    ##      0.50
-
-``` r
-# the OSEM algorithm
-OSEMfit <- ordinalStructEM(n, ordinal_data,
-                           usrpar = list(penType = "other",
-                                         L = 5,
-                                         lambda = 2))
-```
-
-![](Demo_files/figure-markdown_github/unnamed-chunk-25-1.png)
-
-``` r
-# Compare the patterns between them
-comparePatterns(OSEMfit$DAG,trueDAG) # hard version
-```
-
-    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##      7.00     24.00      7.00    159.00      0.00      0.77      0.96      0.04 
-    ##     FPR_P 
-    ##      0.28
-
-``` r
-comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
-```
-
-    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##      6.50     24.50      6.50    159.00      0.00      0.79      0.98      0.04 
-    ##     FPR_P 
-    ##      0.26
-
-(Tsagris et al., 2018)
-
-``` r
-d <- as.data.frame(ordinal_data)
-d[] <- lapply(d[], as.ordered)
-skel <- pc.skel(d, method = "comb.mm", alpha = 0.05)
-MMDAG <- pc.or(skel)$G
-MMDAG[MMDAG == 2] <- 1
-MMDAG[MMDAG == 3] <- 0
-```
-
-![](Demo_files/figure-markdown_github/unnamed-chunk-28-1.png)
-
-``` r
-# Compare the patterns between them
-comparePatterns(MMDAG,trueDAG) # hard version
-```
-
-    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     25.00      8.00     17.00    157.00      8.00      0.32      0.32      0.10 
-    ##     FPR_P 
-    ##      0.68
-
-``` r
-comparePatterns(MMDAG,trueDAG,hardP2P = FALSE) # soft version
-```
-
-    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     22.00     11.00     14.00    157.00      8.00      0.44      0.44      0.08 
-    ##     FPR_P 
-    ##      0.56
-
-(Cui et al., 2016)
-
-Rank PC:
+-   RPC (Harris and Drton, 2013; Cui et al., 2018)
 
 ``` r
 corr.rank <- sin(pi/2 * cor(ordinal_data, use = 'pairwise.complete.obs', method = 'kendall'))
@@ -367,7 +421,7 @@ RPCfit <- pc(suffStat = list(C = corr.rank, n = N),
              indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-31-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-19-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -375,20 +429,20 @@ comparePatterns(RPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     23.00     15.00     17.00    152.00      6.00      0.47      0.60      0.10 
+    ##     13.00     17.00      8.00    160.00      5.00      0.68      0.68      0.05 
     ##     FPR_P 
-    ##      0.68
+    ##      0.32
 
 ``` r
 comparePatterns(RPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     21.50     16.50     15.50    152.00      6.00      0.52      0.66      0.09 
+    ##     12.50     17.50      7.50    160.00      5.00      0.70      0.70      0.05 
     ##     FPR_P 
-    ##      0.62
+    ##      0.30
 
-Copula PC:
+-   Copula PC (Cui et al., 2016, 2017, 2018)
 
 ``` r
 # copula object
@@ -402,7 +456,7 @@ CPCfit <- pc(suffStat = list(C = corr.cop, n = N),
              indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-34-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-22-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -410,15 +464,152 @@ comparePatterns(CPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     19.00     16.00     12.00    155.00      7.00      0.57      0.64      0.07 
+    ##     11.00     19.00      6.00    160.00      5.00      0.76      0.76      0.04 
     ##     FPR_P 
-    ##      0.48
+    ##      0.24
 
 ``` r
 comparePatterns(CPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     18.00     17.00     11.00    155.00      7.00      0.61      0.68      0.07 
+    ##     11.00     19.00      6.00    160.00      5.00      0.76      0.76      0.04 
     ##     FPR_P 
-    ##      0.44
+    ##      0.24
+
+-   MMPC (Tsagris et al., 2018)
+
+``` r
+skel <- pc.skel(ordinal_data_df, method = "comb.mm", alpha = 0.05)
+MMDAG <- pc.or(skel)$G
+MMDAG[MMDAG == 2] <- 1
+MMDAG[MMDAG == 3] <- 0
+```
+
+![](Demo_files/figure-markdown_github/unnamed-chunk-25-1.png)
+
+``` r
+# Compare the patterns between them
+comparePatterns(MMDAG,trueDAG) # hard version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     17.00     13.00     10.00    160.00      7.00      0.57      0.52      0.06 
+    ##     FPR_P 
+    ##      0.40
+
+``` r
+comparePatterns(MMDAG,trueDAG,hardP2P = FALSE) # soft version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     15.50     14.50      8.50    160.00      7.00      0.63      0.58      0.05 
+    ##     FPR_P 
+    ##      0.34
+
+-   BDe (Heckerman and Geiger, 1995)
+
+``` r
+# hybrid method with the BDe score and the nominal PC output as the initial search space
+BDE <- scoreparameters("bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 0.5))
+BDEfit <- iterativeMCMC(BDE)
+```
+
+![](Demo_files/figure-markdown_github/unnamed-chunk-28-1.png)
+
+``` r
+# Compare the patterns between them
+comparePatterns(BDEfit$DAG,trueDAG) # hard version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     23.00      2.00      5.00    165.00     18.00      0.29      0.08      0.03 
+    ##     FPR_P 
+    ##      0.20
+
+``` r
+comparePatterns(BDEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     20.50      4.50      2.50    165.00     18.00      0.64      0.18      0.02 
+    ##     FPR_P 
+    ##      0.10
+
+-   BGe (Heckerman and Geiger, 1995)
+
+``` r
+# hybrid method with the BGe score and the Gaussian PC output as the initial search space
+BGE <- scoreparameters("bge", ordinal_data, bgepar = list(am = 0.5))
+BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
+```
+
+![](Demo_files/figure-markdown_github/unnamed-chunk-31-1.png)
+
+``` r
+# Compare the patterns between them
+comparePatterns(BGEfit$DAG,trueDAG) # hard version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##      5.00     21.00      1.00    164.00      4.00      0.95      0.84      0.01 
+    ##     FPR_P 
+    ##      0.04
+
+``` r
+comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##      5.00     21.00      1.00    164.00      4.00      0.95      0.84      0.01 
+    ##     FPR_P 
+    ##      0.04
+
+-   OSEM
+
+``` r
+# the OSEM algorithm
+OSEMfit <- ordinalStructEM(n, ordinal_data,
+                           usrpar = list(penType = "other",
+                                         L = 5,
+                                         lambda = 2))
+```
+
+![](Demo_files/figure-markdown_github/unnamed-chunk-34-1.png)
+
+``` r
+# Compare the patterns between them
+comparePatterns(OSEMfit$DAG,trueDAG) # hard version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##      4.00     23.00      2.00    163.00      2.00      0.92      0.92      0.01 
+    ##     FPR_P 
+    ##      0.08
+
+``` r
+comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##      4.00     23.00      2.00    163.00      2.00      0.92      0.92      0.01 
+    ##     FPR_P 
+    ##      0.08
+
+-   pcart (Talvitie et al., 2019)
+
+``` r
+setwd("../R")
+insertSource("usrscorefns_pcart.R",package = "BiDAG")
+```
+
+``` r
+pcartparam <- scoreparameters("usr", ordinal_data_df)
+pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE)
+```
+
+``` r
+# Compare the patterns between them
+comparePatterns(pcartfit$DAG,trueDAG) # hard version
+comparePatterns(pcartfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+```
