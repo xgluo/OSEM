@@ -175,116 +175,13 @@ NPCfit <- pc(suffStat = list(dm = ordinal_data,
              alpha = 0.05,
              indepTest = disCItest,
              labels = colnames(ordinal_data))
-```
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 1200 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 1200 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 540 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 720 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 540 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 540 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 540 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 720 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 800 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 1000 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 800 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 640 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 800 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 600 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 1250 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 1000 ) for G^2 test (=> treated as
-    ## independence)
-
-    ## Warning in gSquareDis(x = x, y = y, S = S, dm = dm, nlev = nlev, adaptDF =
-    ## adaptDF, : n=500 is too small (n < n.min = 1250 ) for G^2 test (=> treated as
-    ## independence)
-
-``` r
 # NPC algorithm with the Pearson X^2 test (significance level: 0.05)
 NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "x2"))
 # NPC algorithm with the mutual information (significance level: 0.05)
 NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "mi"))
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -317,51 +214,7 @@ OPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "jt"),
 OPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "jt"))
 ```
 
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 2 -> 4 <- 17 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 2 -> 4 <- 20 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 2 -> 13 <- 20 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 2 -> 4 <- 5 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 5 -> 4 <- 20 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 9 -> 4 <- 20 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 9 -> 4 <- 17 is not applicable, because one or both arcs introduce
-    ## cycles in the graph.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 2 -> 4 <- 16 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 16 -> 4 <- 20 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 9 -> 4 <- 16 is not applicable, because one or both arcs introduce
-    ## cycles in the graph.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 17 -> 4 <- 20 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-![](Demo_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -392,7 +245,7 @@ GPCfit <- pc(suffStat = list(C = cor(ordinal_data), n = N),
              labels = colnames(ordinal_data))
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-16-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -400,18 +253,18 @@ comparePatterns(GPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     53.00      0.00     30.00    137.00     23.00      0.00      0.00      0.18 
+    ##     11.00     16.00      7.00    163.00      4.00      0.70      0.64      0.04 
     ##     FPR_P 
-    ##      1.20
+    ##      0.28
 
 ``` r
 comparePatterns(GPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     52.00      1.00     29.00    137.00     23.00      0.03      0.04      0.18 
+    ##      9.50     17.50      5.50    163.00      4.00      0.76      0.70      0.03 
     ##     FPR_P 
-    ##      1.16
+    ##      0.22
 
 -   RPC (Harris and Drton, 2013; Cui et al., 2018)
 
@@ -421,7 +274,7 @@ RPCfit <- pc(suffStat = list(C = corr.rank, n = N),
              indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-19-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-14-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -456,7 +309,7 @@ CPCfit <- pc(suffStat = list(C = corr.cop, n = N),
              indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-22-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-16-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -486,7 +339,7 @@ MMDAG[MMDAG == 2] <- 1
 MMDAG[MMDAG == 3] <- 0
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-25-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-18-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -515,7 +368,7 @@ BDE <- scoreparameters("bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 
 BDEfit <- iterativeMCMC(BDE)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-28-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-20-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -544,7 +397,7 @@ BGE <- scoreparameters("bge", ordinal_data, bgepar = list(am = 0.5))
 BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-31-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-22-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -575,7 +428,7 @@ OSEMfit <- ordinalStructEM(n, ordinal_data,
                                          lambda = 2))
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-34-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-24-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -583,18 +436,18 @@ comparePatterns(OSEMfit$DAG,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##      4.00     23.00      2.00    163.00      2.00      0.92      0.92      0.01 
+    ##      4.00     22.00      1.00    164.00      3.00      0.96      0.88      0.01 
     ##     FPR_P 
-    ##      0.08
+    ##      0.04
 
 ``` r
 comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##      4.00     23.00      2.00    163.00      2.00      0.92      0.92      0.01 
+    ##      4.00     22.00      1.00    164.00      3.00      0.96      0.88      0.01 
     ##     FPR_P 
-    ##      0.08
+    ##      0.04
 
 -   pcart (Talvitie et al., 2019)
 
