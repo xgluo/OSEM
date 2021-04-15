@@ -3,6 +3,8 @@ require(rpcart)
 ### This function returns the objects needed to evaluate the user defined score
 usrscoreparameters <- function(initparam, usrpar){
   
+  initparam$df <- initparam$data
+  initparam$data <- apply(as.matrix(initparam$data),2,function (x) as.numeric(x))
   return(initparam)
   
 }
