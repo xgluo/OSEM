@@ -18,11 +18,11 @@ usrDAGcorescore <- function (j,parentnodes,n,param) {
 }
 
 
-to.factor <- function(x) {
-  # Ensures that missing levels are not removed
-  if(class(x) == "factor") {
-    return(x)
-  } else {
-    return(factor(x))
-  }
-}
+# to.factor <- function(x) {
+#   # Ensures that missing levels are not removed
+#   if(class(x) == "factor") {
+#     return(x)
+#   } else {
+#     return(factor(x))
+#   }
+# }
