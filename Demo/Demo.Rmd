@@ -394,7 +394,7 @@ insertSource("usrscorefns_pcart.R",package = "BiDAG")
 
 ```{r pcart}
 pcartparam <- scoreparameters("usr", ordinal_data_df)
-pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE, plus1it = 10, softlimit = 4, hardlimit = 4)
+pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE, plus1it = 10, softlimit = 4)
 ```
 
 ```{r, echo = FALSE}
