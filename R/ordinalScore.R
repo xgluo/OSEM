@@ -509,7 +509,13 @@ ordinalStructEM <- function(n, data,
   iter <- 0
   currentBestDAG <- NULL
   
-  while ((SHD != 0) && (iter < 20)) { #Maximum 20 iterations to avoid infinite loop
+  if (lambda <= 1) {
+    nr_iter <- 5
+  } else {
+    nr_iter <- 20
+  }
+  
+  while ((SHD != 0) && (iter < nr_iter)) { #Maximum 20 iterations to avoid infinite loop
     
     # Compute expected statistics
     param <- getExpectedStats(param)
