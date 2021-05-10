@@ -248,7 +248,125 @@ GPCfit <- pc(suffStat = list(C = cor(ordinal_data), n = N),
              alpha = 0.05,
              indepTest = gaussCItest,
              labels = colnames(ordinal_data))
+# GPC algorithm (significance level: 0.05) (bnlearn implementation)
+GPCfit <- amat(pc.stable(as.data.frame(ordinal_data), alpha = 0.05, test = "zf"))
 ```
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 4 -> 16 <- 12 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 1 -> 16 <- 15 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 7 -> 12 <- 11 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 1 -> 16 <- 4 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 3 -> 4 <- 14 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 8 -> 6 <- 15 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 10 -> 15 <- 11 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 10 -> 19 <- 11 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 8 -> 12 <- 11 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 12 -> 8 <- 13 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 5 -> 1 <- 16 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 2 -> 5 <- 13 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 6 -> 14 <- 11 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 4 -> 16 <- 15 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 11 -> 15 <- 13 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 6 -> 8 <- 12 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 5 -> 1 <- 11 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 4 -> 14 <- 6 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 4 -> 9 <- 10 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 1 -> 3 <- 12 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 1 -> 16 <- 12 is not applicable, because one or both arcs introduce
+    ## cycles in the graph.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 3 -> 1 <- 5 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 9 -> 4 <- 11 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 5 -> 2 <- 6 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 10 -> 15 <- 16 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 13 -> 15 <- 16 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 3 -> 4 <- 9 is not applicable, because one or both arcs are oriented
+    ## in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 10 -> 15 <- 13 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
+
+    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
+    ## vstructure 12 -> 16 <- 15 is not applicable, because one or both arcs are
+    ## oriented in the opposite direction.
 
 ![](Demo_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
@@ -258,18 +376,18 @@ comparePatterns(GPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     35.00     16.00     20.00    139.00     15.00      0.44      0.38      0.14 
+    ##     39.00     12.00     24.00    139.00     15.00      0.33      0.29      0.16 
     ##     FPR_P 
-    ##      0.48
+    ##      0.57
 
 ``` r
 comparePatterns(GPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     33.50     17.50     18.50    139.00     15.00      0.49      0.42      0.12 
+    ##     37.50     13.50     22.50    139.00     15.00      0.38      0.32      0.15 
     ##     FPR_P 
-    ##      0.44
+    ##      0.54
 
 -   RPC (Harris and Drton, 2013; Cui et al., 2018)
 
