@@ -395,7 +395,7 @@ insertSource("usrscorefns_pcart.R",package = "BiDAG")
 ```
 
 ```{r pcart, warning=FALSE, cache=TRUE}
-pcartparam <- scoreparameters("usr", ordinal_data_df)
+pcartparam <- scoreparameters("usr", ordinal_data_df,usrpar = list(pcart_alpha = 0.5))
 # need to set limit to the parent set size due to computational limit
 pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE, alpha = 0,plus1it = 10, softlimit = 3, hardlimit = 3)
 ```
