@@ -236,7 +236,7 @@ GPCfit <- pc(suffStat = list(C = cor(ordinal_data), n = N),
              indepTest = gaussCItest,
              labels = colnames(ordinal_data))
 # GPC algorithm (significance level: 0.05) (bnlearn implementation)
-GPCfit <- amat(pc.stable(ordinal_data, alpha = 0.05, test = "zf"))
+GPCfit <- amat(pc.stable(as.data.frame(ordinal_data), alpha = 0.05, test = "zf"))
 ```
 
 ```{r, echo = FALSE}
