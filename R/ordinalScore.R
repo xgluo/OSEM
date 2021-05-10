@@ -509,7 +509,7 @@ ordinalStructEM <- function(n, data,
   iter <- 0
   currentBestDAG <- NULL
   
-  if (lambda <= 1) {
+  if (param$lambda <= 1) {
     nr_iter <- 5
   } else {
     nr_iter <- 20
