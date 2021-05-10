@@ -464,23 +464,23 @@ insertSource("usrscorefns_pcart.R",package = "BiDAG")
 ```
 
 ``` r
-pcartparam <- scoreparameters("usr", ordinal_data_df)
+pcartparam <- scoreparameters("usr", ordinal_data_df, usrpar = list(pcart_alpha = 0.5, pctesttype = "bde"))
 # need to set limit to the parent set size due to computational limit
-pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE, alpha = 0,plus1it = 10, softlimit = 3, hardlimit = 3)
+pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE, alpha = 0, plus1it = 10, softlimit = 3, hardlimit = 3)
 ```
 
     ## maximum parent set size is 0 
     ## skeleton ready 
     ## score tables completed, MCMC plus1 starts 
-    ## 1.890948 
+    ## 1.788869 
     ## MCMC plus1 iteration 2 
-    ## 41.25343 
+    ## 42.92927 
     ## MCMC plus1 iteration 3 
-    ## 1.089619 
+    ## 1.153172 
     ## MCMC plus1 iteration 4 
-    ## 32.43917 
+    ## 35.3563 
     ## MCMC plus1 iteration 5 
-    ## 11.86251
+    ## 13.18149
 
 ![](Demo_files/figure-markdown_github/unnamed-chunk-27-1.png)
 
