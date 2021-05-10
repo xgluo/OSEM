@@ -170,7 +170,7 @@ The following simulations can be repeated many times for different configuration
 
 - NPC
 
-```{r NPC, message=FALSE, warning = FALSE, cache = TRUE}
+```{r NPC, message=FALSE, warning = FALSE}
 # NPC algorithm with the nominal deviance test (significance level: 0.05)
 NPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "dev"),
              alpha = 0.05,
@@ -229,12 +229,14 @@ comparePatterns(OPCfit,trueDAG,hardP2P = FALSE) #soft version
 
 - GPC
 
-```{r GPC, cache = TRUE}
+```{r GPC}
 # GPC algorithm with the Gaussian test (significance level: 0.05)
 GPCfit <- pc(suffStat = list(C = cor(ordinal_data), n = N),
              alpha = 0.05,
              indepTest = gaussCItest,
              labels = colnames(ordinal_data))
+# GPC algorithm (significance level: 0.05) (bnlearn implementation)
+GPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "zf"))
 ```
 
 ```{r, echo = FALSE}
