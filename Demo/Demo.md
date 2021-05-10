@@ -108,13 +108,13 @@ convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
 ##' @param x,y,S: position of variable X, Y and set of variables S, respectively, in the adjacency matrix
 ##' @param suffStat: sufficient statistics for the test
 ##' @return p-value of the categorical tests
-catCItest <- function(x, y, S, suffStat) {
-  # d <- as.data.frame(suffStat$data)
-  # d[] <- lapply(d[], as.ordered)
-  return(gRim::ciTest_ordinal(suffStat$data,
-                              set = as.numeric(c(x,y,S)),
-                              statistic = suffStat$stat_type)$P)
-}
+# catCItest <- function(x, y, S, suffStat) {
+#   # d <- as.data.frame(suffStat$data)
+#   # d[] <- lapply(d[], as.ordered)
+#   return(gRim::ciTest_ordinal(suffStat$data,
+#                               set = as.numeric(c(x,y,S)),
+#                               statistic = suffStat$stat_type)$P)
+# }
 ```
 
 ``` r
@@ -168,11 +168,11 @@ configurations of parameters in order to obtain the ROC curves.
 -   NPC
 
 ``` r
-# NPC algorithm with the nominal deviance test (significance level: 0.05)
-NPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "dev"),
-             alpha = 0.05,
-             indepTest = catCItest,
-             labels = colnames(ordinal_data))
+# # NPC algorithm with the nominal deviance test (significance level: 0.05)
+# NPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "dev"),
+#              alpha = 0.05,
+#              indepTest = catCItest,
+#              labels = colnames(ordinal_data))
 # NPC algorithm with the G^2 test (significance level: 0.05)
 NPCfit <- pc(suffStat = list(dm = ordinal_data, 
                              nlev = apply(ordinal_data, 2, function (x) length(unique(x))),
@@ -180,10 +180,10 @@ NPCfit <- pc(suffStat = list(dm = ordinal_data,
              alpha = 0.05,
              indepTest = disCItest,
              labels = colnames(ordinal_data))
-# NPC algorithm with the Pearson X^2 test (significance level: 0.05)
-NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "x2"))
-# NPC algorithm with the mutual information (significance level: 0.05)
-NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "mi"))
+# # NPC algorithm with the Pearson X^2 test (significance level: 0.05)
+# NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "x2"))
+# # NPC algorithm with the mutual information (significance level: 0.05)
+# NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "mi"))
 ```
 
 ![](Demo_files/figure-markdown_github/unnamed-chunk-8-1.png)
@@ -194,18 +194,18 @@ comparePatterns(NPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     38.00      4.00      1.00    148.00     37.00      0.80      0.10      0.01 
+    ##     40.00      2.00      3.00    148.00     37.00      0.40      0.05      0.02 
     ##     FPR_P 
-    ##      0.02
+    ##      0.07
 
 ``` r
 comparePatterns(NPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     37.50      4.50      0.50    148.00     37.00      0.90      0.11      0.00 
+    ##     39.00      3.00      2.00    148.00     37.00      0.60      0.07      0.01 
     ##     FPR_P 
-    ##      0.01
+    ##      0.05
 
 -   OPC (Musella, 2013)
 
@@ -248,125 +248,9 @@ GPCfit <- pc(suffStat = list(C = cor(ordinal_data), n = N),
              alpha = 0.05,
              indepTest = gaussCItest,
              labels = colnames(ordinal_data))
-# GPC algorithm (significance level: 0.05) (bnlearn implementation)
-GPCfit <- amat(pc.stable(as.data.frame(ordinal_data), alpha = 0.05, test = "zf"))
+# # GPC algorithm (significance level: 0.05) (bnlearn implementation)
+# GPCfit <- amat(pc.stable(as.data.frame(ordinal_data), alpha = 0.05, test = "zf"))
 ```
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 4 -> 16 <- 12 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 1 -> 16 <- 15 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 7 -> 12 <- 11 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 1 -> 16 <- 4 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 3 -> 4 <- 14 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 8 -> 6 <- 15 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 10 -> 15 <- 11 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 10 -> 19 <- 11 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 8 -> 12 <- 11 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 12 -> 8 <- 13 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 5 -> 1 <- 16 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 2 -> 5 <- 13 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 6 -> 14 <- 11 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 4 -> 16 <- 15 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 11 -> 15 <- 13 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 6 -> 8 <- 12 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 5 -> 1 <- 11 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 4 -> 14 <- 6 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 4 -> 9 <- 10 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 1 -> 3 <- 12 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 1 -> 16 <- 12 is not applicable, because one or both arcs introduce
-    ## cycles in the graph.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 3 -> 1 <- 5 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 9 -> 4 <- 11 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 5 -> 2 <- 6 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 10 -> 15 <- 16 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 13 -> 15 <- 16 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 3 -> 4 <- 9 is not applicable, because one or both arcs are oriented
-    ## in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 10 -> 15 <- 13 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
-
-    ## Warning in vstruct.apply(arcs = arcs, vs = vs, nodes = nodes, debug = debug):
-    ## vstructure 12 -> 16 <- 15 is not applicable, because one or both arcs are
-    ## oriented in the opposite direction.
 
 ![](Demo_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
@@ -376,18 +260,18 @@ comparePatterns(GPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     39.00     12.00     24.00    139.00     15.00      0.33      0.29      0.16 
+    ##     35.00     16.00     20.00    139.00     15.00      0.44      0.38      0.14 
     ##     FPR_P 
-    ##      0.57
+    ##      0.48
 
 ``` r
 comparePatterns(GPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     37.50     13.50     22.50    139.00     15.00      0.38      0.32      0.15 
+    ##     33.50     17.50     18.50    139.00     15.00      0.49      0.42      0.12 
     ##     FPR_P 
-    ##      0.54
+    ##      0.44
 
 -   RPC (Harris and Drton, 2013; Cui et al., 2018)
 
