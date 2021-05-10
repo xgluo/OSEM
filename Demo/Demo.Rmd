@@ -112,13 +112,13 @@ convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
 ##' @param x,y,S: position of variable X, Y and set of variables S, respectively, in the adjacency matrix
 ##' @param suffStat: sufficient statistics for the test
 ##' @return p-value of the categorical tests
-catCItest <- function(x, y, S, suffStat) {
-  # d <- as.data.frame(suffStat$data)
-  # d[] <- lapply(d[], as.ordered)
-  return(gRim::ciTest_ordinal(suffStat$data,
-                              set = as.numeric(c(x,y,S)),
-                              statistic = suffStat$stat_type)$P)
-}
+# catCItest <- function(x, y, S, suffStat) {
+#   # d <- as.data.frame(suffStat$data)
+#   # d[] <- lapply(d[], as.ordered)
+#   return(gRim::ciTest_ordinal(suffStat$data,
+#                               set = as.numeric(c(x,y,S)),
+#                               statistic = suffStat$stat_type)$P)
+# }
 ```
 
 ```{r}
@@ -171,11 +171,11 @@ The following simulations can be repeated many times for different configuration
 - NPC
 
 ```{r NPC, message=FALSE, warning = FALSE}
-# NPC algorithm with the nominal deviance test (significance level: 0.05)
-NPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "dev"),
-             alpha = 0.05,
-             indepTest = catCItest,
-             labels = colnames(ordinal_data))
+# # NPC algorithm with the nominal deviance test (significance level: 0.05)
+# NPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "dev"),
+#              alpha = 0.05,
+#              indepTest = catCItest,
+#              labels = colnames(ordinal_data))
 # NPC algorithm with the G^2 test (significance level: 0.05)
 NPCfit <- pc(suffStat = list(dm = ordinal_data, 
                              nlev = apply(ordinal_data, 2, function (x) length(unique(x))),
@@ -183,10 +183,10 @@ NPCfit <- pc(suffStat = list(dm = ordinal_data,
              alpha = 0.05,
              indepTest = disCItest,
              labels = colnames(ordinal_data))
-# NPC algorithm with the Pearson X^2 test (significance level: 0.05)
-NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "x2"))
-# NPC algorithm with the mutual information (significance level: 0.05)
-NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "mi"))
+# # NPC algorithm with the Pearson X^2 test (significance level: 0.05)
+# NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "x2"))
+# # NPC algorithm with the mutual information (significance level: 0.05)
+# NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "mi"))
 ```
 
 ```{r, echo = FALSE}
@@ -229,14 +229,14 @@ comparePatterns(OPCfit,trueDAG,hardP2P = FALSE) #soft version
 
 - GPC
 
-```{r GPC}
+```{r GPC, warning = FALSE}
 # GPC algorithm with the Gaussian test (significance level: 0.05)
 GPCfit <- pc(suffStat = list(C = cor(ordinal_data), n = N),
              alpha = 0.05,
              indepTest = gaussCItest,
              labels = colnames(ordinal_data))
-# GPC algorithm (significance level: 0.05) (bnlearn implementation)
-GPCfit <- amat(pc.stable(as.data.frame(ordinal_data), alpha = 0.05, test = "zf"))
+# # GPC algorithm (significance level: 0.05) (bnlearn implementation)
+# GPCfit <- amat(pc.stable(as.data.frame(ordinal_data), alpha = 0.05, test = "zf"))
 ```
 
 ```{r, echo = FALSE}
