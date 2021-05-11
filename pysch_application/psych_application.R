@@ -64,7 +64,7 @@ res_OSEM <- res_cpdag[,,3,]
 ###########
 # point estimates
 
-OSEMfit <- ordinalStructEM(datRogers,
+OSEMfit <- ordinalStructEM(n, datRogers,
                            usrpar = list(penType = "other",
                                          L = 5,
                                          lambda = 6))
