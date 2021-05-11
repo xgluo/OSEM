@@ -64,21 +64,27 @@ res_OSEM <- res_cpdag[,,3,]
 ###########
 # point estimates
 
-OSEMfit <- ordinalStructEM(n, datRogers,
+OSEMfit <- ordinalStructEM(datRogers,
                            usrpar = list(penType = "other",
                                          L = 5,
                                          lambda = 6))
 
-BGE <- scoreparameters(n, "bge", datRogers,bgepar = list(am = 0.05))
+BGE <- scoreparameters("bge", datRogers,bgepar = list(am = 0.05))
 BGEfit <- iterativeMCMC(BGE)
 
-BDE <- scoreparameters(n,"bdecat",datRogers,bdecatpar = list(chi = 1.5))
+BDE <- scoreparameters("bdecat",datRogers,bdecatpar = list(chi = 1.5))
 BDEfit <- iterativeMCMC(BDE)
 
-cpdag_OSEM <- dag2cpdag(OSEMfit$max$DAG)
-cpdag_BGe <- dag2cpdag(BGEfit$max$DAG)
-cpdag_BDe <- dag2cpdag(BDEfit$max$DAG)
+cpdag_OSEM <- dag2cpdag(OSEMfit$DAG)
+cpdag_BGe <- dag2cpdag(BGEfit$DAG)
+cpdag_BDe <- dag2cpdag(BDEfit$DAG)
 
+dev.off()
+plot(as(cpdag_BDe, "graphNEL"),main = "BDe")
+dev.off()
+plot(as(cpdag_BGe, "graphNEL"),main = "BGe")
+dev.off()
+plot(as(cpdag_OSEM, "graphNEL"),main = "OSEM")
 
 ###########
 
