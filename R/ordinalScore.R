@@ -540,7 +540,7 @@ ordinalStructEM <- function(n, data,
   
   if (computeObservedLL) {
     print("Calculating observed log-likelihood...")
-    currentDAGobj$max$observed_score <- observedLL(param) - param$lambda * log(param$N) / 2 * sum(currentBestDAG)
+    currentDAGobj$observed_score <- observedLL(param) - param$lambda * log(param$N) / 2 * sum(currentBestDAG)
   }
   
   currentDAGobj$param <- param
