@@ -3,6 +3,11 @@
 ``` r
 library(BiDAG)
 library(Rgraphviz)
+```
+
+    ## Warning: package 'BiocGenerics' was built under R version 4.0.5
+
+``` r
 library(pcalg)
 library(graph)
 library(bnlearn)
@@ -11,11 +16,6 @@ library(sbgcop)
 library(infotheo)
 library(rpcart)
 library(devtools)
-```
-
-    ## Error in get(genname, envir = envir) : object 'testthat_print' not found
-
-``` r
 #source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/gaussCItestLocal.R")
 source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/inferCopulaModel.R")
 #source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/addMAR.R")
@@ -103,21 +103,6 @@ convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
 ```
 
 ``` r
-##' catCItest(x, y, S, suffStat): 
-##' a helper function for categorical tests to be consumed by the pcalg::pc function
-##' @param x,y,S: position of variable X, Y and set of variables S, respectively, in the adjacency matrix
-##' @param suffStat: sufficient statistics for the test
-##' @return p-value of the categorical tests
-# catCItest <- function(x, y, S, suffStat) {
-#   # d <- as.data.frame(suffStat$data)
-#   # d[] <- lapply(d[], as.ordered)
-#   return(gRim::ciTest_ordinal(suffStat$data,
-#                               set = as.numeric(c(x,y,S)),
-#                               statistic = suffStat$stat_type)$P)
-# }
-```
-
-``` r
 ##' mywFUN(m): 
 ##' a function that samples the edge weights uniformly from the interval (-1,-0.4) U (0.4,1)
 ##' @param m: number of edges in the DAG
@@ -186,7 +171,7 @@ NPCfit <- pc(suffStat = list(dm = ordinal_data,
 # NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "mi"))
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -219,7 +204,7 @@ OPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "jt"),
 OPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "jt"))
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -252,7 +237,7 @@ GPCfit <- pc(suffStat = list(C = cor(ordinal_data), n = N),
 # GPCfit <- amat(pc.stable(as.data.frame(ordinal_data), alpha = 0.05, test = "zf"))
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -281,7 +266,7 @@ RPCfit <- pc(suffStat = list(C = corr.rank, n = N),
              indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-14-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -316,7 +301,7 @@ CPCfit <- pc(suffStat = list(C = corr.cop, n = N),
              indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-16-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-15-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -346,7 +331,7 @@ MMDAG[MMDAG == 2] <- 1
 MMDAG[MMDAG == 3] <- 0
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-18-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-17-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -375,7 +360,7 @@ BDE <- scoreparameters("bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 
 BDEfit <- iterativeMCMC(BDE)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-20-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-19-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -404,7 +389,7 @@ BGE <- scoreparameters("bge", ordinal_data, bgepar = list(am = 0.5))
 BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-22-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-21-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -435,7 +420,7 @@ OSEMfit <- ordinalStructEM(n, ordinal_data,
                                          lambda = 3))
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-24-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-23-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -482,7 +467,7 @@ pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE, alpha = 0, plus1it = 10, 
     ## MCMC plus1 iteration 5 
     ## 13.18149
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-27-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-26-1.png)
 
 ``` r
 # Compare the patterns between them

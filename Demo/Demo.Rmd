@@ -107,21 +107,6 @@ convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
 ```
 
 ```{r}
-##' catCItest(x, y, S, suffStat): 
-##' a helper function for categorical tests to be consumed by the pcalg::pc function
-##' @param x,y,S: position of variable X, Y and set of variables S, respectively, in the adjacency matrix
-##' @param suffStat: sufficient statistics for the test
-##' @return p-value of the categorical tests
-# catCItest <- function(x, y, S, suffStat) {
-#   # d <- as.data.frame(suffStat$data)
-#   # d[] <- lapply(d[], as.ordered)
-#   return(gRim::ciTest_ordinal(suffStat$data,
-#                               set = as.numeric(c(x,y,S)),
-#                               statistic = suffStat$stat_type)$P)
-# }
-```
-
-```{r}
 ##' mywFUN(m): 
 ##' a function that samples the edge weights uniformly from the interval (-1,-0.4) U (0.4,1)
 ##' @param m: number of edges in the DAG
