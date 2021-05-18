@@ -10,7 +10,21 @@ library(glmnet)
 learnCuts <- function(param) {
   cuts <- list()
   for (i in c(1:param$n)) {
-    tb <- cumsum(table(param$data[,i]) / param$N)
+    tb <- table(param$data[,i])
+    tblevels <- names(tb)
+    temptb <- c()
+    if (length(tblevels) <- param$ordinalLevels[i]) {
+      for (a in as.character(c(1:param$ordinalLevels[i])-1)) {
+        if (!(a %in% tblevels)) {
+          temptb[a] <- 1
+        } else {
+          temptb[a] <- tb[a] + 1
+        }
+      }
+      tb <- cumsum(temptb / sum(temptb))
+    } else {
+      tb <- cumsum(tb / param$N)
+    }
     cuts <- append(cuts, list(c(-Inf, sapply(tb, function (x) qnorm(x)))))
   }
   return(cuts)
@@ -85,7 +99,8 @@ refineParameters <- function(param) {
 ordinalScoreParam <- function(initparam,
                               usrpar = list(penType = c("AIC","BIC","other"),
                                             L = 5,
-                                            lambda = 2)) {
+                                            lambda = 2,
+                                            preLevels = NULL)) {
   
   n <- initparam$n
   initparam$penType <- usrpar$penType
@@ -102,21 +117,25 @@ ordinalScoreParam <- function(initparam,
     }
   }
   
-  # Reassign levels if necessary
-  for (i in c(1:n)) {
-    x <- sort(unique(initparam$data[,i]))
-    if (!setequal(x, c(0:max(x)))) {
-      cat("Some levels in variable",i,"are not present in the data, merging levels...\n")
-      for (j in c(1:length(x))) {
-        ind <- which(initparam$data[,i] == x[j])
-        initparam$data[ind,i] <- j - 1
+  # Determine ordinal levels
+  if (is.null(preLevels)) {
+    # Reassign levels if necessary
+    for (i in c(1:n)) {
+      x <- sort(unique(initparam$data[,i]))
+      if (!setequal(x, c(0:max(x)))) {
+        cat("Some levels in variable",i,"are not present in the data, merging levels...\n")
+        for (j in c(1:length(x))) {
+          ind <- which(initparam$data[,i] == x[j])
+          initparam$data[ind,i] <- j - 1
+        }
       }
     }
+    
+    # Count the number of levels for each variable
+    initparam$ordinalLevels <- apply(initparam$data, 2, function (x) length(unique(x)))
+  } else {
+    initparam$ordinalLevels <- preLevels
   }
-  
-  
-  # Count the number of levels for each variable
-  initparam$ordinalLevels <- apply(initparam$data, 2, function (x) length(unique(x)))
   
   if (min(initparam$ordinalLevels) < 2) {
     stop("All variables need to have at least two levels...")
