@@ -118,7 +118,7 @@ ordinalScoreParam <- function(initparam,
   }
   
   # Determine ordinal levels
-  if (is.null(preLevels)) {
+  if (is.null(usrpar$preLevels)) {
     # Reassign levels if necessary
     for (i in c(1:n)) {
       x <- sort(unique(initparam$data[,i]))
@@ -134,7 +134,7 @@ ordinalScoreParam <- function(initparam,
     # Count the number of levels for each variable
     initparam$ordinalLevels <- apply(initparam$data, 2, function (x) length(unique(x)))
   } else {
-    initparam$ordinalLevels <- preLevels
+    initparam$ordinalLevels <- usrpar$preLevels
   }
   
   if (min(initparam$ordinalLevels) < 2) {
