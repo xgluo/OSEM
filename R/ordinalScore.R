@@ -21,9 +21,9 @@ learnCuts <- function(param) {
           temptb[a] <- tb[a] + 1
         }
       }
-      tb <- cumsum(temptb / sum(temptb))
+      tb <- cumsum(temptb) / sum(temptb)
     } else {
-      tb <- cumsum(tb / param$N)
+      tb <- cumsum(tb) / param$N
     }
     cuts <- append(cuts, list(c(-Inf, sapply(tb, function (x) qnorm(x)))))
   }
