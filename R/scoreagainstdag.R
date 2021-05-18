@@ -60,9 +60,9 @@ scoreagainstDAG <- function(scorepar, incidence, datatoscore=NULL, marginalise=F
     samplescores <- rep(0,n)
     for (j in 1:n)  {
       parentnodes <- which(incidence[,j]==1)
-      samplescores[j]<- opt.pcart.cat(datatoscore, parentnodes, j, alpha = scorepar$pcart_alpha)
+      samplescores[j]<- opt.pcart.cat(datatoscore, parentnodes, j, alpha = scorepar$pcart_alpha)$score
     }
-    return(sum(samplescores))
+    return(sum(simplify2array(samplescores)))
   } else {
     samplescores <- matrix(0,nrow=nrow(datatoscore),ncol=n)  
     for (j in 1:n)  {
