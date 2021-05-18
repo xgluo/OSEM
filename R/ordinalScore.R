@@ -30,6 +30,23 @@ learnCuts <- function(param) {
   return(cuts)
 }
 
+getPairwiseTb <- function(param, i, j) {
+
+  tb <- matrix(1, nrow = param$ordinalLevels[i], ncol = param$ordinalLevels[j])
+  
+  for (k in c(1:param$N)) {
+    x <- param$data[k,i]
+    y <- param$data[k,j]
+    tb[x+1, y+1] <- tb[x+1, y+1] + 1
+  }
+  
+  dimnames(tb) <- list(as.character(c(1:param$ordinalLevels[i]) - 1),
+                       as.character(c(1:param$ordinalLevels[j]) - 1))
+  return(tb)
+  
+}
+
+
 ##' learnRhoij(param,i,j):
 ##' a function that estimates the latent Gaussian correlation between two binary variables
 ##' @param param: an ordinal scoreparameters object
@@ -38,7 +55,8 @@ learnCuts <- function(param) {
 ##' @return estimated correlation between X_i and X_j
 learnRhoij <- function(param,i,j) {
 
-  tb <- table(param$data[,i],param$data[,j]) + 1
+  #tb <- table(param$data[,i],param$data[,j]) + 1
+  tb <- getPairwiseTb(param, i, j)
   cutsfori <- simplify2array(param$cuts[i])
   cutsforj <- simplify2array(param$cuts[j])
   Li <- param$ordinalLevels[i]
