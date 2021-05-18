@@ -356,7 +356,8 @@ comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 OSEMfit <- ordinalStructEM(n, ordinal_data,
                            usrpar = list(penType = "other",
                                          L = 5,
-                                         lambda = 3))
+                                         lambda = 3,
+                                         preLevels = NULL))
 ```
 
 ```{r, echo = FALSE}

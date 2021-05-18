@@ -56,6 +56,13 @@ scoreagainstDAG <- function(scorepar, incidence, datatoscore=NULL, marginalise=F
       samplescores[j]<-scoreagainstDAGcore(j,parentnodes,n,scorepar,datatoscore)
     }
     return(sum(samplescores))
+  } else if ((scorepar$type=="usr") & (!(is.null(scorepar$pcart_alpha)))) {
+    samplescores <- rep(0,n)
+    for (j in 1:n)  {
+      parentnodes <- which(incidence[,j]==1)
+      samplescores[j]<- opt.pcart.cat(datatoscore, parentnodes, j, alpha = scorepar$pcart_alpha)
+    }
+    return(sum(samplescores))
   } else {
     samplescores <- matrix(0,nrow=nrow(datatoscore),ncol=n)  
     for (j in 1:n)  {
