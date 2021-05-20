@@ -14,7 +14,7 @@
 #'@export
 #'@author  Jack Kuipers
 
-scoreagainstDAG <- function(scorepar, incidence, datatoscore=NULL, marginalise=FALSE){
+scoreagainstDAG <- function(scorepar, incidence, datatoscore=NULL, marginalise=FALSE, bdecatCvec=NULL){
   
   n<-scorepar$n
   
@@ -49,13 +49,6 @@ scoreagainstDAG <- function(scorepar, incidence, datatoscore=NULL, marginalise=F
     }
     
     return(rowSums(samplescores))
-  } else if (scorepar$type=="bdecat") {
-    samplescores <- rep(0,n)
-    for (j in 1:n)  {
-      parentnodes <- which(incidence[,j]==1)
-      samplescores[j]<-scoreagainstDAGcore(j,parentnodes,n,scorepar,datatoscore)
-    }
-    return(sum(samplescores))
   } else if ((scorepar$type=="usr") & (!(is.null(scorepar$pcart_alpha)))) {
     samplescores <- rep(0,n)
     for (j in 1:n)  {
@@ -64,6 +57,9 @@ scoreagainstDAG <- function(scorepar, incidence, datatoscore=NULL, marginalise=F
     }
     return(sum(simplify2array(samplescores)))
   } else {
+    if (!is.null(bdecatCvec)) {
+      scorepar$Cvec <- bdecatCvec
+    }
     samplescores <- matrix(0,nrow=nrow(datatoscore),ncol=n)  
     for (j in 1:n)  {
       parentnodes <- which(incidence[,j]==1)
@@ -115,7 +111,7 @@ scoreagainstDAGcore<-function(j,parentnodes,n,param,datatoscore) {
                     samplenodescores[which(datatoscore[,j]==0)]<-log(1-theta) # log scores of 0s
                   },
                   "1"={# one parent
-                    corescore<-param$scoreconstvec[lp+1]  
+
                     summys<-param$data[,parentnodes]
                     summysfull<-datatoscore[,parentnodes]
                     
@@ -131,7 +127,7 @@ scoreagainstDAGcore<-function(j,parentnodes,n,param,datatoscore) {
                     }
                   },     
                   { # more parents
-                    corescore<-param$scoreconstvec[lp+1]  
+
                     summys<-colSums(2^(c(0:(lp-1)))*t(param$data[,parentnodes]))
                     tokeep<-which(!is.na(summys+param$d1[,j])) # remove NAs either in the parents or the child
                     if(length(tokeep)<length(summys)){
@@ -152,44 +148,62 @@ scoreagainstDAGcore<-function(j,parentnodes,n,param,datatoscore) {
                   })
          },
          "bdecat" = {
+           lp<-length(parentnodes) # number of parents
            chi<-param$chi
-           
-           corescore <- param$scoreconstvec[lp+1] # starting value
            
            Cj <- param$Cvec[j] # number of levels of j
            
+           # Get parameters
            switch(as.character(lp),
                   "0"={# no parents
                     Cp <- 1 # effectively 1 parent level
-                    summys <- rep(0, nrow(datatoscore))
+                    summys <- rep(0, nrow(param$data))
                   },
                   "1"={# one parent
                     Cp <- param$Cvec[parentnodes] # number of parent levels
-                    summys <- datatoscore[,parentnodes]
-                    if (!is.null(param$logedgepmat)) { # if there is an additional edge penalisation
-                      corescore <- corescore - param$logedgepmat[parentnodes, j]
-                    }
+                    summys <- param$data[,parentnodes]
                   },     
                   { # more parents
                     Cp <- prod(param$Cvec[parentnodes])
                     # use mixed radix mapping to unique parent states
-                    summys<-colSums(cumprod(c(1,param$Cvec[parentnodes[-lp]]))*t(datatoscore[,parentnodes]))
-                    if (!is.null(param$logedgepmat)) { # if there is an additional edge penalisation
-                      corescore <- corescore - sum(param$logedgepmat[parentnodes, j])
-                    }
+                    summys<-colSums(cumprod(c(1,param$Cvec[parentnodes[-lp]]))*t(param$data[,parentnodes]))
                   })
            
            if(!is.null(param$weightvector)){
-             Ns <- collectCcatwt(summys, datatoscore[,j], param$weightvector, Cp, Cj)
+             Ns <- collectCcatwt(summys, param$data[,j], param$weightvector, Cp, Cj)
            } else{
-             Ns <- collectCcat(summys, datatoscore[,j], Cp, Cj)
+             Ns <- collectCcat(summys, param$data[,j], Cp, Cj)
            }
-           
            NTs <- rowSums(Ns)
            
-           corescore <- corescore + sum(lgamma(Ns+chi/(Cp*Cj))) - sum(lgamma(NTs + chi/Cp)) + Cp*lgamma(chi/Cp) - (Cp*Cj)*lgamma(chi/(Cp*Cj))
-           
-           return(corescore)
+           # Score data
+           switch(as.character(lp),
+                  "0"={# no parents
+                    for (v in c(1:Cj)) {
+                      toscore <- which(datatoscore[,j] == v - 1)
+                      if (length(toscore) > 0) {
+                        samplenodescores[toscore] <- log(Ns[v] + chi/Cj) - log(NTs + chi)
+                      }
+                    }
+                  },
+                  "1"={# one parent
+                    for (v in c(1:Cj)) {
+                      for (u in c(1:Cp)) {
+                        toscore <- which((datatoscore[,j] == v - 1) & (datatoscore[,parentnodes] == u - 1))
+                        if (length(toscore) > 0) {
+                          samplenodescores[toscore] <- log(Ns[u,v]+chi/(Cp*Cj)) - log(NTs[u] + chi/Cp)
+                        }
+                      }
+                    }
+                  },     
+                  { # more parents
+                    summysfull <- colSums(cumprod(c(1,param$Cvec[parentnodes[-lp]]))*t(datatoscore[,parentnodes]))
+                    for (v in c(1:Cj)) {
+                      toscore <- which(datatoscore[,j] == v - 1)
+                      pa_idx <- summysfull[toscore] + 1
+                      samplenodescores[toscore] <- log(Ns[pa_idx,v]+chi/(Cp*Cj)) - log(NTs[pa_idx] + chi/Cp)
+                    }
+                  })
          })
   
   return(samplenodescores)
