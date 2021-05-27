@@ -589,3 +589,32 @@ ordinalStructEM <- function(n, data,
   return(currentDAGobj)
   
 }
+
+
+BGe_MAP_Sigma <- function(R, DAG) {
+  
+  B <- matrix(0,nrow = n, ncol = n)
+  
+  for (j in c(1:ncol(DAG))) {
+    pa <- which(DAG[,j] == 1)
+    lp <- length(pa)
+    switch (as.character(lp),
+            "0" = {
+              next
+            },
+            "1" = {
+              B[j,pa] <- 1 / R[pa,pa] * R[pa,j]
+            },
+            {
+              B[j,pa] <- chol2inv(chol(R[pa,pa])) %*% R[pa,j]
+            }
+    )
+  }
+  
+  I_B <- diag(n) - B
+  I_B.inv <- solve(I_B)
+  V <- diag(diag(R))
+  Sigma <- cov2cor(I_B.inv %*% V %*% t(I_B.inv))
+  
+  return(Sigma)
+}
