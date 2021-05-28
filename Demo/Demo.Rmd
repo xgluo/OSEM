@@ -32,6 +32,8 @@ source("ordinalScore.R")
 # Modify some of the existing functions in the BiDAG package to accommodate our user-defined functions
 insertSource("spacefns.R",package = "BiDAG")
 insertSource("usrscorefns.R",package = "BiDAG")
+insertSource("initpar.R",package = "BiDAG")
+insertSource("scoreagainstdag.R",package = "BiDAG")
 ```
 
 ### 2. Other functions
@@ -147,6 +149,7 @@ scaled_data <- t(D.inv %*% t(hidden_data))
 ordinal_data <- convertToOrdinal(scaled_data, exp_levels = 4,concent_param = 2)
 ordinal_data_df <- as.data.frame(ordinal_data)
 ordinal_data_df[] <- lapply(ordinal_data_df[], as.ordered)
+ordinal_levels <- apply(ordinal_data, 2, function(x) length(unique(x)))
 ```
 
 ### 4. Learn the structures using different methods
@@ -381,9 +384,12 @@ insertSource("usrscorefns_pcart.R",package = "BiDAG")
 ```
 
 ```{r pcart, warning=FALSE, cache=TRUE}
-pcartparam <- scoreparameters("usr", ordinal_data_df, usrpar = list(pcart_alpha = 0.5, pctesttype = "bde"))
+pcartparam <- scoreparameters("usr", ordinal_data_df, 
+                              usrpar = list(pcart_alpha = 50, 
+                                            pctesttype = "bde", 
+                                            preLevels = ordinal_levels))
 # need to set limit to the parent set size due to computational limit
-pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE, alpha = 0, plus1it = 10, softlimit = 3, hardlimit = 3)
+pcartfit <- iterativeMCMC(pcartparam, alpha = 0, plus1it = 10, softlimit = 3, hardlimit = 3)
 ```
 
 ```{r, echo = FALSE}

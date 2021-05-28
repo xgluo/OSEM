@@ -14,7 +14,7 @@ usrscoreparameters <- function(initparam, usrpar){
 ### This function evaluates the log score of a node given its parents
 usrDAGcorescore <- function (j,parentnodes,n,param) {
   
-  res <- opt.pcart(param$df, parentnodes, j, param$preLevels)
+  res <- opt.pcart(param$data, parentnodes, j, param$preLevels, alpha = param$pcart_alpha)
   
   return(res$dataScore + res$structureScore)
 }
