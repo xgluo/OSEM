@@ -184,6 +184,20 @@ scoreagainstDAGcore<-function(j,parentnodes,n,param,datatoscore) {
                     j_pa_idx <- Cp * datatoscore[,j] + pa_idx
                     samplenodescores <- log(Ns[j_pa_idx]+chi/(Cp*Cj)) - log(NTs[pa_idx] + chi/Cp)
                   })
+         },
+         { # pcart case -- approximation
+           for (i in c(1:nrow(datatoscore))) {
+             
+             data_plus1 <- rbind(param$data, datatoscore[i,])
+             score_num <- opt.pcart(data_plus1, parentnodes, j, param$preLevels, 
+                                    alpha = param$pcart_alpha, kappa = param$pcart_kappa,
+                                    response_type = param$response_type)$dataScore
+             score_denom <- opt.pcart(param$data, parentnodes, j, param$preLevels, 
+                                      alpha = param$pcart_alpha, kappa = param$pcart_kappa,
+                                      response_type = param$response_type)$dataScore
+             samplenodescores[i] <- score_num - score_denom
+             
+           }
          })
   
   return(samplenodescores)

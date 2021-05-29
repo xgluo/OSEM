@@ -385,9 +385,11 @@ insertSource("usrscorefns_pcart.R",package = "BiDAG")
 
 ```{r pcart, warning=FALSE, cache=TRUE}
 pcartparam <- scoreparameters("usr", ordinal_data_df, 
-                              usrpar = list(pcart_alpha = 50, 
+                              usrpar = list(pcart_alpha = 1.5,
+                                            pcart_kappa = 1,
                                             pctesttype = "bde", 
-                                            preLevels = ordinal_levels))
+                                            preLevels = ordinal_levels,
+                                            response_type = "ORD"))
 # need to set limit to the parent set size due to computational limit
 pcartfit <- iterativeMCMC(pcartparam, alpha = 0, plus1it = 10, softlimit = 3, hardlimit = 3)
 ```
