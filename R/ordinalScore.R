@@ -3,7 +3,7 @@ library(leaps)
 library(pcalg)
 library(glmnet)
 
-##' learnCuts(param): 
+##' learnCuts(param):
 ##' a function that estimates the thresholds/cuts marginally for each variable
 ##' @param param: an ordinal scoreparameters object
 ##' @return a list of cuts of length n
@@ -33,17 +33,17 @@ learnCuts <- function(param) {
 getPairwiseTb <- function(param, i, j) {
 
   tb <- matrix(1, nrow = param$ordinalLevels[i], ncol = param$ordinalLevels[j])
-  
+
   for (k in c(1:param$N)) {
     x <- param$data[k,i]
     y <- param$data[k,j]
     tb[x+1, y+1] <- tb[x+1, y+1] + 1
   }
-  
+
   dimnames(tb) <- list(as.character(c(1:param$ordinalLevels[i]) - 1),
                        as.character(c(1:param$ordinalLevels[j]) - 1))
   return(tb)
-  
+
 }
 
 
@@ -61,7 +61,7 @@ learnRhoij <- function(param,i,j) {
   cutsforj <- simplify2array(param$cuts[j])
   Li <- param$ordinalLevels[i]
   Lj <- param$ordinalLevels[j]
-  
+
   # an objective function that computes the log-likelihood
   objective <- function(rho) {
     LL <- 0
@@ -77,13 +77,13 @@ learnRhoij <- function(param,i,j) {
     }
     return(LL)
   }
-  
+
   # search for rho that maximizes the pairwise log-likelihood
   rho_hat <- optimize(objective, interval = c(-1 + 1e-3,1 - 1e-3),maximum = TRUE)
   return(rho_hat$maximum)
 }
 
-##' refine_parameters(param): 
+##' refine_parameters(param):
 ##' a helper function that refines the covariance matrix based on observed data
 ##' @param param: an ordinal scoreparameters object
 ##' @return an updated ordinal scoreparameters object
@@ -111,7 +111,7 @@ refineParameters <- function(param) {
 ##' @param penType: type of penalization to be applied ("AIC" or "BIC" or "other")
 ##' @param L: number of truncated multivariate copies to be generated for each observation
 ##' @param lambda: coefficient for the BIC penalty term (default: 0 no penalty)
-##' @return the input parameters 
+##' @return the input parameters
 ##' + estimated thresholds
 ##' + estimated latent Gaussian correlation matrix
 ordinalScoreParam <- function(initparam,
@@ -119,13 +119,13 @@ ordinalScoreParam <- function(initparam,
                                             L = 5,
                                             lambda = 2,
                                             preLevels = NULL)) {
-  
+
   n <- initparam$n
   initparam$penType <- usrpar$penType
   initparam$lambda <- usrpar$lambda
   initparam$L <- usrpar$L
   initparam$N <- nrow(initparam$data)
-  
+
   # Convert to matrix/array if necessary
   if (!is.matrix(initparam$data)) {
     if (is.data.frame(initparam$data)) {
@@ -134,7 +134,7 @@ ordinalScoreParam <- function(initparam,
       stop("Ordinal data table is not a matrix")
     }
   }
-  
+
   # Determine ordinal levels
   if (is.null(usrpar$preLevels)) {
     # Reassign levels if necessary
@@ -148,22 +148,22 @@ ordinalScoreParam <- function(initparam,
         }
       }
     }
-    
+
     # Count the number of levels for each variable
     initparam$ordinalLevels <- apply(initparam$data, 2, function (x) length(unique(x)))
   } else {
     initparam$ordinalLevels <- usrpar$preLevels
   }
-  
+
   if (min(initparam$ordinalLevels) < 2) {
     stop("All variables need to have at least two levels...")
   }
-  
+
   initparam$hidden_data <- initparam$data
 
   # Learn the cuts/thresholds
   initparam$cuts <- learnCuts(initparam)
-  
+
   # Estimate Gaussian correlation matrix
   Sigma_hat <- diag(initparam$n)
 
@@ -181,10 +181,10 @@ ordinalScoreParam <- function(initparam,
   # Usually necessary for large DAGs because of pairwise estimation
   # Only done when the smallest eigenvalue is negative
   initparam$Sigma_hat <- psych::cor.smooth(Sigma_hat,eig.tol = 1e-3)
-  
+
   print("Refining parameters...")
   initparam <- refineParameters(initparam)
-  
+
   return(initparam)
 }
 
@@ -196,15 +196,15 @@ ordinalScoreParam <- function(initparam,
 ##' @param param: parameters returned from 'scoreparameters'
 ##' @return the ordinal score of a node given its parents
 ordinalCoreScore <- function(j,parentnodes,n,param) {
-  
+
   if (j %in% parentnodes) {
     stop("The parent set contains the current node.")
   }
-  
+
   lp <- length(parentnodes) # number of parents
   corescore <- 0
   N <- param$N
-  
+
   switch(as.character(lp),
          "0" = { # no parents
            corescore <- -N/2 * (1 + log(2 * pi))
@@ -219,7 +219,7 @@ ordinalCoreScore <- function(j,parentnodes,n,param) {
            corescore <- -N/2 * (log(param$Sigma_hat[j,j] - sum(backsolve(choltemp,b,transpose=TRUE)^2)) + 1 + log(2 * pi))
          }
   )
-  
+
   if (param$penType == "AIC") {
     param$lambda <- 2 / log(param$N)
   } else if (param$penType == "BIC") {
@@ -229,10 +229,10 @@ ordinalCoreScore <- function(j,parentnodes,n,param) {
   return(corescore - param$lambda * log(param$N) / 2 * lp)
 }
 
-##' sampleTMVN(param): 
+##' sampleTMVN(param):
 ##' a function that samples truncated multivariate Gaussian data
 ##' @param param: scoreparameters object
-##' @return N times L number of truncated multivariate Gaussian data points 
+##' @return N times L number of truncated multivariate Gaussian data points
 sampleTMVN <- function(param) {
   Y <- NULL
   # Obtain different combinations and counts for ordinal data
@@ -252,13 +252,13 @@ sampleTMVN <- function(param) {
   return(Y)
 }
 
-##' getExpectedStats(param): 
-##' a function that takes the score parameters, samples latent Gaussian data 
+##' getExpectedStats(param):
+##' a function that takes the score parameters, samples latent Gaussian data
 ##' and computes expected statistics (mean and correlation matrix)
 ##' @param param: a scoreparameter object
 ##' @return an updated score parameters with the sampled latent data and expected statistics
 getExpectedStats <- function(param) {
-  
+
   print("Updating expected statistics...")
   param$hidden_data <- sampleTMVN(param)
   param$Sigma_hat <- cor(param$hidden_data)
@@ -266,17 +266,17 @@ getExpectedStats <- function(param) {
 
 }
 
-##' ordinalUpdateParam(param,AM): 
+##' ordinalUpdateParam(param,AM):
 ##' a function that estimates the Gaussian mean and correlation matrix given a sample of DAGs
 ##' @param param: a scoreparameter object for ordinal data
 ##' @param AM: an adjacency matrix of a DAG
 ##' @return an ordinal scoreparameter object with updated Gaussian correlation matrix
 ordinalUpdateParam <- function(param,AM) {
-  
+
   start_time = Sys.time()
-  
+
   cat("Estimating parameters...\n")
-  
+
   if (!is.matrix(AM)) {
     if (class(AM)  == "graphNEL") {
       AM <- as(AM,"matrix")
@@ -284,11 +284,11 @@ ordinalUpdateParam <- function(param,AM) {
       stop("The parameter AM needs to be an adjacency matrix...")
     }
   }
-  
+
   if (nrow(AM) != param$n) {
     stop("The adjacency matrix provided has wrong dimension...")
   }
-  
+
   Y <- param$hidden_data
   n <- param$n
   N <- param$N
@@ -296,38 +296,38 @@ ordinalUpdateParam <- function(param,AM) {
   sorted_ind <- ggm::topOrder(AM)
   var_temp <- rep(1,n)
   B <- matrix(0,nrow = n, ncol = n)
-  
+
   # Estimate the conditional parameters following the topological order
   for (i in (1:n)) {
-    
+
     j <- sorted_ind[i]
     parentnodes <- which(AM[,j] == 1)
     lp <- length(parentnodes)
     Y_j <- Y[,j]
-    
+
     switch(as.character(lp),
-           
+
            "0" = { # no parents
-             
+
              var_temp[j] <- mean(Y_j^2)
-             
+
            },
-           
+
            "1" = { # one parent
-             
+
              X <- matrix(Y[,parentnodes])
              var_temp[j] <- mean(Y_j^2)
              add1 <- lm(Y_j ~ X - 1)
              add1MSE <- mean(add1$residuals^2)
-             
+
              if (NL*log(add1MSE) + param$lambda * log(NL) < NL*log(var_temp[j])) {
                beta <- add1$coef
                B[j,parentnodes] <- beta
                var_temp[j] <- add1MSE
              }
-             
+
            },
-           
+
            { # more parents
 
              X <- Y[,parentnodes]
@@ -335,29 +335,29 @@ ordinalUpdateParam <- function(param,AM) {
                                        method = "exhaustive",intercept = FALSE)
              reg.summary <- summary(regfit.full)
              reg.bic <- reg.summary$bic
-             
+
              if (param$penType == "other") {
                reg.bic <- reg.bic - (1 - param$lambda) * log(NL) * apply(reg.summary$which,1,sum)
              }
-             
+
              best.n <- which.min(reg.bic)
-             
+
              beta <- coef(regfit.full, id = best.n)
              B[j,parentnodes[reg.summary$which[best.n,]]] <- beta
              var_temp[j] <- reg.summary$rss[best.n] / NL
-               
+
            })
-    
+
   }
-  
+
   I_B <- diag(n) - B
   I_B.inv <- solve(I_B)
   V <- diag(var_temp)
   param$Sigma_hat <- cov2cor(I_B.inv %*% V %*% t(I_B.inv))
-  
+
   end_time = Sys.time()
   print(end_time - start_time)
-  
+
   return(param)
 }
 
@@ -367,23 +367,23 @@ ordinalUpdateParam <- function(param,AM) {
 ## it returns the adjacency matrix of the graph with the same skeleton where the only oriented
 ## edges are the v-structures (can be easily modified to work for MAGs/PAGs)
 getPattern <- function(amat){
-  
+
   ## makes the whole graph undirected
   tmp <- amat + t(amat)
   tmp[tmp == 2] <- 1
-  
+
   ## find all v-structures i -> k <- j s.t. i not adj to k
   ## and make only those edges directed
   for (i in 1: (length(tmp[1,])-1)) {
     for (j in (i+1): length(tmp[1,])){
       if ((amat[j,i] ==0) & (amat[i,j] ==0) & (i!=j)){ ## if i no adjacent with j in G
-        
+
         possible.k <- which(amat[i,]!= 0 & amat[,i]==0) ## finds all k such that i -> k is in G
-        
+
         if (length(possible.k)!=0){    ## if there are any such k's then check whether j -> k for any of them
           for (k in 1: length(possible.k)){
             if ((amat[j,possible.k[k]] ==1) & (amat[possible.k[k],j]==0)) { ## if j -> k add the v-struc orientation to tmp
-              tmp[possible.k[k],i] <- 0   
+              tmp[possible.k[k],i] <- 0
               tmp[possible.k[k],j] <- 0
             }
           }
@@ -394,18 +394,18 @@ getPattern <- function(amat){
   tmp
 }
 
-##' comparePatterns(estDAG,trueDAG): 
+##' comparePatterns(estDAG,trueDAG):
 ##' a function that compares the patterns of two DAGs in the sense of Meek (1995)
 ##' @param estDAG: estimated DAG (need to be a matrix or a graphNEL object)
 ##' @param trueDAG: true DAG (need to be a matrix or a graphNEL object)
-##' @param hardP2P: (default: TRUE) An edge in the estimated pattern is counted as 1 true positive, 
-##' if it has exactly the same direction (directed/undirected) as the corresponding edge in the true pattern. 
-##' Otherwise, it is counted as 1 false positive. When FALSE, an edge in the estimated pattern 
-##' is counted as 0.5 true positive and 0.5 false positive, 
+##' @param hardP2P: (default: TRUE) An edge in the estimated pattern is counted as 1 true positive,
+##' if it has exactly the same direction (directed/undirected) as the corresponding edge in the true pattern.
+##' Otherwise, it is counted as 1 false positive. When FALSE, an edge in the estimated pattern
+##' is counted as 0.5 true positive and 0.5 false positive,
 ##' if exactly one of this edge and the corresponding edge in the true pattern is undirected.
 ##' @return an array of metrics
 comparePatterns <- function(estDAG,trueDAG, hardP2P = TRUE) {
-  
+
   # Convert estimated DAG to CPDAG
   if (is.matrix(estDAG)) {
     estPDAG <- dag2cpdag(estDAG)
@@ -414,7 +414,7 @@ comparePatterns <- function(estDAG,trueDAG, hardP2P = TRUE) {
   } else if (class(estDAG) == "graphNEL") {
     estPDAG <- dag2cpdag(as(estDAG,"matrix"))
   }
-  
+
   # Convert true DAG to CPDAG
   if (is.matrix(trueDAG)) {
     truePDAG <- dag2cpdag(trueDAG)
@@ -423,25 +423,25 @@ comparePatterns <- function(estDAG,trueDAG, hardP2P = TRUE) {
   } else {
     stop("Please check if the true DAG is indeed a DAG...")
   }
-  
+
   # Convert CPDAGs to patterns
   truePattern <- getPattern(truePDAG)
   estPattern <- getPattern(estPDAG)
   n <- nrow(truePattern)
-  
+
   # 0: no edge; 1: -->; 2: <--; 3: <-->
   temp1 <- estPattern[upper.tri(estPattern)] + 2 * t(estPattern)[upper.tri(t(estPattern))]
   temp2 <- truePattern[upper.tri(truePattern)] + 2 * t(truePattern)[upper.tri(t(truePattern))]
-  
+
   # Number of edges in the estimated pattern
   pred_P <- sum(temp1 != 0)
-  
+
   # Number of edges in the true pattern
   true_P <- sum(temp2 != 0)
-  
+
   # Number of non-edges in the true pattern
   true_N <- sum(temp2 == 0)
-  
+
   # TP, FP, TN, FN, SHD
   if (hardP2P) {
     TP <- sum((temp1 != 0) * (temp1 == temp2))
@@ -452,14 +452,14 @@ comparePatterns <- function(estDAG,trueDAG, hardP2P = TRUE) {
   FN <- sum((temp1 == 0) * (temp2 != 0))
   TN <- sum((temp1 == 0) * (temp2 == 0))
   SHD <- FP + FN
-  
+
   # Precision
   if ((TP + FP) == 0) {
     Precision <- 0
   } else {
     Precision <- TP / (TP + FP)
   }
-  
+
   # TPR, FPR_P, FPR_N
   if (true_P == 0) { # true graph is empty
     if (FP >= 0) {
@@ -473,38 +473,38 @@ comparePatterns <- function(estDAG,trueDAG, hardP2P = TRUE) {
     TPR <- TP / true_P
     FPR_P <- FP / true_P
   }
-  
+
   if (true_N == 0) { # true graph is full
     FPR_N <- 0
   } else { # true graph is not full
     FPR_N <- FP / true_N
   }
-  
+
   compPattern <- c(SHD,TP,FP,TN,FN,Precision,TPR,FPR_N,FPR_P)
   names(compPattern) <- c("SHD","TP","FP","TN","FN","Precision","TPR","FPR_N","FPR_P")
   return(round(compPattern,2))
 }
 
-##' getSHD(estDAG, trueDAG): 
+##' getSHD(estDAG, trueDAG):
 ##' a function that computes the structural difference between the PDAGs of two DAGs
 ##' @param estDAG: adjacency matrix of the estimated DAG
 ##' @param trueDAG: adjacency matrix of the true DAG
-##' @return structural difference between two PDAGs 
+##' @return structural difference between two PDAGs
 getSHD <- function(estDAG, trueDAG) {
-  
+
   if (!is.matrix(estDAG)) {
     estDAG <- as(estDAG,"matrix") * 1
   }
-  
+
   if (!is.matrix(trueDAG)) {
     trueDAG <- as(trueDAG,"matrix") * 1
   }
-  
+
   DAGdiff <- dag2cpdag(estDAG) != dag2cpdag(trueDAG)
   return(sum(as.logical(DAGdiff + t(DAGdiff)))/2)
 }
 
-##' observedLL(param): 
+##' observedLL(param):
 ##' a function that computes observed log-likelihood in the ordinal setting
 ##' @param param: a scoreparameter object for ordinal data
 ##' @return observed log-likelihood
@@ -536,34 +536,34 @@ ordinalStructEM <- function(n, data,
                                           L = 5,
                                           lambda = 2),
                             computeObservedLL = FALSE) {
-  
+
   start_time = Sys.time()
   print("Initializing parameters and DAG...")
   param <- scoreparameters("usr",data,usrpar = usrpar)
-  
+
   print("SEM iteration starts...")
   SHD <- 1
   iter <- 0
   currentBestDAG <- NULL
-  
+
   if (param$lambda <= 1) {
     nr_iter <- 5
   } else {
     nr_iter <- 20
   }
-  
+
   while ((SHD != 0) && (iter < nr_iter)) { #Maximum 20 iterations to avoid infinite loop
-    
+
     # Compute expected statistics
     param <- getExpectedStats(param)
-    
+
     # Structure update
     currentDAGobj <- iterativeMCMC(param, plus1it = 10, hardlimit = n)
     candidateBestDAG <- currentDAGobj$DAG
-    
+
     # Parameter update
     param <- ordinalUpdateParam(param,candidateBestDAG)
-    
+
     # Check convergence
     if (!(is.null(currentBestDAG))) {
       SHD <- getSHD(candidateBestDAG, currentBestDAG)
@@ -574,27 +574,27 @@ ordinalStructEM <- function(n, data,
     iter <- iter + 1
   }
   print("SEM iteration ends...")
-  
+
   if (computeObservedLL) {
     print("Calculating observed log-likelihood...")
     currentDAGobj$observed_score <- observedLL(param) - param$lambda * log(param$N) / 2 * sum(currentBestDAG)
   }
-  
+
   currentDAGobj$param <- param
-  
+
   end_time = Sys.time()
   print(end_time - start_time)
   currentDAGobj$runtime <- as.double(end_time - start_time,units = "secs")
-  
+
   return(currentDAGobj)
-  
+
 }
 
 
 BGe_MAP_Sigma <- function(R, DAG) {
-  
+
   B <- matrix(0,nrow = n, ncol = n)
-  
+
   for (j in c(1:ncol(DAG))) {
     pa <- which(DAG[,j] == 1)
     lp <- length(pa)
@@ -610,11 +610,94 @@ BGe_MAP_Sigma <- function(R, DAG) {
             }
     )
   }
-  
+
   I_B <- diag(n) - B
   I_B.inv <- solve(I_B)
   V <- diag(diag(R))
   Sigma <- cov2cor(I_B.inv %*% V %*% t(I_B.inv))
-  
+
   return(Sigma)
 }
+
+##' rmvDAG2(N, randDAGobj):
+##' a function that does the same thing as the pcalg::rmvDAG function
+##' but the input DAG is not necessarily topologically ordered
+##' @param N: number of samples to be drawn
+##' @param randDAGobj: a graph object generated from the pcalg::randDAG function
+##' @return a Gaussian dataset
+rmvDAG2 <- function(N, randDAGobj) {
+  AM <- as(randDAGobj, "matrix")
+  sorted_ind <- ggm::topOrder((AM != 0))
+  n <- nrow(AM)
+  data <- matrix(nrow = N,ncol = n)
+  for (j in sorted_ind) {
+    parentnodes <- which(AM[,j] != 0)
+    lp <- length(parentnodes)
+    switch (as.character(lp),
+            "0" = {data[,j] <- rnorm(N)},
+            "1" = {data[,j] <- rnorm(N, mean = data[,parentnodes] * AM[parentnodes,j], sd = 1)},
+            {data[,j] <- rnorm(N, mean = data[,parentnodes] %*% AM[parentnodes,j], sd = 1)}
+    )
+  }
+  return(data)
+}
+
+##' cutfun(L, c):
+##' a function that simulates the cell probabilities from a symmetric Dirichlet distribution
+##' @param L: number of ordinal levels
+##' @param c: Dirichlet concentration parameter
+##' @return a list of probabilities of length L, summing up to 1
+cutfun <- function(L,c) {
+  p <- gtools::rdirichlet(1,rep(c,L))
+  return(qnorm(cumsum(p)[1:(L-1)]))
+}
+
+##' convertToOrdinal(scaled_data, exp_levels, concent_param):
+##' a function that converts standardized Gaussian data into ordinal data
+##' @param scaled_data: Gaussian dataset with each dimension standardized
+##' @param exp_levels: expected number of ordinal levels
+##' @param concent_param: Dirichlet concentration parameter
+##' @return an ordinal dataset
+convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
+  n <- ncol(scaled_data)
+  if (exp_levels == 2) {
+    ordinal_levels <- replicate(n,2)
+  } else {
+    ordinal_levels <- replicate(n,sample(c(2:(2 * exp_levels - 2)),1))
+  }
+  ordinal_data <- scaled_data
+  for (i in c(1:n)) {
+
+    check_levels <- ordinal_levels[i] - 1
+    while (check_levels != ordinal_levels[i]) {
+      cuts <- c(-Inf,
+                cutfun(ordinal_levels[i],concent_param),
+                Inf)
+      temp <- cut(scaled_data[,i], simplify2array(cuts), labels = FALSE) - 1
+      check_levels <- length(unique(temp))
+    }
+    ordinal_data[,i] <- temp
+
+  }
+  colnames(ordinal_data) <- c(1:n)
+  return(ordinal_data)
+}
+
+##' mywFUN(m):
+##' a function that samples the edge weights uniformly from the interval (-1,-0.4) U (0.4,1)
+##' @param m: number of edges in the DAG
+##' @return m edge weights
+mywFUN <- function(m) {
+  return(replicate(m,mywFUNhelper()))
+}
+mywFUNhelper <- function() {
+  y <- runif(1, 0, 1.2)
+  if( y < 0.6 ){
+    x <- -1 + y
+  }else{
+    x <- 0.4 + y - 0.6
+  }
+  return(x)
+}
+
+
