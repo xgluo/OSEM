@@ -413,8 +413,8 @@ convert_to_skeleton <- function(DAG) {
 comparePatterns <- function(estDAG, trueDAG, hardP2P = FALSE, skeleton = FALSE) {
 
   if (skeleton) { # use skeletons
-    trueSkel <- convert_to_skeleton(as.matrix(trueDAG))
-    estSkel <- convert_to_skeleton(as.matrix(estDAG))
+    trueSkel <- convert_to_skeleton(as(trueDAG, "matrix"))
+    estSkel <- convert_to_skeleton(as(estDAG, "matrix"))
 
     temp1 <- estSkel[upper.tri(estSkel)]
     temp2 <- trueSkel[upper.tri(trueSkel)]
