@@ -394,63 +394,88 @@ getPattern <- function(amat){
   tmp
 }
 
+convert_to_skeleton <- function(DAG) {
+  DAG <- DAG + t(DAG)
+  return(DAG != 0)
+}
+
+
 ##' comparePatterns(estDAG,trueDAG):
 ##' a function that compares the patterns of two DAGs in the sense of Meek (1995)
 ##' @param estDAG: estimated DAG (need to be a matrix or a graphNEL object)
 ##' @param trueDAG: true DAG (need to be a matrix or a graphNEL object)
-##' @param hardP2P: (default: TRUE) An edge in the estimated pattern is counted as 1 true positive,
+##' @param hardP2P: (default: FALSE) An edge in the estimated pattern is counted as 1 true positive,
 ##' if it has exactly the same direction (directed/undirected) as the corresponding edge in the true pattern.
 ##' Otherwise, it is counted as 1 false positive. When FALSE, an edge in the estimated pattern
 ##' is counted as 0.5 true positive and 0.5 false positive,
 ##' if exactly one of this edge and the corresponding edge in the true pattern is undirected.
 ##' @return an array of metrics
-comparePatterns <- function(estDAG,trueDAG, hardP2P = TRUE) {
+comparePatterns <- function(estDAG, trueDAG, hardP2P = FALSE, skeleton = FALSE) {
 
-  # Convert estimated DAG to CPDAG
-  if (is.matrix(estDAG)) {
-    estPDAG <- dag2cpdag(estDAG)
-  } else if (class(estDAG) == "pcAlgo") {
-    estPDAG <- t(as(estDAG,"matrix"))
-  } else if (class(estDAG) == "graphNEL") {
-    estPDAG <- dag2cpdag(as(estDAG,"matrix"))
+  if (skeleton) { # use skeletons
+    trueSkel <- convert_to_skeleton(as.matrix(trueDAG))
+    estSkel <- convert_to_skeleton(as.matrix(estDAG))
+
+    temp1 <- estSkel[upper.tri(estSkel)]
+    temp2 <- trueSkel[upper.tri(trueSkel)]
+
+    pred_P <- sum(temp1 != 0)
+    true_P <- sum(temp2 != 0)
+    true_N <- sum(temp2 == 0)
+
+    TP <- sum((temp1 != 0) * (temp2 != 0))
+    FP <- pred_P - TP
+    FN <- sum((temp1 == 0) * (temp2 != 0))
+    TN <- sum((temp1 == 0) * (temp2 == 0))
+
+  } else { # use patterns
+    # Convert estimated DAG to CPDAG
+    if (is.matrix(estDAG)) {
+      estPDAG <- dag2cpdag(estDAG)
+    } else if (class(estDAG) == "pcAlgo") {
+      estPDAG <- t(as(estDAG,"matrix"))
+    } else if (class(estDAG) == "graphNEL") {
+      estPDAG <- dag2cpdag(as(estDAG,"matrix"))
+    }
+
+    # Convert true DAG to CPDAG
+    if (is.matrix(trueDAG)) {
+      truePDAG <- dag2cpdag(trueDAG)
+    } else if (class(trueDAG) == "graphNEL") {
+      truePDAG <- dag2cpdag(as(trueDAG,"matrix"))
+    } else {
+      stop("Please check if the true DAG is indeed a DAG...")
+    }
+
+    # Convert CPDAGs to patterns
+    truePattern <- getPattern(truePDAG)
+    estPattern <- getPattern(estPDAG)
+
+    # 0: no edge; 1: -->; 2: <--; 3: <-->
+    temp1 <- estPattern[upper.tri(estPattern)] + 2 * t(estPattern)[upper.tri(t(estPattern))]
+    temp2 <- truePattern[upper.tri(truePattern)] + 2 * t(truePattern)[upper.tri(t(truePattern))]
+
+    # Number of edges in the estimated pattern
+    pred_P <- sum(temp1 != 0)
+
+    # Number of edges in the true pattern
+    true_P <- sum(temp2 != 0)
+
+    # Number of non-edges in the true pattern
+    true_N <- sum(temp2 == 0)
+
+    # TP, FP, TN, FN, SHD
+    if (hardP2P) {
+      TP <- sum((temp1 != 0) * (temp1 == temp2))
+    } else {
+      TP <- sum((temp1 != 0) * (temp1 == temp2)) + 0.5 * sum((temp1 * temp2) == 3) + 0.5 * sum((temp1 * temp2) == 6)
+    }
+    FP <- pred_P - TP
+    FN <- sum((temp1 == 0) * (temp2 != 0))
+    TN <- sum((temp1 == 0) * (temp2 == 0))
   }
 
-  # Convert true DAG to CPDAG
-  if (is.matrix(trueDAG)) {
-    truePDAG <- dag2cpdag(trueDAG)
-  } else if (class(trueDAG) == "graphNEL") {
-    truePDAG <- dag2cpdag(as(trueDAG,"matrix"))
-  } else {
-    stop("Please check if the true DAG is indeed a DAG...")
-  }
-
-  # Convert CPDAGs to patterns
-  truePattern <- getPattern(truePDAG)
-  estPattern <- getPattern(estPDAG)
-  n <- nrow(truePattern)
-
-  # 0: no edge; 1: -->; 2: <--; 3: <-->
-  temp1 <- estPattern[upper.tri(estPattern)] + 2 * t(estPattern)[upper.tri(t(estPattern))]
-  temp2 <- truePattern[upper.tri(truePattern)] + 2 * t(truePattern)[upper.tri(t(truePattern))]
-
-  # Number of edges in the estimated pattern
-  pred_P <- sum(temp1 != 0)
-
-  # Number of edges in the true pattern
-  true_P <- sum(temp2 != 0)
-
-  # Number of non-edges in the true pattern
-  true_N <- sum(temp2 == 0)
-
-  # TP, FP, TN, FN, SHD
-  if (hardP2P) {
-    TP <- sum((temp1 != 0) * (temp1 == temp2))
-  } else {
-    TP <- sum((temp1 != 0) * (temp1 == temp2)) + 0.5 * sum((temp1 * temp2) == 3) + 0.5 * sum((temp1 * temp2) == 6)
-  }
-  FP <- pred_P - TP
-  FN <- sum((temp1 == 0) * (temp2 != 0))
-  TN <- sum((temp1 == 0) * (temp2 == 0))
+  # Structural hamming distance
   SHD <- FP + FN
 
   # Precision
