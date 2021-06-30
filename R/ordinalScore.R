@@ -618,7 +618,8 @@ ordinalStructEM <- function(n, data,
 
 BGe_MAP_Sigma <- function(R, DAG) {
 
-  B <- matrix(0,nrow = n, ncol = n)
+  n <- nrow(DAG)
+  B <- matrix(0, nrow = n, ncol = n)
 
   for (j in c(1:ncol(DAG))) {
     pa <- which(DAG[,j] == 1)
