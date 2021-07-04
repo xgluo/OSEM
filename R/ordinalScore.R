@@ -559,8 +559,10 @@ observedLL <- function(param) {
 ordinalStructEM <- function(n, data,
                             usrpar = list(penType = c("AIC","BIC","other"),
                                           L = 5,
-                                          lambda = 2),
-                            computeObservedLL = FALSE) {
+                                          lambda = 2,
+                                          preLevels = NULL),
+                            computeObservedLL = FALSE,
+                            iterMCMC_alpha = 0.05) {
 
   start_time = Sys.time()
   print("Initializing parameters and DAG...")
@@ -571,19 +573,20 @@ ordinalStructEM <- function(n, data,
   iter <- 0
   currentBestDAG <- NULL
 
+  #Maximum iterations to avoid infinite loop
   if (param$lambda <= 1) {
     nr_iter <- 5
   } else {
     nr_iter <- 20
   }
 
-  while ((SHD != 0) && (iter < nr_iter)) { #Maximum 20 iterations to avoid infinite loop
+  while ((SHD != 0) && (iter < nr_iter)) {
 
     # Compute expected statistics
     param <- getExpectedStats(param)
 
     # Structure update
-    currentDAGobj <- iterativeMCMC(param, plus1it = 10, hardlimit = n)
+    currentDAGobj <- iterativeMCMC(param, plus1it = 10, hardlimit = n, alpha = iterMCMC_alpha)
     candidateBestDAG <- currentDAGobj$DAG
 
     # Parameter update
