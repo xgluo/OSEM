@@ -271,7 +271,7 @@ getExpectedStats <- function(param) {
 ##' @param param: a scoreparameter object for ordinal data
 ##' @param AM: an adjacency matrix of a DAG
 ##' @return an ordinal scoreparameter object with updated Gaussian correlation matrix
-ordinalUpdateParam <- function(param,AM) {
+ordinalUpdateParam <- function(param,AM,regsubsets = TRUE) {
 
   start_time = Sys.time()
 
@@ -320,7 +320,15 @@ ordinalUpdateParam <- function(param,AM) {
              add1 <- lm(Y_j ~ X - 1)
              add1MSE <- mean(add1$residuals^2)
 
-             if (NL*log(add1MSE) + param$lambda * log(NL) < NL*log(var_temp[j])) {
+             if (regsubsets) {
+
+               if (NL*log(add1MSE) + param$lambda * log(NL) < NL*log(var_temp[j])) {
+                 beta <- add1$coef
+                 B[j,parentnodes] <- beta
+                 var_temp[j] <- add1MSE
+               }
+
+             } else {
                beta <- add1$coef
                B[j,parentnodes] <- beta
                var_temp[j] <- add1MSE
@@ -331,20 +339,31 @@ ordinalUpdateParam <- function(param,AM) {
            { # more parents
 
              X <- Y[,parentnodes]
-             regfit.full <- regsubsets(x = X, y = Y_j,nvmax = lp,nbest = 1,
-                                       method = "exhaustive",intercept = FALSE)
-             reg.summary <- summary(regfit.full)
-             reg.bic <- reg.summary$bic
 
-             if (param$penType == "other") {
-               reg.bic <- reg.bic - (1 - param$lambda) * log(NL) * apply(reg.summary$which,1,sum)
+             if (regsubsets) {
+
+               regfit.full <- regsubsets(x = X, y = Y_j,nvmax = lp,nbest = 1,
+                                         method = "exhaustive",intercept = FALSE)
+               reg.summary <- summary(regfit.full)
+               reg.bic <- reg.summary$bic
+
+               if (param$penType == "other") {
+                 reg.bic <- reg.bic - (1 - param$lambda) * log(NL) * apply(reg.summary$which,1,sum)
+               }
+
+               best.n <- which.min(reg.bic)
+
+               beta <- coef(regfit.full, id = best.n)
+               B[j,parentnodes[reg.summary$which[best.n,]]] <- beta
+               var_temp[j] <- reg.summary$rss[best.n] / NL
+
+             } else {
+
+               lm.full <- lm(Y_j ~ X - 1)
+               B[j,parentnodes] <- coefficients(lm.full)
+               var_temp[j] <- sum(resid(lm.full)^2) / NL
+
              }
-
-             best.n <- which.min(reg.bic)
-
-             beta <- coef(regfit.full, id = best.n)
-             B[j,parentnodes[reg.summary$which[best.n,]]] <- beta
-             var_temp[j] <- reg.summary$rss[best.n] / NL
 
            })
 
@@ -562,7 +581,8 @@ ordinalStructEM <- function(n, data,
                                           lambda = 2,
                                           preLevels = NULL),
                             computeObservedLL = FALSE,
-                            iterMCMC_alpha = 0.05) {
+                            iterMCMC_alpha = 0.05,
+                            regsubsets = TRUE) {
 
   start_time = Sys.time()
   print("Initializing parameters and DAG...")
@@ -594,7 +614,7 @@ ordinalStructEM <- function(n, data,
     candidateBestDAG <- currentDAGobj$DAG
 
     # Parameter update
-    param <- ordinalUpdateParam(param,candidateBestDAG)
+    param <- ordinalUpdateParam(param,candidateBestDAG, regsubsets = regsubsets)
 
     # Check convergence
     if (!(is.null(currentBestDAG))) {
