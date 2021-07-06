@@ -577,11 +577,11 @@ ordinalStructEM <- function(n, data,
   if ((param$lambda <= 1) || (n >= 30)) {
     nr_iter <- 5
     nr_plus1it <- 5
-    hardlimit <- 5
+    #hardlimit <- 5
   } else {
     nr_iter <- 10
     nr_plus1it <- 10
-    hardlimit <- min(n, 10)
+    #hardlimit <- min(n, 10)
   }
 
   while ((SHD != 0) && (iter < nr_iter)) {
@@ -590,7 +590,7 @@ ordinalStructEM <- function(n, data,
     param <- getExpectedStats(param)
 
     # Structure update
-    currentDAGobj <- iterativeMCMC(param, plus1it = nr_plus1it, hardlimit = hardlimit, alpha = iterMCMC_alpha)
+    currentDAGobj <- iterativeMCMC(param, plus1it = nr_plus1it, hardlimit = n, alpha = iterMCMC_alpha)
     candidateBestDAG <- currentDAGobj$DAG
 
     # Parameter update
