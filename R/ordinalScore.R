@@ -595,14 +595,14 @@ ordinalStructEM <- function(n, data,
 
   # Maximum iterations to control runtime
   if ((param$lambda <= 1) || (n >= 30)) {
-    nr_iter <- 5
+    nr_EM_iter <- 5
     nr_plus1it <- 5
   } else {
-    nr_iter <- 10
+    nr_EM_iter <- 10
     nr_plus1it <- 10
   }
 
-  while ((SHD != 0) && (iter < nr_iter)) {
+  while ((SHD != 0) && (iter < nr_EM_iter)) {
 
     # Compute expected statistics
     param <- getExpectedStats(param)
