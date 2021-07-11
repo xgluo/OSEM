@@ -1,0 +1,10 @@
+Package: rpcart
+Type: Package
+Title: PCART Optimization
+Version: 0.1.2
+Date: 2021-05-27
+Author: Topi Talvitie
+Description: Optimizes PCART decision tree structures to given data. Modified and recompiled by Xiang Ge Luo to include OPCART and improve code efficiency.
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.0.6)
+LinkingTo: Rcpp
