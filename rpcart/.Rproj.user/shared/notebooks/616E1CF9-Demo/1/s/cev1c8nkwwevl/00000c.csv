@@ -1,0 +1,2 @@
+"0","tempgraph <- graphAM(pcartfit$DAG, edgemode = ""directed"")"
+"0","plot(tempgraph, main= ""pcart"")"

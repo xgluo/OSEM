@@ -1,0 +1,61 @@
+datBCW <- read.csv("~/Downloads/breast-cancer-wisconsin.data.csv", header = FALSE)
+
+head(datBCW)
+datBCW$V1 <- NULL
+colnames(datBCW) <- c("Clump_Thickness","Uniformity_Cell_Size","Uniformity_Cell_Shape",
+                      "Marginal_Adhesion","Epithelial_Cell_Size","Bare_Nuclei",
+                      "Bland_Chromatin","Normal_Nucleoli","Mitoses","Maglinancy")
+
+# 2->0 [benign]; 4->1 [maglinant]
+datBCW$Maglinancy[datBCW$Maglinancy == 2] <- 1
+datBCW$Maglinancy[datBCW$Maglinancy == 4] <- 2
+
+# impute missing data
+datBCW$Bare_Nuclei[datBCW$Bare_Nuclei == "?"] <- sample(names(table(datBCW$Bare_Nuclei))[-1],
+                                                        sum(datBCW$Bare_Nuclei == "?"),
+                                                        replace = TRUE,
+                                                        prob = table(datBCW$Bare_Nuclei)[-1] / sum(table(datBCW$Bare_Nuclei)[-1]))
+
+for (i in c(1:ncol(datBCW))) {
+  datBCW[,i] <- as.integer(datBCW[,i])
+}
+
+datBCW <- datBCW - 1
+
+save(datBCW,file = "~/Documents/Projects/OSEM/simulations_20210629/real_data/datBCW.RData")
+load("~/Documents/Projects/OSEM/simulations_20210629/real_data/datBCW.RData")
+
+# Create training and test set for validation set approach (80% train/20% test)
+n <- ncol(datBCW)
+N <- nrow(datBCW)
+test <- sample(1:N, N/5, replace=FALSE)
+train <- (-test)
+train.data <- datBCW[train,]
+test.data <- datBCW[test,]
+datBCW_levels <- apply(datBCW, 2, function(x) length(unique(x)))
+datBCW_levels - apply(train.data, 2, function(x) length(unique(x)))
+
+BDE <- scoreparameters("bdecat",train.data,bdecatpar = list(chi = 25,bdecatCvec=datBCW_levels))
+BDEfit <- iterativeMCMC(BDE)
+sum(scoreagainstDAG(BDE,BDEfit$DAG,test.data,bdecatCvec=datBCW_levels))
+mean(apply(BDEfit$DAG,2,sum))
+
+OSEMfit <- ordinalStructEM(n, train.data,
+                           usrpar = list(penType = "other",
+                                         L = 5,
+                                         lambda = 2,
+                                         preLevels = datBCW_levels))
+OSEM.test.param <- OSEMfit$param
+OSEM.test.param$data <- test.data
+observedLL(OSEM.test.param)
+mean(apply(OSEMfit$DAG,2,sum))
+
+
+BGE <- scoreparameters("bge", train.data, bgepar = list(am = 6))
+BGEfit <- iterativeMCMC(BGE)
+mean(apply(BGEfit$DAG,2,sum))
+BGE.test.param <- BGE
+BGE.test.param$Sigma_hat <- BGe_MAP_Sigma(BGE$TN,BGEfit$DAG)
+BGE.test.param$cuts <- OSEM.test.param$cuts
+BGE.test.param$data <- test.data
+observedLL(BGE.test.param)

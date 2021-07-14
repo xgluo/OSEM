@@ -1,0 +1,8 @@
+"0","pcartfit <- iterativeMCMC(pcartparam, alpha = 0, plus1it = 10, softlimit = 3, hardlimit = 3)
+"
+"1","maximum parent set size is 0"
+"1"," "
+"1","
+"
+"1","skeleton ready 
+"

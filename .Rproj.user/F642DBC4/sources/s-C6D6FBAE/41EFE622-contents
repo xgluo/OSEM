@@ -1,0 +1,43 @@
+library(parallel)
+library(treeMHN)
+library(Matrix)
+
+# Load AML trees
+AML <- treeMHN:::parse_trees("/cluster/home/luox/XGLuo/AML")
+AML_trees <- AML$trees
+to_remove <- c("AML-05_AML-05-001","AML-10_AML-10-001","AML-11_AML-11-001",
+               "AML-21_AML-21-001","AML-24_AML-24-001","AML-42_AML-42-001",
+               "AML-46_AML-46-001","AML-67_AML-67-001","AML-71_AML-71-001",
+               "AML-72_AML-72-001","AML-77_AML-77-001")
+trees <- list()
+for (i in c(1:length(AML_trees))) {
+  if (!(AML_trees[[i]]$label %in% to_remove)) {
+    trees <- append(trees, list(AML_trees[[i]]))
+  }
+}
+n <- AML$n
+lambda_s <- 1
+N <- length(trees)
+M <- 100
+
+# Stability selection parameters
+gamma <- 0.05
+threshold <- 0.9
+subsample_size <- floor(N/2)
+
+# Subsample once
+subsample_once <- function(n, subsample_size, trees, gamma, lambda_s) {
+
+  subsample_trees <- sample(trees, subsample_size)
+  AML_Theta_EM <- learn_MHN_EM(n, subsample_size, subsample_trees, gamma = gamma, lambda_s = lambda_s, nr_round = 1000)
+
+  selected <- rep(0, n^2)
+  selected[abs(AML_Theta_EM) > 1e-3] <- 1
+  return(selected)
+}
+
+# Run in parallel
+res <- mclapply(c(1:100), function(i) subsample_once(n, subsample_size, trees, gamma, lambda_s), mc.cores = 100)
+res <- do.call("rbind",res)
+try(setwd("/cluster/home/luox/XGLuo/treeMHN_simulations"))
+save(res,file="AML_SS_gamma_5_threshold_90_2.RData")

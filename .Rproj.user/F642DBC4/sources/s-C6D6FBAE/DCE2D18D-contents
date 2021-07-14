@@ -1,0 +1,96 @@
+library(parallel)
+library(treeMHN)
+library(Matrix)
+# library(doParallel)
+# library(foreach)
+
+# Load AML trees
+AML <- treeMHN:::parse_trees("/cluster/home/luox/XGLuo/AML")
+AML_trees <- AML$trees
+to_remove <- c("AML-05_AML-05-001","AML-10_AML-10-001","AML-11_AML-11-001",
+               "AML-21_AML-21-001","AML-24_AML-24-001","AML-42_AML-42-001",
+               "AML-46_AML-46-001","AML-67_AML-67-001","AML-71_AML-71-001",
+               "AML-72_AML-72-001","AML-77_AML-77-001")
+trees <- list()
+for (i in c(1:length(AML_trees))) {
+  if (!(AML_trees[[i]]$label %in% to_remove)) {
+    trees <- append(trees, list(AML_trees[[i]]))
+  }
+}
+n <- AML$n
+lambda_s <- 1
+N <- length(trees)
+M <- 100
+
+load("/cluster/home/luox/XGLuo/treeMHN_simulations/AML_SS_gamma_5_threshold_90_500_noITD.RData")
+to_mask <- which(matrix(apply(res,2,mean) > 0.95,nrow = n) == 0)
+
+# 5-fold cross validation
+K <- 5
+folds <- cut(seq(1,N), breaks = K, labels = FALSE)
+
+CV_once <- function(n, N, trees, gamma, lambda_s, folds, K, to_mask) {
+
+  # cl <- makeCluster(5)
+  # registerDoParallel(cl)
+  #
+  # log_loss <- foreach(i = c(1:K), .combine = sum) %dopar% {
+  #   ind.test <- which(folds==i, arr.ind=TRUE)
+  #   train.trees <- trees[-ind.test]
+  #   test.trees <- trees[ind.test]
+  #
+  #   # training
+  #   AML_Theta_EM <- learn_MHN_EM(n, length(train.trees), train.trees,
+  #                                gamma = gamma, lambda_s = lambda_s,
+  #                                nr_round = 1000, to_mask = to_mask)
+  #
+  #   # testing
+  #   obj_grad_help <- obj_grad_helper(n, length(test.trees), test.trees, AML_Theta_EM, lambda_s)
+  #   obs_MHN_objective(AML_Theta_EM, n, length(test.trees),lambda_s, test.trees, 0, obj_grad_help)
+  # }
+  # stopCluster(cl)
+
+  log_loss <- mclapply(c(1:K), function (i) {
+    ind.test <- which(folds==i, arr.ind=TRUE)
+    train.trees <- trees[-ind.test]
+    test.trees <- trees[ind.test]
+
+    # training
+    AML_Theta_EM <- learn_MHN_EM(n, length(train.trees), train.trees,
+                                 gamma = gamma, lambda_s = lambda_s,
+                                 nr_round = 1000, to_mask = to_mask)
+
+    # testing
+    obj_grad_help <- treeMHN:::obj_grad_helper(n, length(test.trees), test.trees, AML_Theta_EM, lambda_s)
+    treeMHN:::obs_MHN_objective(AML_Theta_EM, n, length(test.trees),lambda_s, test.trees, 0, obj_grad_help)
+  }, mc.cores = K)
+  #log_loss <- do.call(log_loss, sum)
+
+  # log_loss <- 0
+  # for (i in c(1:K)) {
+  #   ind.test <- which(folds==i, arr.ind=TRUE)
+  #   train.trees <- trees[-ind.test]
+  #   test.trees <- trees[ind.test]
+  #
+  #   # training
+  #   AML_Theta_EM <- learn_MHN_EM(n, length(train.trees), train.trees,
+  #                                gamma = gamma, lambda_s = lambda_s,
+  #                                nr_round = 1000, to_mask = to_mask)
+  #
+  #   # testing
+  #   obj_grad_help <- obj_grad_helper(n, length(test.trees), test.trees, AML_Theta_EM, lambda_s)
+  #   log_loss <- log_loss + obs_MHN_objective(AML_Theta_EM, n, length(test.trees),
+  #                                            lambda_s, test.trees, 0, obj_grad_help)
+  #
+  # }
+
+  return(log_loss)
+}
+
+# Run CV on different gammas
+#gamma_list <- c(0.01, 0.05, 0.1, 0.2, 0.3, 0.5, 1, 2)
+gamma_list <- c(0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1)
+res <- mclapply(gamma_list, function(g) CV_once(n,N,trees,g,lambda_s,folds,K,to_mask), mc.cores = length(gamma_list))
+res <- matrix(unlist(res), nrow = K)
+try(setwd("/cluster/home/luox/XGLuo/treeMHN_simulations"))
+save(res,file="AML_CV3.RData")

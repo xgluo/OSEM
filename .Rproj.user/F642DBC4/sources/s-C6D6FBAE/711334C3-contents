@@ -1,0 +1,105 @@
+library(parallel)
+library(BiDAG)
+library(rpcart)
+
+setwd("~/XGLuo/OSEM/simulations_20210629/real_data")
+load("datVotes.RData")
+n <- ncol(datVotes)
+N <- nrow(datVotes)
+datVotes_levels <- apply(datVotes, 2, function(x) length(unique(x)))
+
+setwd("~/XGLuo/OSEM/OSEM/R")
+source("ordinalScore.R")
+insertSource("spacefns.R",package = "BiDAG")
+insertSource("initpar.R",package = "BiDAG")
+insertSource("usrscorefns.R",package = "BiDAG")
+insertSource("scoreagainstdag.R",package = "BiDAG")
+
+compute_logloss <- function(dat, dat_levels) {
+  test <- sample(1:N, N/5, replace=FALSE)
+  train <- (-test)
+  train.data <- dat[train,]
+  test.data <- dat[test,]
+
+  k <- 7
+  chi_list <- c(20,30,40,50,60,70,80)
+  lambda_list <- c(2/log(nrow(train.data)),(2/log(nrow(train.data)) + 1)/2,1,1.25,1.5,2,2.5)
+  am_list <- c(1,3,5,7,10,15,20)
+  pcart_alpha_list <- c(5,8,11,15,18,20,25)
+  opcart_alpha_list <- c(1.5,2,2.5,3,3.5,4,4.5)
+
+  summ_stats <- array(NA,dim = c(5,k,2),
+                      dimnames = list(c("OSEM","BDe","BGe","pcart","opcart"),
+                                      c(1:k),
+                                      c("log_loss","avg_nr_pa")))
+
+  for (i in c(1:k)) {
+    # OSEM
+    cat("=================OSEM==================\n")
+    insertSource("~/XGLuo/OSEM/OSEM/R/usrscorefns.R",package = "BiDAG")
+    OSEMfit <- ordinalStructEM(n, train.data,
+                               usrpar = list(penType = "other",
+                                             L = 5,
+                                             lambda = lambda_list[i],
+                                             preLevels = dat_levels))
+    OSEM.test.param <- OSEMfit$param
+    OSEM.test.param$data <- test.data
+    summ_stats["OSEM",i,1] <- observedLL(OSEM.test.param)
+    summ_stats["OSEM",i,2] <- mean(apply(OSEMfit$DAG,2,sum))
+
+    cat("=================BGe==================\n")
+    # BGe
+    BGE <- scoreparameters("bge", train.data, bgepar = list(am = am_list[i]))
+    BGEfit <- iterativeMCMC(BGE)
+    BGE.test.param <- BGE
+    BGE.test.param$Sigma_hat <- BGe_MAP_Sigma(BGE$TN,BGEfit$DAG)
+    BGE.test.param$cuts <- OSEM.test.param$cuts
+    BGE.test.param$data <- test.data
+    summ_stats["BGe",i,1] <- observedLL(BGE.test.param)
+    summ_stats["BGe",i,2] <- mean(apply(BGEfit$DAG,2,sum))
+
+    cat("=================BDe==================\n")
+    # BDe
+    BDE <- scoreparameters("bdecat", train.data, bdecatpar = list(chi = chi_list[i], bdecatCvec=dat_levels))
+    BDEfit <- iterativeMCMC(BDE)
+    summ_stats["BDe",i,1] <- sum(scoreagainstDAG(BDE,BDEfit$DAG,test.data,bdecatCvec=dat_levels))
+    summ_stats["BDe",i,2] <- mean(apply(BDEfit$DAG,2,sum))
+
+    cat("=================PCART==================\n")
+    # pcart
+    insertSource("~/XGLuo/OSEM/OSEM/R/usrscorefns_pcart.R",package = "BiDAG")
+    pcartparam <- scoreparameters("usr", train.data,
+                                  usrpar = list(pcart_alpha = pcart_alpha_list[i],
+                                                pcart_kappa = 0.25,
+                                                pctesttype = "bde",
+                                                preLevels = dat_levels,
+                                                response_type = "CAT"))
+    pcartfit <- iterativeMCMC(pcartparam, alpha = 0, plus1it = 10, softlimit = 3, hardlimit = 3)
+    pcart.bde.param <- BDE
+    pcart.bde.param$chi <- pcartparam$pcart_alpha
+    summ_stats["pcart",i,1] <- sum(scoreagainstDAG(pcart.bde.param,pcartfit$DAG,test.data,bdecatCvec=dat_levels))
+    summ_stats["pcart",i,2] <- mean(apply(pcartfit$DAG,2,sum))
+
+    cat("=================OPCART==================\n")
+    # opcart
+    opcartparam <- scoreparameters("usr", train.data,
+                                   usrpar = list(pcart_alpha = opcart_alpha_list[i],
+                                                 pcart_kappa = 0.25,
+                                                 pctesttype = "bde",
+                                                 preLevels = dat_levels,
+                                                 response_type = "ORD"))
+    opcartfit <- iterativeMCMC(opcartparam, alpha = 0, plus1it = 10, softlimit = 3, hardlimit = 3)
+    opcart.bde.param <- BDE
+    opcart.bde.param$chi <- opcartparam$pcart_alpha
+    summ_stats["opcart",i,1] <- sum(scoreagainstDAG(opcart.bde.param,opcartfit$DAG,test.data,bdecatCvec=dat_levels))
+    summ_stats["opcart",i,2] <- mean(apply(opcartfit$DAG,2,sum))
+
+  }
+  return(summ_stats)
+}
+
+results <- mclapply(c(1:100), function(i) compute_logloss(datVotes, datVotes_levels), mc.cores = 100)
+fname <- "logloss_Votes_v1"
+try(setwd("~/XGLuo/OSEM/simulations_20210629/results"))
+try(results <- simplify2array(results))
+save(results,file = paste(fname,".RData",sep = ""))

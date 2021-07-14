@@ -1,0 +1,63 @@
+datCMC <- read.csv("~/Downloads/cmc.data.csv", header = FALSE)
+
+head(datCMC)
+colnames(datCMC) <- c("wife_age","wife_education","husband_education","nr_children",
+                      "wife_religion","wife_is_working","husband_occupation",
+                      "standard_of_living","media_exposure","contraceptive_method")
+
+# wife's age: 0 (-Inf,20); 1 [20,30); 2 [30,40); 3 [40,Inf)
+datCMC$wife_age <- cut(datCMC$wife_age,breaks = c(min(datCMC$wife_age) - 1,20,30,40,max(datCMC$wife_age) + 1),labels = FALSE) - 1
+
+# number of children: 0 [0,1]; 1 [2,3]; 2 [4,5]; 3 [6,Inf)
+datCMC$nr_children <- cut(datCMC$nr_children, breaks = c(-1,2,4,6,16), labels = FALSE) - 1
+
+# wife is working: 0 [not working]; 1 [working]
+datCMC$wife_is_working <- 1 - datCMC$wife_is_working
+
+# reduce levels for wife's education, husband's education, husband's occupation, standard-of-living index
+datCMC$wife_education <- datCMC$wife_education - 1
+datCMC$husband_education <- datCMC$husband_education - 1
+datCMC$husband_occupation <- datCMC$husband_occupation - 1
+datCMC$standard_of_living <- datCMC$standard_of_living - 1
+
+# media exposure: 0 [not good]; 1 [good]
+datCMC$media_exposure <- 1 - datCMC$media_exposure
+
+# contraceptive method: 0 [no use]; 1 [short-term]; 2 [long-term]
+datCMC$contraceptive_method[datCMC$contraceptive_method == 1] <- 0
+datCMC$contraceptive_method[datCMC$contraceptive_method == 3] <- 1
+
+# Create training and test set for validation set approach (80% train/20% test)
+n <- ncol(datCMC)
+N <- nrow(datCMC)
+test <- sample(1:N, N/5, replace=FALSE)
+train <- (-test)
+train.data <- datCMC[train,]
+test.data <- datCMC[test,]
+datCMC_levels <- apply(datCMC, 2, function(x) length(unique(x)))
+datCMC_levels - apply(train.data, 2, function(x) length(unique(x)))
+
+BDE <- scoreparameters("bdecat",train.data,bdecatpar = list(chi = 25,bdecatCvec=datCMC_levels))
+BDEfit <- iterativeMCMC(BDE)
+sum(scoreagainstDAG(BDE,BDEfit$DAG,test.data,bdecatCvec=datCMC_levels))
+mean(apply(BDEfit$DAG,2,sum))
+
+OSEMfit <- ordinalStructEM(n, train.data,
+                           usrpar = list(penType = "other",
+                                         L = 5,
+                                         lambda = 2,
+                                         preLevels = datCMC_levels))
+OSEM.test.param <- OSEMfit$param
+OSEM.test.param$data <- test.data
+observedLL(OSEM.test.param)
+mean(apply(OSEMfit$DAG,2,sum))
+
+
+BGE <- scoreparameters("bge", train.data, bgepar = list(am = 6))
+BGEfit <- iterativeMCMC(BGE)
+mean(apply(BGEfit$DAG,2,sum))
+BGE.test.param <- BGE
+BGE.test.param$Sigma_hat <- BGe_MAP_Sigma(BGE$TN,BGEfit$DAG)
+BGE.test.param$cuts <- OSEM.test.param$cuts
+BGE.test.param$data <- test.data
+observedLL(BGE.test.param)

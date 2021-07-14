@@ -1,0 +1,24 @@
+{
+    "id": "F53BAF58",
+    "path": "~/Documents/Projects/AML/code/treeMHN/R/util_fns.R",
+    "project_path": null,
+    "type": "r_source",
+    "hash": "3241449584",
+    "contents": "",
+    "dirty": false,
+    "created": 1624275531054.0,
+    "source_on_save": false,
+    "relative_order": 16,
+    "properties": {
+        "cursorPosition": "187,6",
+        "scrollLine": "177"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1618911989,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1618911989,
+    "read_only": false,
+    "read_only_alternatives": []
+}

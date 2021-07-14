@@ -1,0 +1,32 @@
+load("/Users/luox/Documents/Projects/OSEM/simulations_20210629/results/N500_n20_s4_L3_nu2.RData")
+
+alpha_list <- c(0.001,0.01,0.025,0.05,0.075,0.1,0.15,0.2,0.25,0.3)
+chi_list <- c(0.0001,0.001,0.01,0.1,1,10,20,40,60,80)
+lambda_list <- c((2/log(N) + 1)/2,1,1.5,2,2.5,3,4,6,10,20)
+am_list <- c(0.0001,0.001,0.01,0.025,0.05,0.1,0.25,0.5,1,1.5)
+hidden_am_list <- c(0.0001,0.01,0.05,0.25,0.5,1,2,3,5,7)
+
+par(mfcol = c(2,2))
+
+
+load("/Users/luox/Documents/Projects/OSEM/simulations_20210629/results/N500_n20_s4_L2_nu2.RData")
+plot(c(1:10), apply(results["OSEM",,"log_loss","pattern",],1,mean),col = "orange",
+     xlab = "", ylab = "log loss", ylim = c(-1100,-950),pch = 19, main = "avg levels = 2")
+points(c(1:10), apply(results["BGe",,"log_loss","pattern",],1,mean), col = "darkblue",pch = 19)
+points(c(1:10), apply(results["BDe",,"log_loss","pattern",],1,mean), col = "darkgreen",pch = 19)
+
+plot(c(1:10), apply(results["OSEM",,"SHD","pattern",],1,mean),col = "orange",
+     xlab = "", ylab = "SHD", ylim = c(0,100),pch = 19, main = "avg levels = 2")
+points(c(1:10), apply(results["BGe",,"SHD","pattern",],1,mean), col = "darkblue",pch = 19)
+points(c(1:10), apply(results["BDe",,"SHD","pattern",],1,mean), col = "darkgreen",pch = 19)
+
+load("/Users/luox/Documents/Projects/OSEM/simulations_20210629/results/N500_n20_s4_L3_nu2.RData")
+plot(c(1:10), apply(results["OSEM",,"log_loss","pattern",],1,mean),col = "orange",
+     xlab = "", ylab = "log loss", ylim = c(-1800,-1500),pch = 19, main = "avg levels = 3")
+points(c(1:10), apply(results["BGe",,"log_loss","pattern",],1,mean), col = "darkblue",pch = 19)
+points(c(1:10), apply(results["BDe",,"log_loss","pattern",],1,mean), col = "darkgreen",pch = 19)
+
+plot(c(1:10), apply(results["OSEM",,"SHD","pattern",],1,mean),col = "orange",
+     xlab = "", ylab = "SHD", ylim = c(0,100),pch = 19, main = "avg levels = 3")
+points(c(1:10), apply(results["BGe",,"SHD","pattern",],1,mean), col = "darkblue",pch = 19)
+points(c(1:10), apply(results["BDe",,"SHD","pattern",],1,mean), col = "darkgreen",pch = 19)

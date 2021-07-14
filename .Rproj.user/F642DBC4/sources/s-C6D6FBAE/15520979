@@ -1,0 +1,25 @@
+{
+    "id": "15520979",
+    "path": "~/Documents/Projects/OSEM/simulations_20210629/real_data/BCW_prep.R",
+    "project_path": null,
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": true,
+    "created": 1625138923323.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "28,0",
+        "scrollLine": "25"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1625145569,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1625145644302,
+    "read_only": false,
+    "read_only_alternatives": []
+}

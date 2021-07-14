@@ -1,0 +1,772 @@
+[
+    {
+        "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/bits.h",
+        "file_last_write": 1622144233.0,
+        "definitions": []
+    },
+    {
+        "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+        "file_last_write": 1622144253.0,
+        "definitions": [
+            {
+                "usr": "c:@N@pcart@S@Cell",
+                "kind": 2,
+                "parent_name": "",
+                "name": "Cell",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 9,
+                "column": 7
+            },
+            {
+                "usr": "c:@N@pcart@S@Cell@F@operator==#$@N@pcart@S@Cell#1",
+                "kind": 7,
+                "parent_name": "Cell",
+                "name": "operator==(pcart::Cell)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 13,
+                "column": 7
+            },
+            {
+                "usr": "c:@N@pcart@S@DataSplitter",
+                "kind": 2,
+                "parent_name": "",
+                "name": "DataSplitter",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 25,
+                "column": 7
+            },
+            {
+                "usr": "c:@N@pcart@S@DataSplitter@FT@>1#Tsplit#*>@N@std@ST>2#T#T@pair2$@N@pcart@S@Cellt0.0#l#l#1",
+                "kind": 6,
+                "parent_name": "",
+                "name": "split(pair<pcart::Cell, T> *, std::size_t)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 30,
+                "column": 9
+            },
+            {
+                "usr": "c:@N@pcart@S@CellCtx",
+                "kind": 2,
+                "parent_name": "",
+                "name": "CellCtx",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 50,
+                "column": 7
+            },
+            {
+                "usr": "c:@N@pcart@S@CellCtx@F@root#1",
+                "kind": 7,
+                "parent_name": "CellCtx",
+                "name": "root",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 96,
+                "column": 7
+            },
+            {
+                "usr": "c:@N@pcart@S@CellCtx@F@pointCell#&1I#1",
+                "kind": 7,
+                "parent_name": "CellCtx",
+                "name": "pointCell(const int &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 100,
+                "column": 7
+            },
+            {
+                "usr": "c:@N@pcart@S@CellCtx@FT@>1#TiterateSplits#$@N@pcart@S@Cell#t0.0#v#1",
+                "kind": 6,
+                "parent_name": "",
+                "name": "iterateSplits(pcart::Cell, F)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 129,
+                "column": 7
+            },
+            {
+                "usr": "c:@N@pcart@S@CellCtx@FT@>2#T#TiterateDataSplits#$@N@pcart@S@Cell#*>@N@std@ST>2#T#T@pair2S0_t0.0#l#b#b#t0.1#v#1",
+                "kind": 6,
+                "parent_name": "",
+                "name": "iterateDataSplits(pcart::Cell, pair<pcart::Cell, T> *, std::size_t, bool, bool, F)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 222,
+                "column": 7
+            },
+            {
+                "usr": "c:@N@pcart@S@CellCtx@S@VarInfo",
+                "kind": 3,
+                "parent_name": "",
+                "name": "VarInfo",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 257,
+                "column": 9
+            },
+            {
+                "usr": "c:@N@pcart@S@CellCtx@S@VarInfo@F@getRepr#$@N@pcart@S@Cell#1",
+                "kind": 7,
+                "parent_name": "VarInfo",
+                "name": "getRepr(pcart::Cell)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 263,
+                "column": 12
+            },
+            {
+                "usr": "c:@N@pcart@S@CellCtx@S@VarInfo@F@putRepr#&$@N@pcart@S@Cell#I#1",
+                "kind": 7,
+                "parent_name": "VarInfo",
+                "name": "putRepr(pcart::Cell &, int)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 266,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@S@CellCtx@FT@>1#TadaptCellToData_#$@N@pcart@S@Cell#*1>@N@std@ST>2#T#T@pair2S0_t0.0#l#S0_#1",
+                "kind": 6,
+                "parent_name": "",
+                "name": "adaptCellToData_(pcart::Cell, const pair<pcart::Cell, T> *, std::size_t)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 272,
+                "column": 7
+            },
+            {
+                "usr": "c:@N@std@S@hash",
+                "kind": 3,
+                "parent_name": "",
+                "name": "hash",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 292,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@std@S@hash@F@operator()#$@N@pcart@S@Cell#1",
+                "kind": 7,
+                "parent_name": "hash",
+                "name": "operator(pcart::Cell)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cell.h",
+                "line": 293,
+                "column": 9
+            }
+        ]
+    },
+    {
+        "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cli.cpp",
+        "file_last_write": 1622291601.0,
+        "definitions": [
+            {
+                "usr": "c:@F@cli_pcart#$@N@Rcpp@S@Matrix>#VI14#@N@Rcpp@ST>1#T@PreserveStorage#l#l#I#$@N@std@N@__cxx11@S@basic_string>#C#$@N@std@S@char_traits>#C#$@N@std@S@allocator>#C#l#d#d#d#b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cli_pcart(Rcpp::NumericMatrix, size_t, size_t, int, std::string, size_t, double, double, double, bool)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/cli.cpp",
+                "line": 14,
+                "column": 6
+            }
+        ]
+    },
+    {
+        "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/common.h",
+        "file_last_write": 1617092333.0,
+        "definitions": [
+            {
+                "usr": "c:@N@pcart@F@stderrPrint#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "stderrPrint",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/common.h",
+                "line": 61,
+                "column": 13
+            },
+            {
+                "usr": "c:@N@pcart@FT@>2#T#pTstderrPrint#&1t0.0#P&1t0.1#v#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "stderrPrint(const F &, const T &...)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/common.h",
+                "line": 65,
+                "column": 6
+            },
+            {
+                "usr": "c:@N@pcart@FT@>1#pTfail#P&1t0.0#v#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "fail(const T &...)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/common.h",
+                "line": 70,
+                "column": 6
+            },
+            {
+                "usr": "c:@N@pcart@FT@>1#TfromString#&1$@N@std@N@__cxx11@S@basic_string>#C#$@N@std@S@char_traits>#C#$@N@std@S@allocator>#C#t0.0#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "fromString(const std::string &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/common.h",
+                "line": 76,
+                "column": 3
+            },
+            {
+                "usr": "c:@N@pcart@ST>1#pT@LambdaVisitor",
+                "kind": 2,
+                "parent_name": "",
+                "name": "LambdaVisitor<T>",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/common.h",
+                "line": 84,
+                "column": 32
+            },
+            {
+                "usr": "c:@N@pcart@FT@>2#T#pTlambdaVisit#&&t0.0#P&&t0.1#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "lambdaVisit(Variant &&, Visitor &&...)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/common.h",
+                "line": 88,
+                "column": 16
+            },
+            {
+                "usr": "c:@N@pcart@F@lognCr#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "lognCr(double, double)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/common.h",
+                "line": 92,
+                "column": 15
+            },
+            {
+                "usr": "c:@N@pcart@F@addLog#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "addLog(double, double)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/common.h",
+                "line": 96,
+                "column": 15
+            }
+        ]
+    },
+    {
+        "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.cpp",
+        "file_last_write": 1622144287.0,
+        "definitions": [
+            {
+                "usr": "c:@N@pcart@F@computeStructureScoreTerms#&1I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "computeStructureScoreTerms(const int &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.cpp",
+                "line": 7,
+                "column": 21
+            }
+        ]
+    },
+    {
+        "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.h",
+        "file_last_write": 1622144300.0,
+        "definitions": [
+            {
+                "usr": "c:@N@pcart@S@LeafStats>#$@N@pcart@S@RealVar",
+                "kind": 3,
+                "parent_name": "",
+                "name": "LeafStats<pcart::RealVar>",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.h",
+                "line": 11,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@S@LeafStats>#$@N@pcart@S@RealVar@FT@>1#TLeafStats#&1S0_#l#t0.0#v#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "LeafStats(const pcart::RealVar &, std::size_t, F)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.h",
+                "line": 17,
+                "column": 2
+            },
+            {
+                "usr": "c:@N@pcart@S@LeafStats>#$@N@pcart@S@RealVar@F@dataScore#&1S0_#d#1",
+                "kind": 7,
+                "parent_name": "LeafStats<pcart::RealVar>",
+                "name": "dataScore(const pcart::RealVar &, double)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.h",
+                "line": 33,
+                "column": 9
+            },
+            {
+                "usr": "c:@N@pcart@S@LeafStats>#$@N@pcart@S@CatVar",
+                "kind": 3,
+                "parent_name": "",
+                "name": "LeafStats<pcart::CatVar>",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.h",
+                "line": 60,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@S@LeafStats>#$@N@pcart@S@CatVar@FT@>1#TLeafStats#&1S0_#l#t0.0#v#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "LeafStats(const pcart::CatVar &, std::size_t, F)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.h",
+                "line": 65,
+                "column": 2
+            },
+            {
+                "usr": "c:@N@pcart@S@LeafStats>#$@N@pcart@S@CatVar@F@dataScore#&1S0_#d#1",
+                "kind": 7,
+                "parent_name": "LeafStats<pcart::CatVar>",
+                "name": "dataScore(const pcart::CatVar &, double)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.h",
+                "line": 74,
+                "column": 9
+            },
+            {
+                "usr": "c:@N@pcart@S@LeafStats>#$@N@pcart@S@OrdVar",
+                "kind": 3,
+                "parent_name": "",
+                "name": "LeafStats<pcart::OrdVar>",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.h",
+                "line": 99,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@S@LeafStats>#$@N@pcart@S@OrdVar@FT@>1#TLeafStats#&1S0_#l#t0.0#v#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "LeafStats(const pcart::OrdVar &, std::size_t, F)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.h",
+                "line": 104,
+                "column": 2
+            },
+            {
+                "usr": "c:@N@pcart@S@LeafStats>#$@N@pcart@S@OrdVar@F@dataScore#&1S0_#d#1",
+                "kind": 7,
+                "parent_name": "LeafStats<pcart::OrdVar>",
+                "name": "dataScore(const pcart::OrdVar &, double)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.h",
+                "line": 113,
+                "column": 9
+            },
+            {
+                "usr": "c:@N@pcart@S@StructureScoreTerms",
+                "kind": 3,
+                "parent_name": "",
+                "name": "StructureScoreTerms",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/score.h",
+                "line": 158,
+                "column": 8
+            }
+        ]
+    },
+    {
+        "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.cpp",
+        "file_last_write": 1622144316.0,
+        "definitions": [
+            {
+                "usr": "c:tree.cpp@aN@FT@>1#TextractData#&1$@N@pcart@S@CellCtx#&1I#S2_#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "extractData(const pcart::CellCtx &, const int &, const int &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.cpp",
+                "line": 11,
+                "column": 37
+            },
+            {
+                "usr": "c:tree.cpp@aN@F@useAdaptCell#&1$@N@pcart@S@RealVar#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "useAdaptCell(const pcart::RealVar &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.cpp",
+                "line": 24,
+                "column": 6
+            },
+            {
+                "usr": "c:tree.cpp@aN@F@useAdaptCell#&1$@N@pcart@S@CatVar#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "useAdaptCell(const pcart::CatVar &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.cpp",
+                "line": 27,
+                "column": 6
+            },
+            {
+                "usr": "c:tree.cpp@aN@F@useAdaptCell#&1$@N@pcart@S@OrdVar#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "useAdaptCell(const pcart::OrdVar &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.cpp",
+                "line": 30,
+                "column": 6
+            },
+            {
+                "usr": "c:tree.cpp@aN@FT@>1#ToptimizeTreeRecursion#&1$@N@pcart@S@CellCtx#&1I#d#&I#$@N@pcart@S@Cell#d#*>@N@std@ST>2#T#T@pair2S4_^type-parameter-0-0:::Val#l#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "optimizeTreeRecursion(const pcart::CellCtx &, const int &, double, int &, pcart::Cell, double, pair<pcart::Cell, typename R::Val> *, std::size_t)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.cpp",
+                "line": 35,
+                "column": 8
+            },
+            {
+                "usr": "c:tree.cpp@aN@FT@>1#TextractOptimumTree#&1$@N@pcart@S@CellCtx#&1I#d#S2_#$@N@pcart@S@Cell#d#*>@N@std@ST>2#T#T@pair2S3_^type-parameter-0-0:::Val#l#$@N@pcart@S@TreeResult#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "extractOptimumTree(const pcart::CellCtx &, const int &, double, const int &, pcart::Cell, double, pair<pcart::Cell, typename R::Val> *, std::size_t)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.cpp",
+                "line": 75,
+                "column": 12
+            },
+            {
+                "usr": "c:tree.cpp@aN@F@catsOrder#&1I#S0_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "catsOrder(const int &, const int &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.cpp",
+                "line": 128,
+                "column": 6
+            },
+            {
+                "usr": "c:tree.cpp@aN@F@ordsOrder#&1I#S0_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "ordsOrder(const int &, const int &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.cpp",
+                "line": 134,
+                "column": 6
+            }
+        ]
+    },
+    {
+        "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+        "file_last_write": 1622144336.0,
+        "definitions": [
+            {
+                "usr": "c:tree.h@N@pcart@T@RealLeaf",
+                "kind": 8,
+                "parent_name": "",
+                "name": "RealLeaf",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 10,
+                "column": 23
+            },
+            {
+                "usr": "c:tree.h@N@pcart@T@CatLeaf",
+                "kind": 8,
+                "parent_name": "",
+                "name": "CatLeaf",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 11,
+                "column": 22
+            },
+            {
+                "usr": "c:tree.h@N@pcart@T@OrdLeaf",
+                "kind": 8,
+                "parent_name": "",
+                "name": "OrdLeaf",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 12,
+                "column": 22
+            },
+            {
+                "usr": "c:tree.h@N@pcart@T@RealSplit",
+                "kind": 8,
+                "parent_name": "",
+                "name": "RealSplit",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 16,
+                "column": 24
+            },
+            {
+                "usr": "c:tree.h@N@pcart@T@CatSplit",
+                "kind": 8,
+                "parent_name": "",
+                "name": "CatSplit",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 17,
+                "column": 23
+            },
+            {
+                "usr": "c:tree.h@N@pcart@T@OrdSplit",
+                "kind": 8,
+                "parent_name": "",
+                "name": "OrdSplit",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 18,
+                "column": 23
+            },
+            {
+                "usr": "c:tree.h@N@pcart@T@Tree",
+                "kind": 8,
+                "parent_name": "",
+                "name": "Tree",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 20,
+                "column": 81
+            },
+            {
+                "usr": "c:tree.h@N@pcart@T@TreePtr",
+                "kind": 8,
+                "parent_name": "",
+                "name": "TreePtr",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 21,
+                "column": 31
+            },
+            {
+                "usr": "c:@N@pcart@S@BaseLeaf",
+                "kind": 3,
+                "parent_name": "",
+                "name": "BaseLeaf",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 23,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@ST>1#T@Leaf",
+                "kind": 2,
+                "parent_name": "",
+                "name": "Leaf<T>",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 26,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@ST>1#T@Leaf@FT@>1#TLeaf#&1I#l#t1.0#v#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "Leaf<T>(const int &, std::size_t, F)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 31,
+                "column": 2
+            },
+            {
+                "usr": "c:@N@pcart@S@BaseSplit",
+                "kind": 3,
+                "parent_name": "",
+                "name": "BaseSplit",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 37,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@S@Split>#$@N@pcart@S@RealVar",
+                "kind": 3,
+                "parent_name": "",
+                "name": "Split<pcart::RealVar>",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 43,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@S@Split>#$@N@pcart@S@CatVar",
+                "kind": 3,
+                "parent_name": "",
+                "name": "Split<pcart::CatVar>",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 49,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@S@Split>#$@N@pcart@S@OrdVar",
+                "kind": 3,
+                "parent_name": "",
+                "name": "Split<pcart::OrdVar>",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 56,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@S@TreeResult",
+                "kind": 3,
+                "parent_name": "",
+                "name": "TreeResult",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 62,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@S@TreeResult@F@totalScore#1",
+                "kind": 7,
+                "parent_name": "TreeResult",
+                "name": "totalScore",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/tree.h",
+                "line": 67,
+                "column": 9
+            }
+        ]
+    },
+    {
+        "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.cpp",
+        "file_last_write": 1622144346.0,
+        "definitions": [
+            {
+                "usr": "c:@N@pcart@F@createRealVar#$@N@std@N@__cxx11@S@basic_string>#C#$@N@std@S@char_traits>#C#$@N@std@S@allocator>#C#l#d#d#l#d#d#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "createRealVar(std::string, std::size_t, double, double, std::size_t, double, double, double, double)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.cpp",
+                "line": 5,
+                "column": 12
+            },
+            {
+                "usr": "c:@N@pcart@F@createCatVar#$@N@std@N@__cxx11@S@basic_string>#C#$@N@std@S@char_traits>#C#$@N@std@S@allocator>#C#l#&1I#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "createCatVar(std::string, std::size_t, const int &, double)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.cpp",
+                "line": 35,
+                "column": 11
+            },
+            {
+                "usr": "c:@N@pcart@F@createBDeuCatVar#$@N@std@N@__cxx11@S@basic_string>#C#$@N@std@S@char_traits>#C#$@N@std@S@allocator>#C#l#&1I#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "createBDeuCatVar(std::string, std::size_t, const int &, double)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.cpp",
+                "line": 60,
+                "column": 11
+            },
+            {
+                "usr": "c:@N@pcart@F@createOrdVar#$@N@std@N@__cxx11@S@basic_string>#C#$@N@std@S@char_traits>#C#$@N@std@S@allocator>#C#l#&1I#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "createOrdVar(std::string, std::size_t, const int &, double, double)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.cpp",
+                "line": 84,
+                "column": 11
+            }
+        ]
+    },
+    {
+        "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+        "file_last_write": 1622144356.0,
+        "definitions": [
+            {
+                "usr": "c:@N@pcart@S@BaseVar",
+                "kind": 3,
+                "parent_name": "",
+                "name": "BaseVar",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 8,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@S@RealVar",
+                "kind": 3,
+                "parent_name": "",
+                "name": "RealVar",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 13,
+                "column": 8
+            },
+            {
+                "usr": "c:variable.h@N@pcart@S@RealVar@T@Val",
+                "kind": 8,
+                "parent_name": "",
+                "name": "Val",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 14,
+                "column": 17
+            },
+            {
+                "usr": "c:@N@pcart@S@RealVar@F@parseDataSrcVal#&1I#1",
+                "kind": 7,
+                "parent_name": "RealVar",
+                "name": "parseDataSrcVal(const int &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 25,
+                "column": 9
+            },
+            {
+                "usr": "c:@N@pcart@S@CatInfo",
+                "kind": 3,
+                "parent_name": "",
+                "name": "CatInfo",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 37,
+                "column": 8
+            },
+            {
+                "usr": "c:@N@pcart@S@CatVar",
+                "kind": 3,
+                "parent_name": "",
+                "name": "CatVar",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 42,
+                "column": 8
+            },
+            {
+                "usr": "c:variable.h@N@pcart@S@CatVar@T@Val",
+                "kind": 8,
+                "parent_name": "",
+                "name": "Val",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 43,
+                "column": 17
+            },
+            {
+                "usr": "c:@N@pcart@S@CatVar@F@parseDataSrcVal#&1I#1",
+                "kind": 7,
+                "parent_name": "CatVar",
+                "name": "parseDataSrcVal(const int &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 51,
+                "column": 9
+            },
+            {
+                "usr": "c:@N@pcart@S@OrdVar",
+                "kind": 3,
+                "parent_name": "",
+                "name": "OrdVar",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 64,
+                "column": 8
+            },
+            {
+                "usr": "c:variable.h@N@pcart@S@OrdVar@T@Val",
+                "kind": 8,
+                "parent_name": "",
+                "name": "Val",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 65,
+                "column": 17
+            },
+            {
+                "usr": "c:@N@pcart@S@OrdVar@F@parseDataSrcVal#&1I#1",
+                "kind": 7,
+                "parent_name": "OrdVar",
+                "name": "parseDataSrcVal(const int &)",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 70,
+                "column": 9
+            },
+            {
+                "usr": "c:variable.h@N@pcart@T@RealVarPtr",
+                "kind": 8,
+                "parent_name": "",
+                "name": "RealVarPtr",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 83,
+                "column": 35
+            },
+            {
+                "usr": "c:variable.h@N@pcart@T@CatVarPtr",
+                "kind": 8,
+                "parent_name": "",
+                "name": "CatVarPtr",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 84,
+                "column": 34
+            },
+            {
+                "usr": "c:variable.h@N@pcart@T@OrdVarPtr",
+                "kind": 8,
+                "parent_name": "",
+                "name": "OrdVarPtr",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 85,
+                "column": 34
+            },
+            {
+                "usr": "c:variable.h@N@pcart@T@VarPtr",
+                "kind": 8,
+                "parent_name": "",
+                "name": "VarPtr",
+                "file": "/Users/luox/Documents/Projects/OSEM/rpcart/src/variable.h",
+                "line": 86,
+                "column": 51
+            }
+        ]
+    }
+]

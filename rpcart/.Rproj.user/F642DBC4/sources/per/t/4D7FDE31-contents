@@ -1,0 +1,104 @@
+########### Psychological Application ###########
+# This file computes the log-loss on test data
+
+# Required packages
+library(BiDAG)
+library(pcalg)
+library(rpcart)
+
+# Load data
+setwd("~/Documents/Projects/OSEM/OSEM/psych_application/")
+load("OCDRogers.RData")
+n <- ncol(datRogers)
+N <- nrow(datRogers)
+
+setwd("~/Documents/Projects/OSEM/OSEM/R/")
+# Major file containing the OSEM algorithm
+source("ordinalScore.R") 
+# Modify some of the existing functions in the BiDAG package to accommodate our user-defined functions
+insertSource("spacefns.R",package = "BiDAG")
+insertSource("usrscorefns.R",package = "BiDAG")
+insertSource("initpar.R",package = "BiDAG")
+insertSource("scoreagainstdag.R",package = "BiDAG")
+
+# Create training and test set for validation set approach (80% train/20% test)
+test <- sample(1:N, N/5, replace=FALSE)
+train <- (-test)
+train.data <- datRogers[train,]
+test.data <- datRogers[test,]
+datRogers_levels <- apply(datRogers, 2, function(x) length(unique(x)))
+datRogers_levels - apply(train.data, 2, function(x) length(unique(x)))
+
+# BDe
+BDE <- scoreparameters("bdecat",train.data,bdecatpar = list(chi = 25,bdecatCvec=datRogers_levels))
+BDEfit <- iterativeMCMC(BDE)
+sum(scoreagainstDAG(BDE,BDEfit$DAG,test.data,bdecatCvec=datRogers_levels))
+mean(apply(BDEfit$DAG,2,sum))
+
+#pcart
+insertSource("usrscorefns_pcart.R",package = "BiDAG")
+pcartparam <- scoreparameters("usr", train.data, 
+                              usrpar = list(pcart_alpha = 5,
+                                            pcart_kappa = 10,
+                                            pctesttype = "bde", 
+                                            preLevels = datRogers_levels,
+                                            response_type = "ORD"))
+pcartfit <- iterativeMCMC(pcartparam, alpha = 0, plus1it = 10, softlimit = 3, hardlimit = 3)
+sum(scoreagainstDAG(BDE,pcartfit$DAG,test.data,bdecatCvec=datRogers_levels))
+scores <- scoreagainstDAG(pcartparam,pcartfit$DAG,test.data)
+sum(scores)
+mean(scores)
+sd(scores)
+mean(apply(pcartfit$DAG,2,sum))
+
+
+
+
+
+# BGe
+res <- matrix(nrow = 2,ncol = 7)
+am_list <- c(3,6,10,20,30,40,50)
+for (i in c(1:length(am_list))) {
+  BGE <- scoreparameters("bge", train.data, bgepar = list(am = am_list[i]))
+  BGEfit <- iterativeMCMC(BGE)
+  mean(apply(BGEfit$DAG,2,sum))
+  BGE.test.param <- BGE
+  #BGE.test.param$Sigma_hat <- cov2cor(BGE$SigmaN)
+  #BGE.test.param$Sigma_hat <- cov2cor(covforDAG(BGE$TN,BGEfit$DAG))
+  BGE.test.param$Sigma_hat <- BGe_MAP_Sigma(BGE$TN,BGEfit$DAG)
+  BGE.test.param$cuts <- OSEM.test.param$cuts
+  BGE.test.param$data <- test.data
+  res[1,i] <- observedLL(BGE.test.param)
+  #sum(scoreagainstDAG(BGE,BGEfit$DAG,test.data))
+  res[2,i] <- mean(apply(BGEfit$DAG,2,sum))
+}
+
+# OSEM
+
+res <- matrix(nrow = 2,ncol = 7)
+lambda_list <- c(2/log(nrow(train.data)),(2/log(nrow(train.data)) + 1)/2,1,1.5,2,2.5,3)
+for (i in c(1:length(lambda_list))) {
+  OSEMfit <- ordinalStructEM(n, train.data,
+                             usrpar = list(penType = "other",
+                                           L = 5,
+                                           lambda = lambda_list[i],
+                                           preLevels = datRogers_levels))
+  OSEM.test.param <- OSEMfit$param
+  OSEM.test.param$data <- test.data
+  observedLL(OSEM.test.param)
+  mean(apply(OSEMfit$DAG,2,sum))
+  res[1,i] <- observedLL(OSEM.test.param)
+  res[2,i] <- mean(apply(OSEMfit$DAG,2,sum))
+}
+
+
+
+# else if ((scorepar$type=="usr") & (!(is.null(scorepar$pcart_alpha)))) {
+#   samplescores <- rep(0,n)
+#   for (j in 1:n)  {
+#     parentnodes <- which(incidence[,j]==1)
+#     samplescores[j]<- opt.pcart.cat(datatoscore, parentnodes, j, alpha = scorepar$pcart_alpha)$score
+#   }
+#   return(sum(simplify2array(samplescores)))
+# } 
+

@@ -1,0 +1,24 @@
+{
+    "id": "77917E2A",
+    "path": "~/Documents/Projects/OSEM/OSEM/R/ordinalScore.R",
+    "project_path": "R/ordinalScore.R",
+    "type": "r_source",
+    "hash": "937154217",
+    "contents": "",
+    "dirty": false,
+    "created": 1625475370016.0,
+    "source_on_save": false,
+    "relative_order": 11,
+    "properties": {
+        "cursorPosition": "582,42",
+        "scrollLine": "556"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1625410991,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1625410991,
+    "read_only": false,
+    "read_only_alternatives": []
+}

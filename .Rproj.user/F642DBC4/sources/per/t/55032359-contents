@@ -1,0 +1,58 @@
+datDiabetes <- read.csv("~/Downloads/diabetes.csv", header = TRUE)
+
+head(datDiabetes)
+any(is.na(datDiabetes))
+
+datDiabetes$Age <- cut(datDiabetes$Age, breaks = c(-1,20,40,60,80,100), labels = FALSE) - 1
+datDiabetes$Gender[datDiabetes$Gender == "Female"] <- 0
+datDiabetes$Gender[datDiabetes$Gender == "Male"] <- 1
+datDiabetes$class[datDiabetes$class == "Negative"] <- 0
+datDiabetes$class[datDiabetes$class == "Positive"] <- 1
+
+for (i in c(3:(ncol(datDiabetes)-1))) {
+  idx <- which(datDiabetes[,i] == "No")
+  datDiabetes[idx,i] <- 0
+  datDiabetes[-idx,i] <- 1
+}
+
+for (i in c(1:ncol(datDiabetes))) {
+  datDiabetes[,i] <- as.integer(datDiabetes[,i])
+}
+
+save(datDiabetes,file = "~/Documents/Projects/OSEM/simulations_20210629/real_data/datDiabetes.RData")
+
+# Create training and test set for validation set approach (80% train/20% test)
+n <- ncol(datDiabetes)
+N <- nrow(datDiabetes)
+test <- sample(1:N, N/5, replace=FALSE)
+train <- (-test)
+train.data <- datDiabetes[train,]
+test.data <- datDiabetes[test,]
+datDiabetes_levels <- apply(datDiabetes, 2, function(x) length(unique(x)))
+datDiabetes_levels - apply(train.data, 2, function(x) length(unique(x)))
+mean(datDiabetes_levels)
+
+BDE <- scoreparameters("bdecat",train.data,bdecatpar = list(chi = 80,bdecatCvec=datDiabetes_levels))
+BDEfit <- iterativeMCMC(BDE)
+sum(scoreagainstDAG(BDE,BDEfit$DAG,test.data,bdecatCvec=datDiabetes_levels))
+mean(apply(BDEfit$DAG,2,sum))
+
+OSEMfit <- ordinalStructEM(n, train.data,
+                           usrpar = list(penType = "other",
+                                         L = 5,
+                                         lambda = 2,
+                                         preLevels = datDiabetes_levels))
+OSEM.test.param <- OSEMfit$param
+OSEM.test.param$data <- test.data
+observedLL(OSEM.test.param)
+mean(apply(OSEMfit$DAG,2,sum))
+
+
+BGE <- scoreparameters("bge", train.data, bgepar = list(am = 6))
+BGEfit <- iterativeMCMC(BGE)
+mean(apply(BGEfit$DAG,2,sum))
+BGE.test.param <- BGE
+BGE.test.param$Sigma_hat <- BGe_MAP_Sigma(BGE$TN,BGEfit$DAG)
+BGE.test.param$cuts <- OSEM.test.param$cuts
+BGE.test.param$data <- test.data
+observedLL(BGE.test.param)

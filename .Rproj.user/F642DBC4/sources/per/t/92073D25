@@ -1,0 +1,25 @@
+{
+    "id": "92073D25",
+    "path": "~/Documents/Projects/OSEM/simulations_20210629/code/log_loss_Derma.R",
+    "project_path": null,
+    "type": "r_source",
+    "hash": "593619954",
+    "contents": "",
+    "dirty": false,
+    "created": 1625473549570.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "88,72",
+        "scrollLine": "63"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1625475094,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1625475094328,
+    "read_only": false,
+    "read_only_alternatives": []
+}

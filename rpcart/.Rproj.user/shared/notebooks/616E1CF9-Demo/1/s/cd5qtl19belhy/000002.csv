@@ -1,0 +1,3 @@
+"0","setwd(""../R"")"
+"2","The working directory was changed to /Users/luox/Documents/Projects/OSEM/OSEM/R inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the working directory for notebook chunks."
+"0","insertSource(""usrscorefns_pcart.R"",package = ""BiDAG"")"
