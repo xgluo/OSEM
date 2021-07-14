@@ -291,7 +291,7 @@ pcartfit <- iterativeMCMC(pcartparam, alpha = 0, plus1it = 10, softlimit = 3, ha
 par(mfrow = c(1,2))
 plot(trueDAG, main = "True DAG")
 tempgraph <- graphAM(pcartfit$DAG, edgemode = "directed")
-plot(tempgraph, main= "OPCART")
+plot(tempgraph, main= "PCART")
 ```
 
 ```{r}
