@@ -91,11 +91,6 @@ comparePatterns(NPCfit,trueDAG,hardP2P = FALSE) # soft version
 - OPC (Musella, 2013)
 
 ```{r OPC, message = FALSE, warning = FALSE, cache = TRUE}
-# OPC algorithm with the ordinal Jonckheere–Terpstra test (significance level: 0.05) (gRim implementation)
-OPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "jt"),
-             alpha = 0.05,
-             indepTest = catCItest,
-             labels = colnames(ordinal_data))
 # OPC algorithm with the ordinal Jonckheere–Terpstra test (significance level: 0.05) (bnlearn implementation)
 OPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "jt"))
 ```
