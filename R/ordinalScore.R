@@ -30,6 +30,13 @@ learnCuts <- function(param) {
   return(cuts)
 }
 
+
+##' getPairwiseTb(param,i,j):
+##' a function that gets the contingency table of two ordinal variables with pre-specified number of levels
+##' @param param: an ordinal scoreparameters object
+##' @param i: variable X_i
+##' @param j: variable X_j
+##' @return estimated table between X_i and X_j
 getPairwiseTb <- function(param, i, j) {
 
   tb <- matrix(1, nrow = param$ordinalLevels[i], ncol = param$ordinalLevels[j])
@@ -55,7 +62,6 @@ getPairwiseTb <- function(param, i, j) {
 ##' @return estimated correlation between X_i and X_j
 learnRhoij <- function(param,i,j) {
 
-  #tb <- table(param$data[,i],param$data[,j]) + 1
   tb <- getPairwiseTb(param, i, j)
   cutsfori <- simplify2array(param$cuts[i])
   cutsforj <- simplify2array(param$cuts[j])
@@ -270,6 +276,7 @@ getExpectedStats <- function(param) {
 ##' a function that estimates the Gaussian mean and correlation matrix given a sample of DAGs
 ##' @param param: a scoreparameter object for ordinal data
 ##' @param AM: an adjacency matrix of a DAG
+##' @param regsubsets: a boolean value indicating whether subset selection is used in parameter update (default: TRUE)
 ##' @return an ordinal scoreparameter object with updated Gaussian correlation matrix
 ordinalUpdateParam <- function(param,AM,regsubsets = TRUE) {
 
@@ -574,6 +581,8 @@ observedLL <- function(param) {
 ##' @param data: ordinal dataset
 ##' @param usrpar: list of parameters for ordinal scores
 ##' @param computeObservedLL: compute the observed likelihood of the parameters (default: FALSE)
+##' @param iterMCMC_alpha: significance level for the constraint-based initialization (default: 0.05)
+##' @param regsubsets: a boolean value indicating whether subset selection is used in parameter update (default: TRUE)
 ##' @return an object of class MCMCtrace
 ordinalStructEM <- function(n, data,
                             usrpar = list(penType = c("AIC","BIC","other"),
@@ -593,7 +602,7 @@ ordinalStructEM <- function(n, data,
   iter <- 0
   currentBestDAG <- NULL
 
-  # Maximum iterations to control runtime
+  # Maximum iterations to control runtime (can change)
   if ((param$lambda <= 1) || (n >= 30)) {
     nr_EM_iter <- 5
     nr_plus1it <- 5
@@ -640,7 +649,13 @@ ordinalStructEM <- function(n, data,
 
 }
 
-
+##' BGe_MAP_Sigma(R, DAG):
+##' a function that computes the MAP Covariance matrix based on a DAG estimated
+##' using the BGe score
+##' Source: https://arxiv.org/pdf/2010.00684.pdf (Equation 2)
+##' @param R: BGe MAP covariance matrix
+##' @param DAG: a DAG estimated using the BGe score
+##' @return A DAG-aware BGe MAP covariance matrix
 BGe_MAP_Sigma <- function(R, DAG) {
 
   n <- nrow(DAG)

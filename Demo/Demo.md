@@ -3,11 +3,6 @@
 ``` r
 library(BiDAG)
 library(Rgraphviz)
-```
-
-    ## Warning: package 'BiocGenerics' was built under R version 4.0.5
-
-``` r
 library(pcalg)
 library(graph)
 library(bnlearn)
@@ -16,9 +11,7 @@ library(sbgcop)
 library(infotheo)
 library(rpcart)
 library(devtools)
-#source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/gaussCItestLocal.R")
 source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/inferCopulaModel.R")
-#source_url("https://raw.githubusercontent.com/cuiruifei/CausalMissingValues/master/R/addMAR.R")
 ```
 
 ``` r
@@ -28,103 +21,14 @@ source("ordinalScore.R")
 # Modify some of the existing functions in the BiDAG package to accommodate our user-defined functions
 insertSource("spacefns.R",package = "BiDAG")
 insertSource("usrscorefns.R",package = "BiDAG")
+insertSource("initpar.R",package = "BiDAG")
+insertSource("scoreagainstdag.R",package = "BiDAG")
 ```
 
-### 2. Other functions
+### 2. Generate DAGs and ordinal data
 
 ``` r
-##' rmvDAG2(N, randDAGobj): 
-##' a function that does the same thing as the pcalg::rmvDAG function
-##' but the input DAG is not necessarily topologically ordered
-##' @param N: number of samples to be drawn
-##' @param randDAGobj: a graph object generated from the pcalg::randDAG function
-##' @return a Gaussian dataset
-rmvDAG2 <- function(N, randDAGobj) {
-  AM <- as(randDAGobj, "matrix")
-  sorted_ind <- ggm::topOrder((AM != 0))
-  n <- nrow(AM)
-  data <- matrix(nrow = N,ncol = n)
-  for (j in sorted_ind) {
-    parentnodes <- which(AM[,j] != 0)
-    lp <- length(parentnodes)
-    switch (as.character(lp),
-            "0" = {data[,j] <- rnorm(N)},
-            "1" = {data[,j] <- rnorm(N, mean = data[,parentnodes] * AM[parentnodes,j], sd = 1)},
-            {data[,j] <- rnorm(N, mean = data[,parentnodes] %*% AM[parentnodes,j], sd = 1)}
-    )
-  }
-  return(data)
-}
-```
-
-``` r
-##' cutfun(L, c): 
-##' a function that simulates the cell probabilities from a symmetric Dirichlet distribution
-##' @param L: number of ordinal levels
-##' @param c: Dirichlet concentration parameter
-##' @return a list of probabilities of length L, summing up to 1
-cutfun <- function(L,c) {
-  p <- gtools::rdirichlet(1,rep(c,L))
-  return(qnorm(cumsum(p)[1:(L-1)]))
-}
-```
-
-``` r
-##' convertToOrdinal(scaled_data, exp_levels, concent_param): 
-##' a function that converts standardized Gaussian data into ordinal data
-##' @param scaled_data: Gaussian dataset with each dimension standardized
-##' @param exp_levels: expected number of ordinal levels
-##' @param concent_param: Dirichlet concentration parameter
-##' @return an ordinal dataset
-convertToOrdinal <- function(scaled_data, exp_levels = 4,concent_param = 2) {
-  n <- ncol(scaled_data)
-  if (exp_levels == 2) {
-    ordinal_levels <- replicate(n,2)
-  } else {
-    ordinal_levels <- replicate(n,sample(c(2:(2 * exp_levels - 2)),1))
-  }
-  ordinal_data <- scaled_data
-  for (i in c(1:n)) {
-    
-    check_levels <- ordinal_levels[i] - 1
-    while (check_levels != ordinal_levels[i]) {
-      cuts <- c(-Inf, 
-                cutfun(ordinal_levels[i],concent_param), 
-                Inf)
-      temp <- cut(scaled_data[,i], simplify2array(cuts), labels = FALSE) - 1
-      check_levels <- length(unique(temp))
-    }
-    ordinal_data[,i] <- temp
-    
-  }
-  colnames(ordinal_data) <- c(1:n)
-  return(ordinal_data)
-}
-```
-
-``` r
-##' mywFUN(m): 
-##' a function that samples the edge weights uniformly from the interval (-1,-0.4) U (0.4,1)
-##' @param m: number of edges in the DAG
-##' @return m edge weights
-mywFUN <- function(m) {
-  return(replicate(m,mywFUNhelper()))
-}
-mywFUNhelper <- function() {
-  y <- runif(1, 0, 1.2)
-  if( y < 0.6 ){
-    x <- -1 + y
-  }else{
-    x <- 0.4 + y - 0.6
-  }
-  return(x)
-}
-```
-
-### 3. Generate DAGs and ordinal data
-
-``` r
-set.seed(888)
+set.seed(222)
 # Generate a regular DAG with 20 nodes with 4 number of neighbors
 n <- 20
 trueDAG <- randDAG(n = n, d = 4, method = "er", wFUN = list(mywFUN))
@@ -143,9 +47,10 @@ scaled_data <- t(D.inv %*% t(hidden_data))
 ordinal_data <- convertToOrdinal(scaled_data, exp_levels = 4,concent_param = 2)
 ordinal_data_df <- as.data.frame(ordinal_data)
 ordinal_data_df[] <- lapply(ordinal_data_df[], as.ordered)
+ordinal_levels <- apply(ordinal_data, 2, function(x) length(unique(x)))
 ```
 
-### 4. Learn the structures using different methods
+### 3. Learn the structures using different methods
 
 The following simulations can be repeated many times for different
 configurations of parameters in order to obtain the ROC curves.
@@ -153,11 +58,6 @@ configurations of parameters in order to obtain the ROC curves.
 -   NPC
 
 ``` r
-# # NPC algorithm with the nominal deviance test (significance level: 0.05)
-# NPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "dev"),
-#              alpha = 0.05,
-#              indepTest = catCItest,
-#              labels = colnames(ordinal_data))
 # NPC algorithm with the G^2 test (significance level: 0.05)
 NPCfit <- pc(suffStat = list(dm = ordinal_data, 
                              nlev = apply(ordinal_data, 2, function (x) length(unique(x))),
@@ -165,13 +65,9 @@ NPCfit <- pc(suffStat = list(dm = ordinal_data,
              alpha = 0.05,
              indepTest = disCItest,
              labels = colnames(ordinal_data))
-# # NPC algorithm with the Pearson X^2 test (significance level: 0.05)
-# NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "x2"))
-# # NPC algorithm with the mutual information (significance level: 0.05)
-# NPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "mi"))
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -179,18 +75,18 @@ comparePatterns(NPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     40.00      2.00      3.00    148.00     37.00      0.40      0.05      0.02 
+    ##     31.50      7.50      0.50    151.00     31.00      0.94      0.19      0.00 
     ##     FPR_P 
-    ##      0.07
+    ##      0.01
 
 ``` r
 comparePatterns(NPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     39.00      3.00      2.00    148.00     37.00      0.60      0.07      0.01 
+    ##     31.50      7.50      0.50    151.00     31.00      0.94      0.19      0.00 
     ##     FPR_P 
-    ##      0.05
+    ##      0.01
 
 -   OPC (Musella, 2013)
 
@@ -204,7 +100,7 @@ OPCfit <- pc(suffStat = list(data = ordinal_data_df, stat_type = "jt"),
 OPCfit <- amat(pc.stable(ordinal_data_df, alpha = 0.05, test = "jt"))
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -212,18 +108,18 @@ comparePatterns(OPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     37.00     13.00     18.00    140.00     19.00      0.42      0.31      0.12 
+    ##     60.00      3.00     28.00    127.00     32.00      0.10      0.08      0.19 
     ##     FPR_P 
-    ##      0.43
+    ##      0.72
 
 ``` r
 comparePatterns(OPCfit,trueDAG,hardP2P = FALSE) #soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     35.00     15.00     16.00    140.00     19.00      0.48      0.36      0.11 
+    ##     60.00      3.00     28.00    127.00     32.00      0.10      0.08      0.19 
     ##     FPR_P 
-    ##      0.38
+    ##      0.72
 
 -   GPC
 
@@ -237,7 +133,7 @@ GPCfit <- pc(suffStat = list(C = cor(ordinal_data), n = N),
 # GPCfit <- amat(pc.stable(as.data.frame(ordinal_data), alpha = 0.05, test = "zf"))
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-11-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -245,18 +141,18 @@ comparePatterns(GPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     35.00     16.00     20.00    139.00     15.00      0.44      0.38      0.14 
+    ##     29.00     14.00     21.00    147.00      8.00      0.40      0.36      0.14 
     ##     FPR_P 
-    ##      0.48
+    ##      0.54
 
 ``` r
 comparePatterns(GPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     33.50     17.50     18.50    139.00     15.00      0.49      0.42      0.12 
+    ##     29.00     14.00     21.00    147.00      8.00      0.40      0.36      0.14 
     ##     FPR_P 
-    ##      0.44
+    ##      0.54
 
 -   RPC (Harris and Drton, 2013; Cui et al., 2018)
 
@@ -266,7 +162,7 @@ RPCfit <- pc(suffStat = list(C = corr.rank, n = N),
              indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -274,18 +170,18 @@ comparePatterns(RPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     31.00     17.00     15.00    142.00     16.00      0.53      0.40      0.10 
+    ##     65.00      1.00     31.00    124.00     34.00      0.03      0.03      0.21 
     ##     FPR_P 
-    ##      0.36
+    ##      0.79
 
 ``` r
 comparePatterns(RPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     28.00     20.00     12.00    142.00     16.00      0.62      0.48      0.08 
+    ##     65.00      1.00     31.00    124.00     34.00      0.03      0.03      0.21 
     ##     FPR_P 
-    ##      0.29
+    ##      0.79
 
 -   Copula PC (Cui et al., 2016, 2017, 2018)
 
@@ -301,7 +197,7 @@ CPCfit <- pc(suffStat = list(C = corr.cop, n = N),
              indepTest = gaussCItest, labels = colnames(ordinal_data), alpha = 0.05, conservative = T)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-15-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -309,18 +205,18 @@ comparePatterns(CPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     31.00     19.00     14.00    140.00     17.00      0.58      0.45      0.09 
+    ##     64.50      1.50     31.50    124.00     33.00      0.05      0.04      0.21 
     ##     FPR_P 
-    ##      0.33
+    ##      0.81
 
 ``` r
 comparePatterns(CPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     30.50     19.50     13.50    140.00     17.00      0.59      0.46      0.09 
+    ##     64.50      1.50     31.50    124.00     33.00      0.05      0.04      0.21 
     ##     FPR_P 
-    ##      0.32
+    ##      0.81
 
 -   MMPC (Tsagris et al., 2018)
 
@@ -331,7 +227,7 @@ MMDAG[MMDAG == 2] <- 1
 MMDAG[MMDAG == 3] <- 0
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-17-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -339,18 +235,18 @@ comparePatterns(MMDAG,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     39.00     11.00     22.00    140.00     17.00      0.33      0.26      0.15 
+    ##     64.50      2.50     30.50    123.00     34.00      0.08      0.06      0.20 
     ##     FPR_P 
-    ##      0.52
+    ##      0.78
 
 ``` r
 comparePatterns(MMDAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     35.50     14.50     18.50    140.00     17.00      0.44      0.35      0.12 
+    ##     64.50      2.50     30.50    123.00     34.00      0.08      0.06      0.20 
     ##     FPR_P 
-    ##      0.44
+    ##      0.78
 
 -   BDe (Heckerman and Geiger, 1995)
 
@@ -360,7 +256,7 @@ BDE <- scoreparameters("bdecat",data.frame(ordinal_data),bdecatpar = list(chi = 
 BDEfit <- iterativeMCMC(BDE)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-19-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-15-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -368,18 +264,18 @@ comparePatterns(BDEfit$DAG,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     41.00      3.00     15.00    146.00     26.00      0.17      0.07      0.10 
+    ##     52.50      1.50     16.50    136.00     36.00      0.08      0.04      0.11 
     ##     FPR_P 
-    ##      0.36
+    ##      0.42
 
 ``` r
 comparePatterns(BDEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     35.00      9.00      9.00    146.00     26.00      0.50      0.21      0.06 
+    ##     52.50      1.50     16.50    136.00     36.00      0.08      0.04      0.11 
     ##     FPR_P 
-    ##      0.21
+    ##      0.42
 
 -   BGe (Heckerman and Geiger, 1995)
 
@@ -389,7 +285,7 @@ BGE <- scoreparameters("bge", ordinal_data, bgepar = list(am = 0.5))
 BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-21-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-17-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -397,18 +293,18 @@ comparePatterns(BGEfit$DAG,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     20.00     33.00     14.00    137.00      6.00      0.70      0.79      0.09 
+    ##     78.50      1.50     45.50    110.00     33.00      0.03      0.04      0.30 
     ##     FPR_P 
-    ##      0.33
+    ##      1.17
 
 ``` r
 comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     19.50     33.50     13.50    137.00      6.00      0.71      0.80      0.09 
+    ##     78.50      1.50     45.50    110.00     33.00      0.03      0.04      0.30 
     ##     FPR_P 
-    ##      0.32
+    ##      1.17
 
 -   OSEM
 
@@ -417,10 +313,11 @@ comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 OSEMfit <- ordinalStructEM(n, ordinal_data,
                            usrpar = list(penType = "other",
                                          L = 5,
-                                         lambda = 3))
+                                         lambda = 3,
+                                         preLevels = NULL))
 ```
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-23-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-19-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -428,20 +325,20 @@ comparePatterns(OSEMfit$DAG,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     16.00     34.00      9.00    140.00      7.00      0.79      0.81      0.06 
+    ##     73.00      3.00     42.00    114.00     31.00      0.07      0.08      0.28 
     ##     FPR_P 
-    ##      0.21
+    ##      1.08
 
 ``` r
 comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     16.00     34.00      9.00    140.00      7.00      0.79      0.81      0.06 
+    ##     73.00      3.00     42.00    114.00     31.00      0.07      0.08      0.28 
     ##     FPR_P 
-    ##      0.21
+    ##      1.08
 
--   pcart (Talvitie et al., 2019)
+-   PCART (Talvitie et al., 2019)
 
 ``` r
 setwd("../R")
@@ -449,25 +346,25 @@ insertSource("usrscorefns_pcart.R",package = "BiDAG")
 ```
 
 ``` r
-pcartparam <- scoreparameters("usr", ordinal_data_df, usrpar = list(pcart_alpha = 0.5, pctesttype = "bde"))
+pcartparam <- scoreparameters("usr", ordinal_data_df, 
+                              usrpar = list(pcart_alpha = 1.5,
+                                            pcart_kappa = 0.25,
+                                            pctesttype = "bde", 
+                                            preLevels = ordinal_levels,
+                                            response_type = "CAT"))
 # need to set limit to the parent set size due to computational limit
-pcartfit <- iterativeMCMC(pcartparam, scoreout = TRUE, alpha = 0, plus1it = 10, softlimit = 3, hardlimit = 3)
+pcartfit <- iterativeMCMC(pcartparam, alpha = 0, plus1it = 10, softlimit = 3, hardlimit = 3)
 ```
 
     ## maximum parent set size is 0 
-    ## skeleton ready 
-    ## score tables completed, MCMC plus1 starts 
-    ## 1.788869 
-    ## MCMC plus1 iteration 2 
-    ## 42.92927 
-    ## MCMC plus1 iteration 3 
-    ## 1.153172 
-    ## MCMC plus1 iteration 4 
-    ## 35.3563 
-    ## MCMC plus1 iteration 5 
-    ## 13.18149
+    ## core space defined, score table are being computed 
+    ## score tables completed, iterative MCMC is running 
+    ## search space expansion 2 
+    ## search space expansion 3 
+    ## search space expansion 4 
+    ## search space expansion 5
 
-![](Demo_files/figure-markdown_github/unnamed-chunk-26-1.png)
+![](Demo_files/figure-markdown_github/unnamed-chunk-22-1.png)
 
 ``` r
 # Compare the patterns between them
@@ -475,15 +372,55 @@ comparePatterns(pcartfit$DAG,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     43.00     11.00     27.00    136.00     16.00      0.29      0.26      0.18 
+    ##     67.50      2.50     34.50    120.00     33.00      0.07      0.06      0.23 
     ##     FPR_P 
-    ##      0.64
+    ##      0.88
 
 ``` r
 comparePatterns(pcartfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     38.50     15.50     22.50    136.00     16.00      0.41      0.37      0.15 
+    ##     67.50      2.50     34.50    120.00     33.00      0.07      0.06      0.23 
     ##     FPR_P 
-    ##      0.54
+    ##      0.88
+
+-   OPCART (Talvitie et al., 2019)
+
+``` r
+opcartparam <- scoreparameters("usr", ordinal_data_df, 
+                              usrpar = list(pcart_alpha = 1.5,
+                                            pcart_kappa = 0.25,
+                                            pctesttype = "bde", 
+                                            preLevels = ordinal_levels,
+                                            response_type = "ORD"))
+# need to set limit to the parent set size due to computational limit
+opcartfit <- iterativeMCMC(opcartparam, alpha = 0, plus1it = 10, softlimit = 3, hardlimit = 3)
+```
+
+    ## maximum parent set size is 0 
+    ## core space defined, score table are being computed 
+    ## score tables completed, iterative MCMC is running 
+    ## search space expansion 2 
+    ## search space expansion 3
+
+![](Demo_files/figure-markdown_github/unnamed-chunk-24-1.png)
+
+``` r
+# Compare the patterns between them
+comparePatterns(opcartfit$DAG,trueDAG) # hard version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     41.00      1.00      4.00    148.00     37.00      0.20      0.03      0.03 
+    ##     FPR_P 
+    ##      0.10
+
+``` r
+comparePatterns(opcartfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+```
+
+    ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
+    ##     41.00      1.00      4.00    148.00     37.00      0.20      0.03      0.03 
+    ##     FPR_P 
+    ##      0.10
