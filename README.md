@@ -14,3 +14,5 @@ References:
             M. Kalisch et al. (2012) <doi:10.18637/jss.v047.i11>
             
             R. J. McNally et al. (2017) <doi:10.1017/s0033291716003287>
+            
+            T. Talvitie et al. (2019) <doi.org/10.1016/j.ijar.2019.09.002>
