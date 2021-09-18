@@ -37,11 +37,12 @@ trueDAG <- randDAG(n = n, d = 4, method = "er", wFUN = list(mywFUN))
 # Sample size = 500
 N <- 500
 hidden_data <- rmvDAG2(N, trueDAG)
+scaled_data <- t(t(hidden_data) - apply(hidden_data,2,mean))
 truecov <- trueCov(trueDAG)
 D <- diag(sqrt(diag(truecov)))
 D.inv <- chol2inv(chol(D))
 trueSigma <- D.inv %*% truecov %*% D.inv
-scaled_data <- t(D.inv %*% t(hidden_data))
+scaled_data <- t(D.inv %*% t(scaled_data))
 
 # Convert the Gaussian dataset into an ordinal dataset
 ordinal_data <- convertToOrdinal(scaled_data, exp_levels = 4,concent_param = 2)
@@ -75,18 +76,18 @@ comparePatterns(NPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     31.50      7.50      0.50    151.00     31.00      0.94      0.19      0.00 
+    ##     37.50      2.50      4.50    150.00     33.00      0.36      0.06      0.03 
     ##     FPR_P 
-    ##      0.01
+    ##      0.12
 
 ``` r
 comparePatterns(NPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     31.50      7.50      0.50    151.00     31.00      0.94      0.19      0.00 
+    ##     37.50      2.50      4.50    150.00     33.00      0.36      0.06      0.03 
     ##     FPR_P 
-    ##      0.01
+    ##      0.12
 
 -   OPC (Musella, 2013)
 
@@ -136,7 +137,7 @@ comparePatterns(GPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     29.00     14.00     21.00    147.00      8.00      0.40      0.36      0.14 
+    ##     30.00     13.00     21.00    147.00      9.00      0.38      0.33      0.14 
     ##     FPR_P 
     ##      0.54
 
@@ -145,7 +146,7 @@ comparePatterns(GPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     29.00     14.00     21.00    147.00      8.00      0.40      0.36      0.14 
+    ##     30.00     13.00     21.00    147.00      9.00      0.38      0.33      0.14 
     ##     FPR_P 
     ##      0.54
 
