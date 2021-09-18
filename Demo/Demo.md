@@ -104,18 +104,18 @@ comparePatterns(OPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     29.50     14.50     18.50    146.00     11.00      0.44      0.37      0.12 
+    ##     28.00     14.00     17.00    148.00     11.00      0.45      0.36      0.11 
     ##     FPR_P 
-    ##      0.47
+    ##      0.44
 
 ``` r
 comparePatterns(OPCfit,trueDAG,hardP2P = FALSE) #soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     29.50     14.50     18.50    146.00     11.00      0.44      0.37      0.12 
+    ##     28.00     14.00     17.00    148.00     11.00      0.45      0.36      0.11 
     ##     FPR_P 
-    ##      0.47
+    ##      0.44
 
 -   GPC
 
@@ -166,18 +166,18 @@ comparePatterns(RPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     17.00     24.00      7.00    149.00     10.00      0.77      0.62      0.05 
+    ##     17.00     23.00      8.00    150.00      9.00      0.74      0.59      0.05 
     ##     FPR_P 
-    ##      0.18
+    ##      0.21
 
 ``` r
 comparePatterns(RPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     17.00     24.00      7.00    149.00     10.00      0.77      0.62      0.05 
+    ##     17.00     23.00      8.00    150.00      9.00      0.74      0.59      0.05 
     ##     FPR_P 
-    ##      0.18
+    ##      0.21
 
 -   Copula PC (Cui et al., 2016, 2017, 2018)
 
@@ -201,18 +201,18 @@ comparePatterns(CPCfit,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     28.00     16.00     13.00    146.00     15.00      0.55      0.41      0.09 
+    ##     20.50     21.50     10.50    148.00     10.00      0.67      0.55      0.07 
     ##     FPR_P 
-    ##      0.33
+    ##      0.27
 
 ``` r
 comparePatterns(CPCfit,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     28.00     16.00     13.00    146.00     15.00      0.55      0.41      0.09 
+    ##     20.50     21.50     10.50    148.00     10.00      0.67      0.55      0.07 
     ##     FPR_P 
-    ##      0.33
+    ##      0.27
 
 -   MMPC (Tsagris et al., 2018)
 
@@ -231,18 +231,18 @@ comparePatterns(MMDAG,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     29.50     14.50     17.50    146.00     12.00      0.45      0.37      0.12 
+    ##     25.00     16.00     13.00    149.00     12.00      0.55      0.41      0.09 
     ##     FPR_P 
-    ##      0.45
+    ##      0.33
 
 ``` r
 comparePatterns(MMDAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     29.50     14.50     17.50    146.00     12.00      0.45      0.37      0.12 
+    ##     25.00     16.00     13.00    149.00     12.00      0.55      0.41      0.09 
     ##     FPR_P 
-    ##      0.45
+    ##      0.33
 
 -   BDe (Heckerman and Geiger, 1995)
 
@@ -260,18 +260,18 @@ comparePatterns(BDEfit$DAG,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     26.00     13.00      8.00    151.00     18.00      0.62      0.33      0.05 
+    ##     26.50     12.50      7.50    151.00     19.00      0.62      0.32      0.05 
     ##     FPR_P 
-    ##      0.21
+    ##      0.19
 
 ``` r
 comparePatterns(BDEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     26.00     13.00      8.00    151.00     18.00      0.62      0.33      0.05 
+    ##     26.50     12.50      7.50    151.00     19.00      0.62      0.32      0.05 
     ##     FPR_P 
-    ##      0.21
+    ##      0.19
 
 -   BGe (Heckerman and Geiger, 1995)
 
@@ -289,18 +289,18 @@ comparePatterns(BGEfit$DAG,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     13.00     35.00     10.00    142.00      3.00      0.78      0.90      0.07 
+    ##     15.00     34.00     12.00    141.00      3.00      0.74      0.87      0.08 
     ##     FPR_P 
-    ##      0.26
+    ##      0.31
 
 ``` r
 comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     13.00     35.00     10.00    142.00      3.00      0.78      0.90      0.07 
+    ##     15.00     34.00     12.00    141.00      3.00      0.74      0.87      0.08 
     ##     FPR_P 
-    ##      0.26
+    ##      0.31
 
 -   OSEM
 
@@ -357,8 +357,7 @@ pcartfit <- iterativeMCMC(pcartparam, alpha = 0, plus1it = 10, softlimit = 3, ha
     ## score tables completed, iterative MCMC is running 
     ## search space expansion 2 
     ## search space expansion 3 
-    ## search space expansion 4 
-    ## search space expansion 5
+    ## search space expansion 4
 
 ![](Demo_files/figure-markdown_github/unnamed-chunk-22-1.png)
 
@@ -368,7 +367,7 @@ comparePatterns(pcartfit$DAG,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     26.00     17.00     16.00    147.00     10.00      0.52      0.44      0.11 
+    ##     27.00     17.00     16.00    146.00     11.00      0.52      0.44      0.11 
     ##     FPR_P 
     ##      0.41
 
@@ -377,7 +376,7 @@ comparePatterns(pcartfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     26.00     17.00     16.00    147.00     10.00      0.52      0.44      0.11 
+    ##     27.00     17.00     16.00    146.00     11.00      0.52      0.44      0.11 
     ##     FPR_P 
     ##      0.41
 
@@ -409,15 +408,15 @@ comparePatterns(opcartfit$DAG,trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     42.00      5.00      9.00    143.00     33.00      0.36      0.13      0.06 
+    ##     35.50      6.50      6.50    148.00     29.00      0.50      0.17      0.04 
     ##     FPR_P 
-    ##      0.23
+    ##      0.17
 
 ``` r
 comparePatterns(opcartfit$DAG,trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     42.00      5.00      9.00    143.00     33.00      0.36      0.13      0.06 
+    ##     35.50      6.50      6.50    148.00     29.00      0.50      0.17      0.04 
     ##     FPR_P 
-    ##      0.23
+    ##      0.17
