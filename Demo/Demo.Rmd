@@ -46,11 +46,12 @@ trueDAG <- randDAG(n = n, d = 4, method = "er", wFUN = list(mywFUN))
 # Sample size = 500
 N <- 500
 hidden_data <- rmvDAG2(N, trueDAG)
+scaled_data <- t(t(hidden_data) - apply(hidden_data,2,mean))
 truecov <- trueCov(trueDAG)
 D <- diag(sqrt(diag(truecov)))
 D.inv <- chol2inv(chol(D))
 trueSigma <- D.inv %*% truecov %*% D.inv
-scaled_data <- t(D.inv %*% t(hidden_data))
+scaled_data <- t(D.inv %*% t(scaled_data))
 
 # Convert the Gaussian dataset into an ordinal dataset
 ordinal_data <- convertToOrdinal(scaled_data, exp_levels = 4,concent_param = 2)
