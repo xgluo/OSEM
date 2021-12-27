@@ -18,7 +18,7 @@ usrDAGcorescore <- function (j,parentnodes,n,param) {
 ### This function defines the CI tests for the starting skeleton
 usrdefinestartspace <- function(alpha,param,cpdag,n){
 
-  cormat<-cor(param$hidden_data)
+  cormat<-param$Sigma_hat
   N <- param$N
   if(cpdag){
     pc.skel<-pcalg::pc(suffStat = list(C = cormat, n = N),
