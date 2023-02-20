@@ -29,23 +29,14 @@ insertSource("scoreagainstdag.R",package = "BiDAG")
 
 ``` r
 set.seed(222)
-# Generate a regular DAG with 20 nodes with 4 number of neighbors
+N <- 500
 n <- 20
+
+# Generate a regular DAG with 20 nodes with 4 number of neighbors
 trueDAG <- randDAG(n = n, d = 4, method = "er", wFUN = list(mywFUN))
 
-# Generate a Gaussian dataset based on the DAG and standardize each dimension
-# Sample size = 500
-N <- 500
-hidden_data <- rmvDAG2(N, trueDAG)
-scaled_data <- t(t(hidden_data) - apply(hidden_data,2,mean))
-truecov <- trueCov(trueDAG)
-D <- diag(sqrt(diag(truecov)))
-D.inv <- chol2inv(chol(D))
-trueSigma <- D.inv %*% truecov %*% D.inv
-scaled_data <- t(D.inv %*% t(scaled_data))
-
 # Convert the Gaussian dataset into an ordinal dataset
-ordinal_data <- convertToOrdinal(scaled_data, exp_levels = 4,concent_param = 2)
+ordinal_data <- generateOrdinal(N, n, trueDAG, exp_levels = 4, concent_param = 2)
 ordinal_data_df <- as.data.frame(ordinal_data)
 ordinal_data_df[] <- lapply(ordinal_data_df[], as.ordered)
 ordinal_levels <- apply(ordinal_data, 2, function(x) length(unique(x)))
@@ -256,7 +247,7 @@ BDEfit <- iterativeMCMC(BDE)
 
 ``` r
 # Compare the patterns between them
-comparePatterns(BDEfit$DAG,trueDAG) # hard version
+comparePatterns(as.matrix(BDEfit$DAG),trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
@@ -265,7 +256,7 @@ comparePatterns(BDEfit$DAG,trueDAG) # hard version
     ##      0.19
 
 ``` r
-comparePatterns(BDEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(as.matrix(BDEfit$DAG),trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
@@ -285,7 +276,7 @@ BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
 
 ``` r
 # Compare the patterns between them
-comparePatterns(BGEfit$DAG,trueDAG) # hard version
+comparePatterns(as.matrix(BGEfit$DAG),trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
@@ -294,7 +285,7 @@ comparePatterns(BGEfit$DAG,trueDAG) # hard version
     ##      0.31
 
 ``` r
-comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(as.matrix(BGEfit$DAG),trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
@@ -317,22 +308,22 @@ OSEMfit <- ordinalStructEM(n, ordinal_data,
 
 ``` r
 # Compare the patterns between them
-comparePatterns(OSEMfit$DAG,trueDAG) # hard version
+comparePatterns(as.matrix(OSEMfit$DAG),trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##      3.00     38.00      2.00    149.00      1.00      0.95      0.97      0.01 
+    ##      5.00     37.00      4.00    148.00      1.00      0.90      0.95      0.03 
     ##     FPR_P 
-    ##      0.05
+    ##      0.10
 
 ``` r
-comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(as.matrix(OSEMfit$DAG),trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##      3.00     38.00      2.00    149.00      1.00      0.95      0.97      0.01 
+    ##      5.00     37.00      4.00    148.00      1.00      0.90      0.95      0.03 
     ##     FPR_P 
-    ##      0.05
+    ##      0.10
 
 -   PCART (Talvitie et al., 2019)
 
@@ -357,28 +348,29 @@ pcartfit <- iterativeMCMC(pcartparam, alpha = 0, plus1it = 10, softlimit = 3, ha
     ## score tables completed, iterative MCMC is running 
     ## search space expansion 2 
     ## search space expansion 3 
-    ## search space expansion 4
+    ## search space expansion 4 
+    ## search space expansion 5
 
 ![](Demo_files/figure-markdown_github/unnamed-chunk-22-1.png)
 
 ``` r
 # Compare the patterns between them
-comparePatterns(pcartfit$DAG,trueDAG) # hard version
+comparePatterns(as.matrix(pcartfit$DAG),trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     27.00     17.00     16.00    146.00     11.00      0.52      0.44      0.11 
+    ##     27.50     16.50     15.50    146.00     12.00      0.52      0.42      0.10 
     ##     FPR_P 
-    ##      0.41
+    ##      0.40
 
 ``` r
-comparePatterns(pcartfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(as.matrix(pcartfit$DAG),trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
-    ##     27.00     17.00     16.00    146.00     11.00      0.52      0.44      0.11 
+    ##     27.50     16.50     15.50    146.00     12.00      0.52      0.42      0.10 
     ##     FPR_P 
-    ##      0.41
+    ##      0.40
 
 -   OPCART (Talvitie et al., 2019)
 
@@ -404,7 +396,7 @@ opcartfit <- iterativeMCMC(opcartparam, alpha = 0, plus1it = 10, softlimit = 3, 
 
 ``` r
 # Compare the patterns between them
-comparePatterns(opcartfit$DAG,trueDAG) # hard version
+comparePatterns(as.matrix(opcartfit$DAG),trueDAG) # hard version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 
@@ -413,7 +405,7 @@ comparePatterns(opcartfit$DAG,trueDAG) # hard version
     ##      0.17
 
 ``` r
-comparePatterns(opcartfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(as.matrix(opcartfit$DAG),trueDAG,hardP2P = FALSE) # soft version
 ```
 
     ##       SHD        TP        FP        TN        FN Precision       TPR     FPR_N 

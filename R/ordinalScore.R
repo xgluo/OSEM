@@ -618,7 +618,7 @@ ordinalStructEM <- function(n, data,
 
     # Structure update
     currentDAGobj <- iterativeMCMC(param, plus1it = nr_plus1it, hardlimit = n, alpha = iterMCMC_alpha)
-    candidateBestDAG <- currentDAGobj$DAG
+    candidateBestDAG <- as.matrix(currentDAGobj$DAG)
 
     # Parameter update
     param <- ordinalUpdateParam(param,candidateBestDAG, regsubsets = regsubsets)
@@ -766,4 +766,19 @@ mywFUNhelper <- function() {
   return(x)
 }
 
-
+generateOrdinal <- function(N, n, trueDAG, exp_levels = 4, concent_param = 2) {
+  
+  hidden_data <- rmvDAG2(N, trueDAG)
+  scaled_data <- t(t(hidden_data) - apply(hidden_data,2,mean))
+  truecov <- trueCov(trueDAG)
+  D <- diag(sqrt(diag(truecov)))
+  D.inv <- chol2inv(chol(D))
+  trueSigma <- D.inv %*% truecov %*% D.inv
+  scaled_data <- t(D.inv %*% t(scaled_data))
+  
+  # Convert the Gaussian dataset into an ordinal dataset
+  ordinal_data <- convertToOrdinal(scaled_data, exp_levels = exp_levels, concent_param = concent_param)
+  
+  return(ordinal_data)
+  
+}

@@ -38,23 +38,14 @@ insertSource("scoreagainstdag.R",package = "BiDAG")
 
 ```{r generate}
 set.seed(222)
-# Generate a regular DAG with 20 nodes with 4 number of neighbors
+N <- 500
 n <- 20
+
+# Generate a regular DAG with 20 nodes with 4 number of neighbors
 trueDAG <- randDAG(n = n, d = 4, method = "er", wFUN = list(mywFUN))
 
-# Generate a Gaussian dataset based on the DAG and standardize each dimension
-# Sample size = 500
-N <- 500
-hidden_data <- rmvDAG2(N, trueDAG)
-scaled_data <- t(t(hidden_data) - apply(hidden_data,2,mean))
-truecov <- trueCov(trueDAG)
-D <- diag(sqrt(diag(truecov)))
-D.inv <- chol2inv(chol(D))
-trueSigma <- D.inv %*% truecov %*% D.inv
-scaled_data <- t(D.inv %*% t(scaled_data))
-
 # Convert the Gaussian dataset into an ordinal dataset
-ordinal_data <- convertToOrdinal(scaled_data, exp_levels = 4,concent_param = 2)
+ordinal_data <- generateOrdinal(N, n, trueDAG, exp_levels = 4, concent_param = 2)
 ordinal_data_df <- as.data.frame(ordinal_data)
 ordinal_data_df[] <- lapply(ordinal_data_df[], as.ordered)
 ordinal_levels <- apply(ordinal_data, 2, function(x) length(unique(x)))
@@ -215,14 +206,14 @@ BDEfit <- iterativeMCMC(BDE)
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
 plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(BDEfit$DAG, edgemode = "directed")
+tempgraph <- graphAM(as.matrix(BDEfit$DAG), edgemode = "directed")
 plot(tempgraph, main= "BDe")
 ```
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(BDEfit$DAG,trueDAG) # hard version
-comparePatterns(BDEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(as.matrix(BDEfit$DAG),trueDAG) # hard version
+comparePatterns(as.matrix(BDEfit$DAG),trueDAG,hardP2P = FALSE) # soft version
 ```
 
 - BGe (Heckerman and Geiger, 1995)
@@ -236,14 +227,14 @@ BGEfit <- iterativeMCMC(BGE,scoreout = TRUE)
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
 plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(BGEfit$DAG, edgemode = "directed")
+tempgraph <- graphAM(as.matrix(BGEfit$DAG), edgemode = "directed")
 plot(tempgraph, main= "BGe")
 ```
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(BGEfit$DAG,trueDAG) # hard version
-comparePatterns(BGEfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(as.matrix(BGEfit$DAG),trueDAG) # hard version
+comparePatterns(as.matrix(BGEfit$DAG),trueDAG,hardP2P = FALSE) # soft version
 ```
 
 - OSEM
@@ -260,14 +251,14 @@ OSEMfit <- ordinalStructEM(n, ordinal_data,
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
 plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(OSEMfit$DAG, edgemode = "directed")
+tempgraph <- graphAM(as.matrix(OSEMfit$DAG), edgemode = "directed")
 plot(tempgraph, main= "OSEM")
 ```
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(OSEMfit$DAG,trueDAG) # hard version
-comparePatterns(OSEMfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(as.matrix(OSEMfit$DAG),trueDAG) # hard version
+comparePatterns(as.matrix(OSEMfit$DAG),trueDAG,hardP2P = FALSE) # soft version
 ```
 
 - PCART (Talvitie et al., 2019)
@@ -291,14 +282,14 @@ pcartfit <- iterativeMCMC(pcartparam, alpha = 0, plus1it = 10, softlimit = 3, ha
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
 plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(pcartfit$DAG, edgemode = "directed")
+tempgraph <- graphAM(as.matrix(pcartfit$DAG), edgemode = "directed")
 plot(tempgraph, main= "PCART")
 ```
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(pcartfit$DAG,trueDAG) # hard version
-comparePatterns(pcartfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(as.matrix(pcartfit$DAG),trueDAG) # hard version
+comparePatterns(as.matrix(pcartfit$DAG),trueDAG,hardP2P = FALSE) # soft version
 ```
 
 - OPCART (Talvitie et al., 2019)
@@ -317,14 +308,14 @@ opcartfit <- iterativeMCMC(opcartparam, alpha = 0, plus1it = 10, softlimit = 3, 
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
 plot(trueDAG, main = "True DAG")
-tempgraph <- graphAM(opcartfit$DAG, edgemode = "directed")
+tempgraph <- graphAM(as.matrix(opcartfit$DAG), edgemode = "directed")
 plot(tempgraph, main= "OPCART")
 ```
 
 ```{r}
 # Compare the patterns between them
-comparePatterns(opcartfit$DAG,trueDAG) # hard version
-comparePatterns(opcartfit$DAG,trueDAG,hardP2P = FALSE) # soft version
+comparePatterns(as.matrix(opcartfit$DAG),trueDAG) # hard version
+comparePatterns(as.matrix(opcartfit$DAG),trueDAG,hardP2P = FALSE) # soft version
 ```
 
 
